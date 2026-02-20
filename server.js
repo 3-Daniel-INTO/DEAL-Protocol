@@ -7,9 +7,15 @@ const PORT = process.env.PORT || 10000;
 app.use(compression());
 app.use(express.static(path.join(__dirname, '/')));
 
-// API de Salud del Enjambre para Render
-app.get('/status', (req, res) => {
-    res.json({ system: "DEAL-SOVEREIGN", nodes: "ONLINE", engine: "NODE-24" });
+// API G-AGI: Status de Red y Oráculos RWA
+app.get('/api/v1/swarm', (req, res) => {
+    res.json({
+        network: "DEAL-SOVEREIGN",
+        AUM: "$2.5B",
+        active_startups: 124,
+        node_location: "Atacama",
+        status: "OPTIMIZED"
+    });
 });
 
 app.get('*', (req, res) => {
@@ -17,5 +23,5 @@ app.get('*', (req, res) => {
 });
 
 app.listen(PORT, '0.0.0.0', () => {
-    console.log(`>> [DEAL]: Infraestructura activa en puerto ${PORT}`);
+    console.log(`>> [DEAL]: Swarm Infrastructure Active on Node ${process.version}`);
 });

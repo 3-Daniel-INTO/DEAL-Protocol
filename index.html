@@ -10,36 +10,44 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
 <body>
-    <div id="vortex-ui-bg"></div>
+    <div id="neural-canvas-container"></div>
 
-    <div id="content-overlay">
-        <header class="main-header">
-            <img src="logo-verde-deal.png" alt="DEAL" class="deal-logo-v">
+    <div id="ui-layer">
+        <header class="sovereign-nav">
+            <img src="logo_deal_verde.png" alt="DEAL" class="deal-brand">
+            <div class="swarm-indicator">NETWORK: ONLINE</div>
         </header>
 
-        <section class="portal-section" id="vc-portal">
-            <div class="glass-box">
-                <span class="tag">VENTURE CAPITAL</span>
-                <h2>IMPULSA TU STARTUP</h2>
-                <p>Registra tu emprendimiento en la red neural DEAL y accede a fondeo de la Fundación Harmony.</p>
-                <button class="btn-neon" onclick="showRegistration()">REGISTRAR PROYECTO</button>
-            </div>
-        </section>
-
-        <section class="portal-section" id="rwa-portal">
-            <div class="glass-box gold-border">
-                <span class="tag gold">INSTITUCIONAL RWA</span>
-                <h2>COMMODITIES & LITIO</h2>
-                <p>Inversión en activos reales con liquidación en Solana, Bitcoin y Ethereum.</p>
-                <div class="live-stats">
-                    <div class="stat">ATACAMA NODE: <span>STABLE</span></div>
-                    <div class="stat">AUM: <span>$2.5B</span></div>
+        <main>
+            <section class="hero-v">
+                <div class="vision-text">
+                    <h1>WHERE VISION <br> MEETS CAPITAL</h1>
+                    <p>La infraestructura definitiva para inversión real e innovación.</p>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <footer class="sovereign-footer">
-            <p>© 2026 DALabs | Realizado por MIA Rehace | Harmony Fundación</p>
+            <section class="portal-card" id="vc">
+                <div class="glass-morph">
+                    <h3>VENTURE CAPITAL</h3>
+                    <p>Registra tu startup para auditoría G-AGI y financiamiento institucional.</p>
+                    <button class="action-btn neon" onclick="location.href='#register'">REGISTRAR EMPRENDIMIENTO</button>
+                </div>
+            </section>
+
+            <section class="portal-card" id="rwa">
+                <div class="glass-morph gold">
+                    <h3>INSTITUCIONAL RWA</h3>
+                    <p>Tokenización de Litio y Commodities bajo Protocolo Veritas.</p>
+                    <div class="kpi-grid">
+                        <div class="kpi"><span>99.9%</span><label>ACCURACY</label></div>
+                        <div class="kpi"><span>SOL/BTC</span><label>COLLATERAL</label></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="dalabs-foot">
+            <p>© 2026 DALabs | Harmony Fundación | MIA Rehace</p>
         </footer>
     </div>
 
