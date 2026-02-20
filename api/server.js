@@ -1,37 +1,27 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 const app = express();
+
 app.use(cors());
 app.use(express.json());
 
-// MIA-X: Base de Datos de Alta Disponibilidad
-const DEAL_ENGINE = {
-    institutional: {
-        vc_funds: "$450M committed",
-        national_projects: ["Atacama Solar v4", "Miami RWA Hub"],
-        liquidity_pool: "Deep_Whale_Ready"
-    },
-    rwa_realtime: {
-        lithium_spot: "$13,400/t",
-        carbon_credits: "$85.20/unit",
-        energy_surplus: "12%"
-    },
-    security: {
-        encryption: "Quantum_Resistant",
-        persistence: "MIA-X_Satellite_Sync",
-        veritas_hash: "v74_GENESIS_CONFIRMED"
-    }
+// Datos Maestros DEAL (Inversión, Infraestructura y RWA)
+const DEAL_CORE_DATA = {
+    institutional: { vc_committed: "$450M", rwa_lithium: "$720M", co2_offset: "1.5M Tons" },
+    tools: { wallet_connect: "ACTIVE", veritas_audit: "LIVE", heatmap: "SYNCED" },
+    sovereign_kpi: { energy_yield: "5.8 GW", node_status: "ATACAMA_ONLINE" }
 };
 
-// Handler universal para evitar "Archivos Fantasmas" y 404s en búsquedas
-app.get(['/api/v1/:path', '/api/:path'], (req, res) => {
-    console.log(`>> [MIA-X LOG]: Petición entrante para: ${req.params.path}`);
-    res.json({
-        ...DEAL_ENGINE,
-        request_id: Math.random().toString(36).substr(2, 9),
-        status: "LIVE_SYNC"
-    });
+// Reparación de ruta raíz para evitar "Cannot GET /"
+app.get('/', (req, res) => {
+    res.status(200).json({ message: "DEAL MASTER NODE OPERATIONAL", version: "75.0" });
+});
+
+// Endpoint unificado para la App de Vercel
+app.get('/api/v1/deal/all', (req, res) => {
+    res.json(DEAL_CORE_DATA);
 });
 
 const PORT = process.env.PORT || 10000;
-app.listen(PORT, '0.0.0.0', () => console.log(`DEAL Genesis Engine on ${PORT}`));
+app.listen(PORT, '0.0.0.0', () => console.log(`DEAL Engine on ${PORT}`));

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8"><title>DEAL | Genesis Institutional Portal</title>
+    <meta charset="UTF-8">
+    <title>DEAL | Portal de Inversión Soberana</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
@@ -9,42 +10,32 @@
     <canvas id="canvas-3d"></canvas>
     <div class="interface-layer">
         <header class="navbar">
-            <div class="logo">DEAL <span class="pop">Proof of Progress</span></div>
-            <div class="status-box"><span id="live-pulse">●</span> NODE_ATACAMA_SYNC</div>
+            <div class="logo">DEAL <span class="pop">MIA-X</span></div>
+            <div class="status-indicator">G-AGI: SCANNING_ASSETS</div>
         </header>
 
-        <main class="genesis-dashboard">
-            <div class="data-column">
-                <div class="glass-module">
-                    <small>VENTURE CAPITAL PIPELINE</small>
-                    <h2 id="vc-val">$450M</h2>
+        <main class="dashboard-whale">
+            <section class="kpi-soberano">
+                <div class="glass-card">
+                    <small>VENTURE CAPITAL</small>
+                    <h2 id="vc-display">--</h2>
                 </div>
-                <div class="glass-module">
-                    <small>RWA LITHIUM VALUE</small>
-                    <h2 id="rwa-val">$13.4K</h2>
+                <div class="glass-card">
+                    <small>INFRAESTRUCTURA RWA</small>
+                    <h2 id="rwa-display">--</h2>
+                </div>
+            </section>
+
+            <div class="central-vault">
+                <div class="quantum-vault-ui">
+                    <h1>BOVEDA MULTI-CHAIN</h1>
+                    <button id="connect-btn" class="btn-glow">ACTIVAR WALLETCONNECT</button>
                 </div>
             </div>
 
-            <div class="center-focus">
-                <div class="quantum-circle">
-                    <div class="inner-data">
-                        <small>IMPACTO CO2</small>
-                        <h1 id="impact-val">1.5M</h1>
-                        <p>TONELADAS REDUCIDAS</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="data-column">
-                <div class="glass-module">
-                    <small>INSTITUTIONAL LIQUIDITY</small>
-                    <h2 id="liq-val">AA+</h2>
-                </div>
-                <div class="glass-module">
-                    <small>SATELLITE PERSISTENCE</small>
-                    <h2 id="sec-val">ACTIVE</h2>
-                </div>
-            </div>
+            <section class="tools-sector">
+                <div id="veritas-log" class="terminal-text">AUDITORÍA VERITAS: PENDIENTE...</div>
+            </section>
         </main>
     </div>
     <script src="script.js"></script>
