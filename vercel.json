@@ -1,14 +1,12 @@
 {
   "version": 2,
   "name": "deal-protocol",
-  "builds": [
-    { "src": "server.js", "use": "@vercel/node" },
-    { "src": "index.html", "use": "@vercel/static" },
-    { "src": "style.css", "use": "@vercel/static" },
-    { "src": "script.js", "use": "@vercel/static" }
+  "framework": "express",
+  "rewrites": [
+    { "source": "/api/swarm", "destination": "/server.js" },
+    { "source": "/(.*)", "destination": "/index.html" }
   ],
-  "routes": [
-    { "src": "/healthz", "dest": "/server.js" },
-    { "src": "/(.*)", "dest": "/index.html" }
-  ]
+  "renderers": {
+    "node": "24.x"
+  }
 }

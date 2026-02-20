@@ -1,19 +1,25 @@
 const express = require('express');
+const compression = require('compression');
+const helmet = require('helmet');
 const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 10000;
 
-// Configuración de Seguridad Soberana
-app.use((req, res, next) => {
-    res.setHeader('X-Powered-By', 'MIA-X Neural Network');
-    res.setHeader('X-Infrastructure', 'DALabs-Atacama');
-    next();
-});
+// Agentes Enjambre: Protección y Optimización
+app.use(helmet({ contentSecurityPolicy: false })); // Permite assets de DALabs
+app.use(compression()); 
 
 app.use(express.static(path.join(__dirname, '/')));
 
-app.get('/healthz', (req, res) => {
-    res.status(200).json({ status: "ONLINE", engine: "G-AGI", node_version: process.version });
+// Endpoint de Diagnóstico de Enjambre
+app.get('/swarm-status', (req, res) => {
+    res.json({
+        portal: "DEAL_SOVEREIGN",
+        nodes: ["Atacama_Alpha", "Sat_Link_01", "G_AGI_Core"],
+        status: "HEALED",
+        memory: "MIA-X_ACTIVE",
+        engine: process.version
+    });
 });
 
 app.get('*', (req, res) => {
@@ -21,5 +27,5 @@ app.get('*', (req, res) => {
 });
 
 app.listen(PORT, '0.0.0.0', () => {
-    console.log(`>> [DEAL]: Infraestructura activa en Node ${process.version} - Puerto ${PORT}`);
+    console.log(`>> [DEAL ENJAMBRE]: Subnodos reconectados en puerto ${PORT}`);
 });

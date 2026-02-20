@@ -1,14 +1,16 @@
 {
-  "name": "deal-protocol-sovereign",
-  "version": "4.8.0",
-  "description": "Portal Neuronal DEAL - DALabs & Harmony Fundación",
+  "name": "deal-neural-infrastructure",
+  "version": "5.0.0",
+  "description": "DEAL: Sovereign Investment Portal by DALabs",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "build": "echo 'Building DEAL Infrastructure...'"
+    "build": "echo 'Healed and Optimized by G-AGI Swarm'"
   },
   "dependencies": {
-    "express": "^4.19.0"
+    "express": "^4.19.2",
+    "compression": "^1.7.4",
+    "helmet": "^7.1.0"
   },
   "engines": {
     "node": "24.x"
