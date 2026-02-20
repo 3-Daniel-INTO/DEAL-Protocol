@@ -1,94 +1,44 @@
-// --- GENERACIÓN DE HUELLA DIGITAL ---
-function generateDigitalFingerprint() {
-    console.log(">> [MIA-X]: Capturando parámetros biométricos del inversor...");
-    const authScreen = document.getElementById('auth-screen');
-    const dashboard = document.getElementById('dashboard');
-    
-    // Simulación de sincronización con Render y Vercel
-    setTimeout(() => {
-        authScreen.classList.remove('active');
-        dashboard.classList.add('active');
-        animateBalance();
-    }, 2500);
-}
+gsap.registerPlugin(ScrollTrigger);
 
-function animateBalance() {
-    let count = 0;
-    const target = 1170000000;
-    const timer = setInterval(() => {
-        count += target / 50;
-        document.getElementById('main-balance').innerText = `$${Math.floor(count).toLocaleString()}`;
-        if (count >= target) {
-            document.getElementById('main-balance').innerText = `$${target.toLocaleString()}`;
-            clearInterval(timer);
-        }
-    }, 30);
-}
+// --- FONDO DE REALIDAD AUMENTADA (3D NEURAL) ---
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('ar-mockup-bg'), alpha: true });
+renderer.setSize(window.innerWidth, window.innerHeight);
 
-// --- BACKGROUND NEURONAL (Always Learning) ---
-const canvas = document.getElementById('neural-bg');
-const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-let particles = [];
-class Particle {
-    constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 2;
-        this.speedX = Math.random() * 1 - 0.5;
-        this.speedY = Math.random() * 1 - 0.5;
-    }
-    update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
-        if (this.x > canvas.width) this.x = 0;
-        if (this.x < 0) this.x = canvas.width;
-        if (this.y > canvas.height) this.y = 0;
-        if (this.y < 0) this.y = canvas.height;
-    }
-    draw() {
-        ctx.fillStyle = 'rgba(212, 175, 55, 0.5)';
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fill();
-    }
-}
-
-function init() {
-    for (let i = 0; i < 100; i++) particles.push(new Particle());
-}
+const geometry = new THREE.IcosahedronGeometry(20, 1);
+const material = new THREE.MeshBasicMaterial({ color: 0xD4AF37, wireframe: true, transparent: true, opacity: 0.15 });
+const mesh = new THREE.Mesh(geometry, material);
+scene.add(mesh);
+camera.position.z = 50;
 
 function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    particles.forEach(p => {
-        p.update();
-        p.draw();
-    });
     requestAnimationFrame(animate);
+    mesh.rotation.y += 0.002;
+    mesh.rotation.x += 0.001;
+    renderer.render(scene, camera);
 }
-init(); animate();
-// --- FUNCIÓN DE NAVEGACIÓN ENTRE PANTALLAS ---
-function showScreen(screenId) {
-    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-    document.getElementById(screenId).classList.add('active');
-    
-    if(screenId === 'ai-strategy') {
-        setTimeout(loadAISuggestions, 1000);
-    }
+animate();
+
+// --- STORYTELLING ANIMATION ---
+gsap.utils.toArray(".panel").forEach((panel, i) => {
+    gsap.from(panel.children, {
+        scrollTrigger: {
+            trigger: panel,
+            start: "top center",
+            toggleActions: "play none none reverse",
+        },
+        y: 50,
+        opacity: 0,
+        duration: 1.2,
+        stagger: 0.2
+    });
+});
+
+function runBiometricScan() {
+    alert("MIA-X: Escaneando huella digital... Identidad Soberana Certificada.");
 }
 
-function loadAISuggestions() {
-    const text = document.getElementById('strategy-text');
-    text.innerText = "Basado en tu huella digital, G-AGI sugiere priorizar RWA Institucional (Litio) para asegurar estabilidad y asignar un 15% a Filantropía DALabs para impacto global.";
-    // Animación de carga de datos neuronales
+function scrollToSection(id) {
+    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
 }
-
-function applyStrategy() {
-    alert("MIA-X: Cartera Soberana actualizada. Sincronizando nodos en Atacama...");
-    showScreen('dashboard');
-}
-
-// Integración de navegación en el menú inferior
-// (Añadir disparador en la UI para saltar a estrategia)
