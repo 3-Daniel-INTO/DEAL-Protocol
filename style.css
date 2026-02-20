@@ -1,17 +1,19 @@
-:root { --gold: #D4AF37; --bg: #000; --font: 'JetBrains Mono', monospace; }
-body { margin: 0; background: var(--bg); color: #fff; font-family: var(--font); overflow: hidden; }
+@import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Inter:wght@300;600&display=swap');
 
-#organic-canvas { position: fixed; inset: 0; z-index: -1; opacity: 0.6; }
-.main-nav { display: flex; justify-content: space-between; padding: 40px; }
-.logo { font-family: 'Syncopate', sans-serif; font-size: 2rem; color: var(--gold); letter-spacing: 15px; }
+:root { --gold: #D4AF37; --bg: #000; --neural-blue: #00F3FF; }
+body { margin: 0; background: var(--bg); color: #fff; font-family: 'Inter', sans-serif; overflow: hidden; }
 
-/* Banner de Predicción G-AGI */
-.prediction-banner { background: linear-gradient(90deg, transparent, rgba(212,175,55,0.1), transparent); border-y: 1px solid var(--gold); padding: 20px; text-align: center; animation: slideIn 1s ease; }
-.btn-glow { background: var(--gold); border: none; padding: 10px 25px; font-weight: bold; cursor: pointer; box-shadow: 0 0 20px rgba(212,175,55,0.4); margin-left: 20px; }
+#fluid-canvas { position: fixed; inset: 0; z-index: -1; opacity: 0.4; }
+#neural-overlay { position: fixed; inset: 0; background: radial-gradient(circle at center, transparent, #000); z-index: 1; pointer-events: none; }
 
-.dashboard-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; padding: 0 10%; margin-top: 5vh; }
-.card-sovereign { border: 1px solid rgba(255,255,255,0.1); padding: 40px; backdrop-filter: blur(10px); }
-.card-sovereign.gold { border-color: var(--gold); }
+.elite-nav { position: fixed; top: 0; width: 100%; padding: 40px 60px; display: flex; justify-content: space-between; align-items: center; z-index: 100; box-sizing: border-box; }
+.brand { font-family: 'Syncopate'; font-size: 2rem; letter-spacing: 15px; color: var(--gold); }
+.neural-status { font-size: 0.7rem; letter-spacing: 3px; color: var(--neural-blue); }
 
-@keyframes slideIn { from { transform: translateY(-100%); } to { transform: translateY(0); } }
+.hero-panel { height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; }
+.main-title { font-family: 'Syncopate'; font-size: 8rem; margin: 0; color: var(--gold); letter-spacing: -5px; }
+
+.neural-card { background: rgba(212,175,55,0.05); border: 1px solid var(--gold); padding: 40px; backdrop-filter: blur(20px); transition: 0.5s; }
+.neural-card:hover { transform: scale(1.02); box-shadow: 0 0 50px rgba(212,175,55,0.2); }
+
 .hidden { display: none; }
