@@ -1,0 +1,101 @@
+:root {
+    --neon: #39FF14;
+    --gold: #D4AF37;
+    --dark: #050505;
+    --glass: rgba(255, 255, 255, 0.03);
+}
+
+body {
+    margin: 0;
+    background: var(--dark);
+    color: white;
+    font-family: 'JetBrains Mono', monospace;
+    overflow-x: hidden;
+}
+
+/* Logos Escalables Pixel-Perfect */
+.deal-logo-full {
+    width: 100%;
+    max-width: 200px; /* Control de ampliación/reducción */
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.agi-icon-bot {
+    width: 40px;
+    height: auto;
+    filter: drop-shadow(0 0 10px var(--neon));
+}
+
+/* Navegación y Menú Índice */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    background: rgba(0,0,0,0.9);
+    border-bottom: 1px solid rgba(57, 255, 20, 0.2);
+    z-index: 1000;
+    box-sizing: border-box;
+}
+
+.menu-index {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--neon);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+
+/* G-AGI Bot Floating */
+#g-agi-trigger {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 60px;
+    height: 60px;
+    border: 2px solid var(--neon);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--dark);
+    cursor: pointer;
+    z-index: 9999;
+    animation: pulse 2s infinite;
+}
+
+/* Dashboard Portal */
+.portal-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.kpi-card {
+    background: var(--glass);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    padding: 20px;
+    border-radius: 5px;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); box-shadow: 0 0 0px var(--neon); }
+    50% { transform: scale(1.05); box-shadow: 0 0 20px var(--neon); }
+    100% { transform: scale(1); box-shadow: 0 0 0px var(--neon); }
+}
+
+footer {
+    text-align: center;
+    padding: 40px;
+    color: var(--gold);
+    font-size: 0.7rem;
+    border-top: 1px solid #111;
+}

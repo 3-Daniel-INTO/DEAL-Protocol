@@ -1,0 +1,6 @@
+{
+  "integration": "DEAL-Aladdin-API",
+  "liquidity_pool": "Institutional_Whale_Vault",
+  "rwa_bridge": "T-Bill_Tokenization_V1",
+  "audit": "Real-time On-chain Transparency (PoP)"
+}

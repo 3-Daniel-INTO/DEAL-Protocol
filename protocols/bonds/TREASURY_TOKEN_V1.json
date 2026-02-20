@@ -1,0 +1,6 @@
+{
+  "issuer": "DEAL Protocol",
+  "collateral": "BTC/RWA Mixed Pool",
+  "audit": "Real-time Proof of Progress (PoP)",
+  "redemption": "Instant Liquidity via SOL/ETH Bridge"
+}

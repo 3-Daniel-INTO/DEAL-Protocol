@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>DEAL | Sovereign Investment Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        :root { --neon: #00FFFF; --gold: #FFD700; --green-arrow: #39FF14; --bg: #000; }
+        body, html { margin: 0; padding: 0; font-family: 'Orbitron', sans-serif; background: var(--bg); color: #fff; scroll-behavior: smooth; overflow-x: hidden; }
+        
+        /* HEADER */
+        header { position: fixed; width: 100%; top: 0; padding: 20px; display: flex; justify-content: space-between; z-index: 100; backdrop-filter: blur(5px); }
+        .logo-a { color: var(--green-arrow); font-size: 2rem; font-weight: bold; cursor: pointer; filter: drop-shadow(0 0 10px var(--green-arrow)); }
+        
+        /* BACKGROUND 3D */
+        #canvas-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
+
+        /* SECCIONES RENDERIZADAS */
+        section { min-height: 100vh; padding: 100px 50px; display: flex; flex-direction: column; justify-content: center; }
+        .glass-card { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(0, 255, 255, 0.2); padding: 30px; border-radius: 15px; backdrop-filter: blur(15px); margin-bottom: 20px; transition: 0.5s; }
+        .glass-card:hover { border-color: var(--gold); transform: scale(1.02); }
+
+        /* ROADMAP & DONACIONES */
+        .roadmap-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+        .donation-btn { background: var(--gold); color: #000; padding: 15px 30px; border: none; font-weight: bold; cursor: pointer; border-radius: 5px; box-shadow: 0 0 20px var(--gold); }
+
+        /* FOOTER */
+        footer { padding: 50px; text-align: center; border-top: 1px solid #222; background: #050505; }
+        .github-icon { font-size: 2rem; color: #fff; text-decoration: none; opacity: 0.7; transition: 0.3s; }
+        .github-icon:hover { opacity: 1; color: var(--neon); }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-a">A ▲</div> <div id="top-status" style="font-family:'Share Tech Mono'; color:var(--neon); font-size:0.7rem; text-align:right;">
+            MIA-X: ONLINE | G-AGI: SCANNING INTERSTELLAR
+        </div>
+    </header>
+
+    <div id="canvas-container"></div>
+
+    <section id="hero">
+        <h1 style="font-size: 4rem; color: var(--gold); text-shadow: 0 0 30px var(--gold);">DEAL</h1>
+        <p style="letter-spacing: 5px; color: var(--neon);">WHERE VISION MEETS CAPITAL</p>
+        <div class="glass-card" style="max-width: 600px;">
+            <p>Plataforma líder para inversión en crowdfunding, Venture Capital e inversión institucional optimizada por MIA-X.</p>
+        </div>
+    </section>
+
+    <section id="tools">
+        <h2>Sovereign Tools</h2>
+        <div class="roadmap-grid">
+            <div class="glass-card"><h3>Biometric ID</h3><p>MIA-X Neural Persistence</p></div>
+            <div class="glass-card"><h3>Wallet Swarm</h3><p>Omnichain tracking (BTC, ETH, SOL, RWA)</p></div>
+            <div class="glass-card"><h3>KPI Real-time</h3><p>Institutional flow analytics</p></div>
+        </div>
+    </section>
+
+    <section id="roadmap">
+        <h2>Roadmap 2026</h2>
+        <div class="roadmap-grid">
+            <div class="glass-card"><p>Q1: Atacama Core Hub</p></div>
+            <div class="glass-card"><p>Q2: Space RWA Detection</p></div>
+            <div class="glass-card"><p>Q3: Human Ark Finality</p></div>
+        </div>
+    </section>
+
+    <section id="legacy">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
+            <div class="glass-card">
+                <h2>Donaciones a DEAL</h2>
+                <p>Apoya el desarrollo de la infraestructura de la civilización.</p>
+                <button class="donation-btn">CONTRIBUTE TO HUMAN ARK</button>
+            </div>
+            <div class="glass-card">
+                <h2>Q&A</h2>
+                <details><summary>¿Qué es MIA-X?</summary><p>Red neuronal de persistencia para el sistema financiero.</p></details>
+                <details><summary>¿Seguridad Atacama?</summary><p>Blindaje satelital y centro de comando en Chile.</p></details>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <a href="https://github.com/tu-usuario/DEAL-protocol" class="github-icon" target="_blank">
+            <svg height="32" viewBox="0 0 16 16" width="32" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+        </a>
+        <p style="margin-top: 20px; font-size: 0.8rem; opacity: 0.5;">
+            &copy; 2026 HARMONY FOUNDATION | DALABS. TODOS LOS DERECHOS RESERVADOS.
+        </p>
+    </footer>
+
+    <script>
+        // Lógica de Three.js para Background Cinematográfico Hiperrealista
+        // (Aquí se integran las texturas generadas)
+        let scene = new THREE.Scene();
+        let camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 10000);
+        let renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.getElementById('canvas-container').appendChild(renderer.domElement);
+
+        // Geometrías y Luces
+        let ambient = new THREE.AmbientLight(0x404040, 2); scene.add(ambient);
+        let starGeo = new THREE.BufferGeometry();
+        let stars = [];
+        for(let i=0; i<8000; i++) { stars.push(THREE.MathUtils.randFloatSpread(3000), THREE.MathUtils.randFloatSpread(3000), THREE.MathUtils.randFloatSpread(3000)); }
+        starGeo.setAttribute('position', new THREE.Float32BufferAttribute(stars, 3));
+        let starMat = new THREE.PointsMaterial({ color: 0xffffff, size: 0.7 });
+        let starField = new THREE.Points(starGeo, starMat);
+        scene.add(starField);
+
+        camera.position.z = 1000;
+
+        function animate() {
+            requestAnimationFrame(animate);
+            starField.rotation.y += 0.0005;
+            // Efecto de transicion suave basado en scroll
+            let scroll = window.scrollY;
+            camera.position.z = 1000 - (scroll * 0.5);
+            renderer.render(scene, camera);
+        }
+        animate();
+    </script>
+</body>
+</html>
