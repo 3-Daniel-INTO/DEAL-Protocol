@@ -2,135 +2,49 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>DEAL | Sovereign Investment & Veritas Audit</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DEAL | Multi-Chain Asset Vault</title>
+    <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <style>
-    .executive-only { display: none; } 
-    body.executive-mode .veritas-console { display: none; } 
-    body.executive-mode .executive-only { display: block; } 
-    body.executive-mode .glass-panel { border-color: var(--gold); background: rgba(0,0,0,0.9); } 
-    #mode-toggle { position: fixed; bottom: 20px; left: 20px; z-index: 1000; background: transparent; border: 1px solid #333; color: #333; font-family: "Share Tech Mono"; cursor: pointer; font-size: 0.6rem; } 
-    #mode-toggle:hover { color: var(--gold); border-color: var(--gold); }
-        :root { --neon: #00FFFF; --gold: #FFD700; --green: #39FF14; --bg: #000; --red: #FF3131; }
-        body, html { margin: 0; padding: 0; font-family: 'Orbitron', sans-serif; background: var(--bg); color: #fff; overflow-x: hidden; scroll-behavior: smooth; }
-        
-        #canvas-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
-        #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, transparent 20%, #000 100%); z-index: 0; pointer-events: none; }
-        
-        header { position: fixed; width: 100%; top: 0; padding: 20px; display: flex; justify-content: space-between; z-index: 100; backdrop-filter: blur(15px); border-bottom: 1px solid rgba(0,255,255,0.1); box-sizing: border-box; }
-        .logo-a { color: var(--green); font-size: 1.5rem; font-weight: bold; text-shadow: 0 0 10px var(--green); }
-
-        section { min-height: 100vh; padding: 100px 10%; display: flex; flex-direction: column; justify-content: center; z-index: 5; position: relative; }
-        
-        .glass-panel { background: rgba(0, 10, 10, 0.85); border: 1px solid var(--neon); padding: 30px; border-radius: 5px; backdrop-filter: blur(20px); }
-        
-        /* Veritas Console */
-        .veritas-console { font-family: 'Share Tech Mono', monospace; font-size: 0.85rem; color: var(--green); background: #050505; padding: 20px; border: 1px solid #222; height: 250px; overflow-y: hidden; margin-top: 20px; }
-        .log-entry { margin-bottom: 5px; border-bottom: 1px solid #111; }
-        .log-entry.critical { color: var(--gold); }
-
-        .btn-main { background: var(--green); color: #000; border: none; padding: 15px 40px; font-family: 'Orbitron'; font-weight: bold; cursor: pointer; transition: 0.3s; }
-        .btn-main:hover { box-shadow: 0 0 25px var(--green); transform: scale(1.05); }
-    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@web3modal/standalone/dist/index.min.js"></script>
 </head>
 <body>
-    <div id="canvas-container"></div>
-    <div id="overlay"></div>
+    <canvas id="canvas-3d"></canvas>
+    
+    <div class="interface-layer">
+        <header class="navbar">
+            <div class="logo">DEAL <span class="pop">Proof of Progress</span></div>
+            <div id="node-pulse" class="pulse">NODE: ATACAMA ONLINE</div>
+        </header>
 
-    <header>
-        <div class="logo-a">DEAL ▲</div>
-        <div style="font-family:'Share Tech Mono'; color:var(--neon); font-size:0.7rem;">VERITAS_PROTOCOL: ACTIVE</div>
-<div id="network-monitor" style="position:fixed; top:80px; right:20px; font-family:"Share Tech Mono"; font-size:0.6rem; color:var(--green); z-index:100; text-align:right;">NETWORK_SYNC: <span id="sync-status">CONNECTING...</span><br>LATENCY: <span id="latency">--ms</span></div>
-    </header>
+        <main class="vault-container">
+            <section class="vault-header">
+                <h1 class="glitch" data-text="MULTI-CHAIN VAULT">MULTI-CHAIN VAULT</h1>
+                <p>Gestión soberana de activos RWA y Colaterales Crypto</p>
+            </section>
 
-    <section id="veritas-section">
-        <h2 style="color: var(--gold); margin-bottom: 10px;">VERITAS AUDIT</h2>
-        <p style="color: var(--neon); letter-spacing: 2px; font-size: 0.8rem;">REAL-TIME PROOF OF PROGRESS (PoP)</p>
-        
-        <div class="glass-panel">
-            <div class="veritas-console" id="console">
-                <div class="log-entry">> INITIATING VERITAS PROTOCOL...</div>
-                <div class="log-entry">> SYNCING ATACAMA MASTER NODE [STATUS: OK]</div>
-                <div class="log-entry">> QUANTUM SPACE RELAY: CONNECTED</div>
-                <div class="log-entry critical">> MIA-X PERSISTENCE HASH: 0x8F3A...E92D</div>
+            <div class="grid-layout">
+                <div class="glass-card vault-card">
+                    <h3>CRYPTO COLLATERAL</h3>
+                    <div class="asset-row"><span>BTC</span><b id="btc-val">--</b></div>
+                    <div class="asset-row"><span>ETH</span><b id="eth-val">--</b></div>
+                    <div class="asset-row"><span>SOL</span><b id="sol-val">--</b></div>
+                </div>
+
+                <div class="glass-card vault-card highlight">
+                    <h3>REAL WORLD ASSETS</h3>
+                    <div class="asset-row"><span>LITHIUM RESERVE</span><b id="li-val">--</b></div>
+                    <div class="asset-row"><span>GOLD TOKENIZED</span><b id="au-val">--</b></div>
+                    <div class="asset-row"><span>CLEAN ENERGY</span><b id="co2-val">--</b></div>
+                </div>
             </div>
-            <div style="margin-top: 20px; display: flex; gap: 20px;">
-                <button class="btn-main" onclick="location.href='#invest'">INVEST IN INNOVATION</button>
+
+            <div class="action-zone">
+                <button id="connect-btn" class="btn-main">CONNECT UNIVERSAL WALLET</button>
             </div>
-        </div>
-    </section>
-<section id="whitepaper"> 
-    <h2 style="color:var(--gold);">DYNAMIC WHITE PAPER</h2> 
-    <div class="glass-panel" id="roadmap-container"> 
-        
-    </div> 
-</section>
+        </main>
+    </div>
 
-    <script>
-        let scene, camera, renderer, starField;
-
-        function init3D() {
-            scene = new THREE.Scene();
-            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 5000);
-            renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            document.getElementById('canvas-container').appendChild(renderer.domElement);
-
-            const starGeo = new THREE.BufferGeometry();
-            const stars = [];
-            for (let i = 0; i < 10000; i++) {
-                stars.push(THREE.MathUtils.randFloatSpread(4000), THREE.MathUtils.randFloatSpread(4000), THREE.MathUtils.randFloatSpread(4000));
-            }
-            starGeo.setAttribute('position', new THREE.Float32BufferAttribute(stars, 3));
-            const starMat = new THREE.PointsMaterial({ color: 0x39FF14, size: 0.6 });
-            starField = new THREE.Points(starGeo, starMat);
-            scene.add(starField);
-
-            camera.position.z = 1000;
-        }
-
-        function animate() {
-            requestAnimationFrame(animate);
-            starField.rotation.y += 0.0007;
-            renderer.render(scene, camera);
-        }
-
-        // Simulación de Logs Veritas
-        function startLogs() {
-            const consoleBox = document.getElementById('console');
-            const messages = [
-                "> VALIDATING RWA COLLATERAL: GOLD_VAULT_01",
-                "> MIA-X INDIVIDUAL MEMORY SYNC... COMPLETE",
-                "> HARMONY FOUNDATION BALANCE VERIFIED",
-                "> CROSS-CHAIN BRIDGE: BTC/SOL ACTIVE",
-                "> ATACAMA BLINDAGE: 100% OPERATIONAL"
-            ];
-            let i = 0;
-            setInterval(() => {
-                const div = document.createElement('div');
-                div.className = 'log-entry';
-                div.innerHTML = messages[i % messages.length];
-                consoleBox.appendChild(div);
-                if (consoleBox.childNodes.length > 10) consoleBox.removeChild(consoleBox.firstChild);
-                i++;
-            }, 3000);
-        }
-
-        init3D();
-        animate();
-        startLogs();
-    </script>
-<script src="public/assets/ai_view.js"></script>
-<script src="public/assets/roadmap.js"></script><script>renderRoadmap();</script>
-<button id="mode-toggle" onclick="toggleMode()">MODO: TÉCNICO</button> 
-<script> 
-    function toggleMode() { 
-        document.body.classList.toggle("executive-mode"); 
-        const btn = document.getElementById("mode-toggle"); 
-        btn.innerText = document.body.classList.contains("executive-mode") ? "MODO: EJECUTIVO" : "MODO: TÉCNICO"; 
-    } 
-</script>
-<script src="public/assets/simulation_view.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
