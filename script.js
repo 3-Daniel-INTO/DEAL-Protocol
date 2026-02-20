@@ -56,3 +56,24 @@ async function refreshSynergy() {
 }
 setInterval(refreshSynergy, 9000);
 refreshSynergy();
+async function refreshSynergy() {
+    try {
+        const res = await fetch('https://srv-d6bqorvtn9qs73di0npg.onrender.com/api/v1/synergy');
+        const data = await res.json();
+        const view = document.getElementById('synergy-view');
+        
+        view.innerHTML = `
+            <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
+                <span>CO2 OFFSET: <b style="color:var(--neon);">${data.impact_metrics.co2_reduction_target}</b></span>
+                <span>INFRA: <b style="color:white;">${data.impact_metrics.energy_infrastructure}</b></span>
+            </div>
+            <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:10px;">
+                <div style="border:1px solid #333; padding:5px;">BTC: ${data.crypto_appreciation.btc_impact}</div>
+                <div style="border:1px solid #333; padding:5px;">ETH: ${data.crypto_appreciation.eth_impact}</div>
+                <div style="border:1px solid #333; padding:5px;">SOL: ${data.crypto_appreciation.sol_impact}</div>
+            </div>
+        `;
+    } catch(e) { console.log(">> [MIA-X]: Nodo Atacama sincronizando..."); }
+}
+setInterval(refreshSynergy, 9000);
+refreshSynergy();
