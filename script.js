@@ -69,3 +69,26 @@ function animate() {
     requestAnimationFrame(animate);
 }
 init(); animate();
+// --- FUNCIÓN DE NAVEGACIÓN ENTRE PANTALLAS ---
+function showScreen(screenId) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById(screenId).classList.add('active');
+    
+    if(screenId === 'ai-strategy') {
+        setTimeout(loadAISuggestions, 1000);
+    }
+}
+
+function loadAISuggestions() {
+    const text = document.getElementById('strategy-text');
+    text.innerText = "Basado en tu huella digital, G-AGI sugiere priorizar RWA Institucional (Litio) para asegurar estabilidad y asignar un 15% a Filantropía DALabs para impacto global.";
+    // Animación de carga de datos neuronales
+}
+
+function applyStrategy() {
+    alert("MIA-X: Cartera Soberana actualizada. Sincronizando nodos en Atacama...");
+    showScreen('dashboard');
+}
+
+// Integración de navegación en el menú inferior
+// (Añadir disparador en la UI para saltar a estrategia)
