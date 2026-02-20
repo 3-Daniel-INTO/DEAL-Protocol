@@ -1,50 +1,31 @@
-:root { --gold: #D4AF37; --neon: #39FF14; --bg: #000; --font: 'Segoe UI', Roboto, sans-serif; }
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { background: var(--bg); color: #fff; font-family: var(--font); overflow: hidden; }
-
+:root { --gold: #D4AF37; --neon: #39FF14; --bg: #000; }
+body { background: #000; color: #fff; font-family: 'Segoe UI', sans-serif; overflow: hidden; margin: 0; }
 #bg-canvas { position: fixed; top: 0; left: 0; z-index: -1; }
 
 .interface { 
-    height: 100vh; display: flex; flex-direction: column; justify-content: space-between;
-    align-items: center; padding: 50px; background: radial-gradient(circle, transparent 0%, rgba(0,0,0,0.85) 100%);
+    height: 100vh; display: flex; flex-direction: column; justify-content: space-between; align-items: center; 
+    padding: 40px; background: radial-gradient(circle, transparent, rgba(0,0,0,0.9));
 }
 
-header { width: 100%; display: flex; justify-content: space-between; align-items: center; }
-.logo { font-size: 2.2rem; font-weight: 900; color: var(--gold); letter-spacing: 6px; }
-.sub { font-size: 0.65rem; color: var(--neon); display: block; letter-spacing: 2px; }
-.status-box { color: var(--neon); font-family: monospace; font-size: 0.75rem; border: 1px solid rgba(57, 255, 20, 0.2); padding: 5px 15px; border-radius: 20px; }
-.dot { display: inline-block; width: 7px; height: 7px; background: var(--neon); border-radius: 50%; margin-right: 8px; box-shadow: 0 0 10px var(--neon); animation: blink 1.5s infinite; }
+header { width: 100%; display: flex; justify-content: space-between; color: var(--neon); font-family: monospace; font-size: 0.8rem; }
+.logo { font-size: 2.5rem; font-weight: 900; color: var(--gold); letter-spacing: 5px; }
 
-/* GLITCH EFFECT */
-.glitch { font-size: 3.5rem; font-weight: 900; position: relative; color: #fff; letter-spacing: 3px; }
-.glitch::before, .glitch::after {
-    content: attr(data-text); position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg);
-}
-.glitch::before { left: 2px; text-shadow: -2px 0 #ff00c1; clip: rect(44px, 450px, 56px, 0); animation: glitch-anim 5s infinite linear alternate-reverse; }
-.glitch::after { left: -2px; text-shadow: -2px 0 #00fff9, 2px 2px #ff00c1; clip: rect(44px, 450px, 56px, 0); animation: glitch-anim2 5s infinite linear alternate-reverse; }
+/* EFECTO GLITCH */
+.glitch { font-size: 4rem; font-weight: 900; position: relative; text-align: center; }
+.glitch::before, .glitch::after { content: attr(data-text); position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0.8; }
+.glitch::before { left: 2px; text-shadow: -2px 0 #ff00c1; clip: rect(44px, 450px, 56px, 0); animation: glitch 3s infinite linear; }
+.glitch::after { left: -2px; text-shadow: -2px 0 #00fff9; clip: rect(20px, 450px, 30px, 0); animation: glitch 2s infinite linear; }
 
-.hero { text-align: center; }
-.hero p { color: #888; font-size: 1rem; margin-top: 15px; max-width: 650px; }
+@keyframes glitch { 0% { clip: rect(10px, 999px, 20px, 0); } 100% { clip: rect(80px, 999px, 90px, 0); } }
 
-.dashboard-grid { display: grid; grid-template-columns: repeat(3, 320px); gap: 25px; }
-.glass-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(212,175,55,0.15); padding: 35px; border-radius: 15px; backdrop-filter: blur(12px); text-align: center; transition: 0.3s; }
-.glass-card:hover { border-color: var(--gold); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-.val { font-size: 2.8rem; font-weight: 900; margin: 15px 0; letter-spacing: -1px; }
-.terminal-box { text-align: left; font-family: monospace; font-size: 0.65rem; color: var(--neon); line-height: 1.5; margin: 15px 0; }
-
-.meter { width: 100%; height: 3px; background: rgba(255,255,255,0.05); border-radius: 2px; overflow: hidden; }
+.dashboard { display: grid; grid-template-columns: repeat(3, 320px); gap: 20px; }
+.card { background: rgba(255,255,255,0.03); border: 1px solid rgba(212,175,55,0.2); border-radius: 12px; padding: 30px; backdrop-filter: blur(10px); }
+.val { font-size: 3rem; font-weight: 900; color: #fff; margin: 10px 0; }
+.terminal { font-family: monospace; font-size: 0.7rem; color: var(--neon); height: 40px; }
+.meter { width: 100%; height: 4px; background: rgba(255,255,255,0.1); margin-top: 10px; }
 .fill { height: 100%; }
 .fill.gold { background: var(--gold); }
 .fill.neon { background: var(--neon); }
-.fill.white { background: #fff; }
 
-.btn-group { display: flex; gap: 20px; }
-.btn-primary { background: var(--gold); color: #000; border: none; padding: 18px 45px; font-weight: 900; border-radius: 5px; cursor: pointer; transition: 0.3s; }
-.btn-primary:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(212,175,55,0.4); }
-.btn-secondary { background: rgba(255,255,255,0.05); color: #fff; border: 1px solid rgba(255,255,255,0.1); padding: 18px 45px; border-radius: 5px; cursor: pointer; }
-
-.system-logs { margin-top: 25px; font-family: monospace; font-size: 0.65rem; color: #555; letter-spacing: 1px; }
-
-@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
-@keyframes glitch-anim { 0% { clip: rect(10px, 9999px, 20px, 0); } 20% { clip: rect(80px, 9999px, 90px, 0); } 100% { clip: rect(40px, 9999px, 50px, 0); } }
-@keyframes glitch-anim2 { 0% { clip: rect(30px, 9999px, 40px, 0); } 100% { clip: rect(10px, 9999px, 25px, 0); } }
+.btn-main { background: var(--gold); border: none; padding: 20px 50px; font-weight: 900; cursor: pointer; border-radius: 5px; margin-top: 20px; }
+footer { text-align: center; color: #555; font-size: 0.7rem; font-family: monospace; }
