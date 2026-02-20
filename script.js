@@ -1,45 +1,40 @@
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('atacama-canvas'), antialias: true, alpha: true });
-renderer.setSize(window.innerWidth, window.innerHeight);
-
-// Geometría de Montañas Atacama
-const geometry = new THREE.PlaneGeometry(50, 50, 128, 128);
-const material = new THREE.PointsMaterial({ color: 0xD4AF37, size: 0.02, transparent: true, opacity: 0.8 });
-
-const positions = geometry.attributes.position.array;
-for (let i = 0; i < positions.length; i += 3) {
-    const x = positions[i];
-    const y = positions[i + 1];
-    // Simulación de relieve montañoso
-    positions[i + 2] = Math.sin(x * 0.5) * Math.cos(y * 0.5) * 2 + Math.random() * 0.2;
+// NAVEGACIÓN ENTRE PANTALLAS
+function navTo(screenId) {
+    gsap.to(".screen.active", { opacity: 0, duration: 0.5, onComplete: () => {
+        document.querySelector(".screen.active").classList.remove("active");
+        const next = document.getElementById(screenId);
+        next.classList.add("active");
+        gsap.to(next, { opacity: 1, duration: 0.5 });
+    }});
 }
 
-const points = new THREE.Points(geometry, material);
-points.rotation.x = -Math.PI / 2.5;
-scene.add(points);
+function connectWallet() {
+    document.getElementById('wallet-step').style.display = 'none';
+    document.getElementById('bio-step').style.display = 'block';
+}
 
+// ESCENA 3D: MONTAÑAS DE ORO
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('scene-3d'), alpha: true, antialias: true });
+renderer.setSize(window.innerWidth, window.innerHeight);
+
+const geometry = new THREE.PlaneGeometry(60, 60, 100, 100);
+const material = new THREE.PointsMaterial({ color: 0xD4AF37, size: 0.02 });
+
+const pos = geometry.attributes.position.array;
+for(let i=0; i<pos.length; i+=3) {
+    pos[i+2] = Math.sin(pos[i] * 0.4) * Math.cos(pos[i+1] * 0.4) * 3;
+}
+
+const mountains = new THREE.Points(geometry, material);
+mountains.rotation.x = -Math.PI / 2.5;
+scene.add(mountains);
 camera.position.z = 15;
-camera.position.y = 5;
 
 function animate() {
     requestAnimationFrame(animate);
-    const time = Date.now() * 0.0005;
-    points.rotation.z += 0.0005;
-    
-    // Deformación dinámica (viento satelital)
-    const pos = geometry.attributes.position.array;
-    for(let i=0; i<pos.length; i+=3) {
-        pos[i+2] += Math.sin(time + pos[i]*0.1) * 0.005;
-    }
-    geometry.attributes.position.needsUpdate = true;
-    
+    mountains.rotation.z += 0.001;
     renderer.render(scene, camera);
 }
 animate();
-
-window.addEventListener('resize', () => {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-});
