@@ -42,3 +42,17 @@ body { margin: 0; background: var(--deep-bg); color: #fff; font-family: 'Inter',
 
 .btn-primary { background: var(--neon-green); color: #000; border: none; width: 100%; padding: 12px; font-weight: 800; cursor: pointer; }
 .btn-gold { background: var(--gold); color: #000; border: none; width: 100%; padding: 12px; font-weight: 800; cursor: pointer; }
+.impact-section { background: radial-gradient(circle at center, #0a0a0a 0%, #000 100%); }
+.impact-shield {
+    border: 2px solid var(--gold);
+    padding: 60px;
+    text-align: center;
+    position: relative;
+    background: rgba(212, 175, 55, 0.02);
+    box-shadow: 0 0 50px rgba(212, 175, 55, 0.1);
+    clip-path: polygon(5% 0, 95% 0, 100% 10%, 100% 90%, 95% 100%, 5% 100%, 0 90%, 0 10%);
+}
+.impact-metrics { display: flex; justify-content: space-around; margin: 40px 0; gap: 20px; }
+.m-val { display: block; font-size: 3.5rem; font-family: 'Syncopate'; color: var(--neon-green); text-shadow: 0 0 20px rgba(57, 255, 20, 0.4); }
+.m-lab { font-size: 0.7rem; letter-spacing: 2px; opacity: 0.7; }
+.impact-rank { font-family: 'Syncopate'; font-size: 1.2rem; color: var(--gold); border-top: 1px solid var(--gold); padding-top: 20px; }

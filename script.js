@@ -102,3 +102,26 @@ function openStartupRegistration() {
 function openDonationPortal() {
     alert("Redirigiendo a la Bóveda de Filantropía DALabs. Cada contribución fortalece los nodos de Atacama.");
 }
+function animateImpact() {
+    const metrics = {
+        startups: 12,
+        nodes: 3,
+        patents: 5
+    };
+
+    gsap.to("#startups-count", { innerText: metrics.startups, duration: 2, snap: { innerText: 1 } });
+    gsap.to("#sat-nodes", { innerText: metrics.nodes, duration: 2, snap: { innerText: 1 } });
+    gsap.to("#patents-owned", { innerText: metrics.patents, duration: 2, snap: { innerText: 1 } });
+    
+    setTimeout(() => {
+        document.getElementById('rank-name').innerText = "PROTECTOR DE LA INFRAESTRUCTURA";
+        document.getElementById('rank-name').style.color = "#39FF14";
+    }, 2100);
+}
+
+// Activar al hacer scroll o al conectar wallet
+window.addEventListener('scroll', () => {
+    const impactSec = document.getElementById('impact-card');
+    const rect = impactSec.getBoundingClientRect();
+    if(rect.top < window.innerHeight && rect.top > 0) animateImpact();
+}, { once: true });
