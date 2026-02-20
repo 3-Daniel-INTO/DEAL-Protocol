@@ -1,42 +1,35 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8"><title>DEAL | Institutional Sovereign Portal</title>
+    <meta charset="UTF-8"><title>DEAL | Sovereign Governance Portal</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
     <canvas id="canvas-3d"></canvas>
     <div class="interface-layer">
-        <header class="navbar">
-            <div class="logo">DEAL <span class="pop">Sovereign Financial System</span></div>
-            <div class="node-status">COMMUNICATION_LINK: SECURE</div>
+        <header>
+            <div class="logo">DEAL <span>Sovereign Platform</span></div>
+            <div id="auth-status">VERITAS_AUTH: LEVEL_WHALE_01</div>
         </header>
 
-        <main class="institutional-grid">
-            <section class="data-pillar">
-                <h2>VENTURE CAPITAL & INSTITUTIONAL</h2>
-                <div class="kpi-box"><small>TOTAL CAPITAL ABSORPTION</small><h3 id="total-cap">--</h3></div>
-                <div class="kpi-box"><small>VC PIPELINE</small><h3 id="vc-pipe">--</h3></div>
-            </section>
+        <section class="pilar-container">
+            <div class="pillar">
+                <h2>VENTURE & INSTITUTIONAL</h2>
+                <div class="data-point"><small>VC FUND COMMITTED</small><h3 id="vc-val">--</h3></div>
+                <div class="data-point"><small>INSTITUTIONAL RWA</small><h3 id="rwa-val">--</h3></div>
+            </div>
+            <div class="pillar">
+                <h2>CROWD & PHILANTHROPY</h2>
+                <div class="data-point"><small>CROWDFUNDING CAP</small><h3 id="crowd-val">--</h3></div>
+                <div class="data-point"><small>CO2 REDUCTION EQUITY</small><h3 id="co2-val">--</h3></div>
+            </div>
+        </section>
 
-            <section class="data-pillar highlight">
-                <h2>REAL WORLD ASSETS (RWA)</h2>
-                <div class="kpi-box"><small>STRATEGIC RESERVE VALUATION</small><h3 id="rwa-val">--</h3></div>
-                <div class="kpi-box"><small>GLOBAL IMPACT (CO2)</small><h3 id="co2-impact">--</h3></div>
-            </section>
-
-            <section class="data-pillar">
-                <h2>GLOBAL PHILANTHROPY</h2>
-                <div class="kpi-box"><small>CROWDFUNDING FLOW</small><h3 id="crowd-flow">--</h3></div>
-                <div class="kpi-box"><small>DONATION IMPACT SCORE</small><h3 id="donation-score">98.2</h3></div>
-            </section>
-        </main>
-        
-        <footer class="footer-terminal">
-            <div id="veritas-ticker">VERITAS PROTOCOL: AUTHENTICATING GLOBAL ASSETS...</div>
-            <button id="connect-btn" class="btn-whale">INSTITUTIONAL ACCESS</button>
-        </footer>
+        <div class="governance-action">
+            <button id="gov-btn" class="btn-main">PROPOSE NATIONAL PROJECT</button>
+            <button id="wallet-btn" class="btn-sec">ACCESS INSTITUTIONAL VAULT</button>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>

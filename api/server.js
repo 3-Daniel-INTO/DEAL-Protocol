@@ -4,26 +4,16 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// MIA-X: Base de Datos de Macro-Inversión
-const getInstitutionalData = () => ({
-    sovereign_metrics: {
-        total_absorption: "$1.42B",
-        vc_pipeline: { fund: "Harmony Venture I", committed: "$450M", projects: 12 },
-        institutional_rwa: { asset: "Strategic Lithium Reserve", valuation: "$680M", location: "Atacama" },
-        philanthropy_co2: { credits_issued: "1.2M", donation_flow: "$92M" }
-    },
-    risk_analysis: {
-        geopolitical_resilience: "HIGH",
-        liquidity_score: "AA+",
-        audit_protocol: "VERITAS_LIVE"
-    }
+// Modelo de Segmentación de Activos para Whales y Naciones
+const getMacroStats = () => ({
+    venture_capital: { fund_alpha: "$450M", committed: "85%", active_deals: 24 },
+    institutional_rwa: { lithium_reserve: "12,000 Tons", energy_yield: "5.8 GW", valuation: "$720M" },
+    crowdfunding_global: { community_cap: "$52M", participants: "1.2M Verified Humans" },
+    philanthropy_impact: { co2_reduction: "1.2M Tons", clean_water_projects: 15, donation_total: "$98M" },
+    synergy: { btc_backing: "Premium", sol_throughput: "Optimized" }
 });
 
-app.get('/api/v1/institutional/stats', (req, res) => res.json(getInstitutionalData()));
-app.get('/api/v1/vault', (req, res) => res.json({
-    collateral: { btc: "1.24 BTC", eth: "15.8 ETH", sol: "450.2 SOL" },
-    status: "INSTITUTIONAL_CUSTODY"
-}));
+app.get('/api/v1/macro/stats', (req, res) => res.json(getMacroStats()));
 
 const PORT = process.env.PORT || 10000;
-app.listen(PORT, '0.0.0.0', () => console.log(`DEAL Elite Engine on ${PORT}`));
+app.listen(PORT, '0.0.0.0', () => console.log(`DEAL Governance Node active on ${PORT}`));
