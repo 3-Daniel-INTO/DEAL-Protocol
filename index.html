@@ -1,87 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DEAL | Backend Core View</title>
+    <title>DEAL | Sovereign Investment Terminal</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
 </head>
 <body>
-    <div class="server-room">
-        <div class="overhead-display">
-            <div class="chart-section">
-                <span class="label neon">SYSTEM HEALTH: OPTIMAL</span>
-                <div class="graph"></div>
-            </div>
-            <div class="data-stream">
-                <span class="label gold">NETWORK TRAFFIC: HIGH</span>
-                <div class="log-lines">
-                    <span>[MIA-X] NODE_ALPHA_ACTIVE: 99.8%</span>
-                    <span>[VERITAS] HASH_SYNC: COMPLETE</span>
-                    <span>[RWA] DATA_STREAM: LATAM_HIGH</span>
-                </div>
-            </div>
+    <div id="satellite-loader">
+        <div class="loader-ui">
+            <h2 class="glitch" data-text="SYNCING WITH ATACAMA NODE...">SYNCING WITH ATACAMA NODE...</h2>
+            <div class="load-track"><div class="load-fill"></div></div>
+            <p id="load-status">MIA-X ENCRYPTING PROTOCOL...</p>
         </div>
+    </div>
 
-        <div class="server-rack">
-            <div class="server-unit main-deal">
-                <div class="panel-header neon-border">
-                    <span class="status-light green-pulse"></span>
-                    <span class="unit-title">DEAL</span>
-                    <span class="unit-subtitle">SYNCHRONIZED</span>
-                </div>
-                <div class="panel-content">
-                    <div class="data-block gold-glow">
-                        <small>VENTURE CAPITAL:</small>
-                        <h2 id="vc-display">$450,000,000</h2>
-                    </div>
-                    <div class="progress-bar gold-fill"></div>
-                    <div class="data-block neon-glow">
-                        <small>RWA LITHIUM:</small>
-                        <h2 id="rwa-display">720M</h2>
-                    </div>
-                    <div class="progress-bar neon-fill"></div>
-                </div>
-                <div class="footer-lights"></div>
+    <canvas id="bg-canvas"></canvas>
+    
+    <div class="main-terminal" style="display:none;">
+        <header>
+            <div class="brand">
+                <h1 class="logo">DEAL</h1>
+                <span class="sub">MIA-X SYNC</span>
             </div>
+            <div class="security-badge">PROOF OF PROGRESS: ACTIVE</div>
+        </header>
 
-            <div class="server-unit main-miax">
-                <div class="panel-header gold-border">
-                    <span class="status-light gold-pulse"></span>
-                    <span class="unit-title">MIA-X</span>
-                    <span class="unit-subtitle">SYNCHRONIZED</span>
+        <section class="visual-core">
+            <h2 class="glitch title" data-text="SOVEREIGN ASSET VAULT">SOVEREIGN ASSET VAULT</h2>
+            <div class="kpi-grid">
+                <div class="card sfx-hover">
+                    <small>VENTURE CAPITAL</small>
+                    <h3 id="vc-val">$0</h3>
                 </div>
-                <div class="panel-content">
-                    <div class="map-container">
-                        <span class="map-label">GLOBAL LIQUIDITY MAP</span>
-                        <div class="world-map"></div>
-                        <span class="map-tag">HIGH_DEMAND_LATAM</span>
-                    </div>
+                <div class="card sfx-hover">
+                    <small>RWA COMMODITIES</small>
+                    <h3 id="rwa-val">$0</h3>
                 </div>
-                <div class="footer-console">
-                    <span class="console-light blue-pulse"></span>
+                <div class="card sfx-hover">
+                    <small>AUDITORÍA VERITAS</small>
+                    <div id="veritas-log" class="terminal-text">WAITING DATA...</div>
                 </div>
             </div>
+        </section>
 
-            <div class="server-unit main-veritas">
-                <div class="panel-header neon-border">
-                    <span class="status-light green-pulse"></span>
-                    <span class="unit-title">VERITAS AUDITED</span>
-                </div>
-                <div class="panel-content">
-                    <div class="veritas-badge">
-                        <div class="hexagon"></div>
-                        <span class="badge-text">SECURE</span>
-                    </div>
-                    <div class="veritas-log-display">
-                        <p>NODE_REGISTRY_HASH: 0x89C...A2F</p>
-                        <p>BLOCK_CHAIN_SYNC: 100%</p>
-                        <p>LAST_AUDIT: 2024-03-20</p>
-                    </div>
-                </div>
-                <div class="footer-lights"></div>
-            </div>
-        </div>
+        <footer>
+            <button id="connect-btn" class="btn-gold sfx-click">CONNECT UNIVERSAL WALLET</button>
+            <div class="footer-info">LATENCY: 14ms | SAT_LINK: PRIMARY | ATACAMA_NODE_V85</div>
+        </footer>
     </div>
     <script src="script.js"></script>
 </body>

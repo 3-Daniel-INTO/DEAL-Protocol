@@ -1,39 +1,66 @@
-const vcDisplay = document.getElementById('vc-display');
-const rwaDisplay = document.getElementById('rwa-display');
-const logLines = document.querySelector('.log-lines');
+// Audio Biónico
+const hoverSfx = new Howl({ src: ['https://assets.mixkit.co/sfx/preview/mixkit-tech-breakdown-1102.mp3'], volume: 0.1 });
+const clickSfx = new Howl({ src: ['https://assets.mixkit.co/sfx/preview/mixkit-computer-processing-status-v2-3066.mp3'], volume: 0.3 });
 
-// Simulación de datos en tiempo real
-let currentVc = 450000000;
-let currentRwa = 720000000;
+// Three.js Heatmap Terrain
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({canvas: document.getElementById('bg-canvas'), antialias: true, alpha: true});
+renderer.setSize(window.innerWidth, window.innerHeight);
 
-function updateData() {
-    currentVc += Math.floor(Math.random() * 1000000) - 500000; // Fluctuación de VC
-    currentRwa += Math.floor(Math.random() * 500000) - 250000; // Fluctuación de RWA
+const geometry = new THREE.BufferGeometry();
+const points = 25000;
+const positions = new Float32Array(points * 3);
+const colors = new Float32Array(points * 3);
 
-    vcDisplay.textContent = `$${currentVc.toLocaleString()}`;
-    rwaDisplay.textContent = `${(currentRwa / 1000000).toFixed(0)}M`;
+for(let i=0; i<points; i++) {
+    positions[i*3] = (Math.random() - 0.5) * 30;
+    positions[i*3+1] = (Math.random() - 0.5) * 4 - 2;
+    positions[i*3+2] = (Math.random() - 0.5) * 30;
+}
 
-    // Simulación de logs
-    const newLog = document.createElement('span');
-    const logs = [
-        `[MIA-X] DATA_UPDATE: ${new Date().toLocaleTimeString()}`,
-        `[AUDIT] VERITAS_CHECK: PASSED`,
-        `[NETWORK] LATENCY: ${Math.floor(Math.random() * 50) + 10}ms`,
-        `[RWA] NEW_ALLOCATION: ${Math.floor(Math.random() * 100)}K`
-    ];
-    newLog.textContent = logs[Math.floor(Math.random() * logs.length)];
-    logLines.appendChild(newLog);
-    if (logLines.children.length > 5) { // Mantener solo 5 líneas
-        logLines.removeChild(logLines.firstElementChild);
+geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+const material = new THREE.PointsMaterial({ size: 0.015, color: 0xD4AF37, transparent: true, opacity: 0.6 });
+const mesh = new THREE.Points(geometry, material);
+scene.add(mesh);
+camera.position.z = 7;
+
+function animate() {
+    requestAnimationFrame(animate);
+    const time = Date.now() * 0.0001;
+    const pos = geometry.attributes.position.array;
+    for(let i=0; i<points; i++) {
+        pos[i*3+1] = Math.sin(pos[i*3] + time*10) * 0.5 - 1.5;
+    }
+    geometry.attributes.position.needsUpdate = true;
+    mesh.rotation.y += 0.0004;
+    renderer.render(scene, camera);
+}
+animate();
+
+// Sync Data from Render
+async function syncDeal() {
+    try {
+        const response = await fetch('https://deal-protocol.onrender.com/api/v1/deal/sync');
+        const data = await response.json();
+        document.getElementById('vc-val').innerText = data.venture_capital;
+        document.getElementById('rwa-val').innerText = data.rwa_lithium;
+        document.getElementById('veritas-log').innerText = data.veritas_status;
+    } catch (e) {
+        console.log("Satlink Offline - Loading Cache...");
+        document.getElementById('vc-val').innerText = "$450,000,000";
     }
 }
 
-setInterval(updateData, 2000); // Actualiza cada 2 segundos
-updateData(); // Llamada inicial
+// Eventos y Loader
+document.querySelectorAll('.sfx-hover').forEach(el => el.addEventListener('mouseenter', () => hoverSfx.play()));
+document.querySelector('.sfx-click').addEventListener('click', () => clickSfx.play());
 
-// Placeholder para la imagen del mapa de calor
-// Asegúrate de reemplazar 'https://i.imgur.com/your-rwa-heatmap-image.png'
-// con la URL real de tu imagen de mapa de calor de RWA.
-// Podrías generar una imagen de mapa de calor dinámico o usar un placeholder estático por ahora.
-// Para un efecto dinámico real, necesitarías una API de terceros o generar el mapa con Three.js como en Vercel.
-
+setTimeout(() => {
+    document.getElementById('satellite-loader').style.opacity = '0';
+    setTimeout(() => {
+        document.getElementById('satellite-loader').style.display = 'none';
+        document.querySelector('.main-terminal').style.display = 'flex';
+        syncDeal();
+    }, 1000);
+}, 3500);
