@@ -1,58 +1,37 @@
-// Escena Three.js: Montañas de Partículas
+// Three.js: Atacama Particle Relief
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('canvas-3d'), alpha: true });
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('canvas-3d'), alpha: true, antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 
-// Partículas que forman el relieve
-const geometry = new THREE.BufferGeometry();
-const vertices = [];
-for (let i = 0; i < 5000; i++) {
-    vertices.push(Math.random() * 2000 - 1000, Math.sin(i) * 100, Math.random() * 2000 - 1000);
-}
-geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
-const material = new THREE.PointsMaterial({ color: 0xD4AF37, size: 2, transparent: true, opacity: 0.5 });
-const points = new THREE.Points(geometry, material);
-scene.add(points);
+const geometry = new THREE.PlaneGeometry(1000, 1000, 100, 100);
+const material = new THREE.PointsMaterial({ color: 0xD4AF37, size: 1.5 });
+const mountain = new THREE.Points(geometry, material);
+mountain.rotation.x = -Math.PI / 2;
+scene.add(mountain);
 
-camera.position.z = 500;
+camera.position.y = 100;
+camera.position.z = 400;
 
 function animate() {
     requestAnimationFrame(animate);
-    points.rotation.y += 0.001;
+    const positions = mountain.geometry.attributes.position.array;
+    for(let i=2; i<positions.length; i+=3) {
+        positions[i] = Math.sin(i + Date.now()*0.001) * 20; 
+    }
+    mountain.geometry.attributes.position.needsUpdate = true;
     renderer.render(scene, camera);
 }
 animate();
 
-// Fetching de KPIs desde Render
-async function fetchStats() {
+// Sync con Render
+async function updateWhaleData() {
     try {
-        const res = await fetch('https://srv-d6bqorvtn9qs73di0npg.onrender.com/api/v1/stats');
-        const data = await res.json();
-        document.getElementById('tvl-data').innerText = data.tvl;
-        document.getElementById('rwa-data').innerText = data.rwa_growth;
-        document.getElementById('sync-status').innerText = "NODO ATACAMA: SINCRONIZADO";
-    } catch(e) {
-        document.getElementById('sync-status').innerText = "MODO SATELITAL ACTIVO";
-    }
+        const stats = await (await fetch('https://srv-d6bqorvtn9qs73di0npg.onrender.com/api/v1/stats')).json();
+        const impact = await (await fetch('https://srv-d6bqorvtn9qs73di0npg.onrender.com/api/v1/impact-report')).json();
+        document.getElementById('tvl-value').innerText = stats.tvl;
+        document.getElementById('impact-score').innerText = impact.civilization_score;
+    } catch(e) { console.log(">> [MIA-X]: Nodo Atacama en modo offline."); }
 }
-setInterval(fetchStats, 5000);
-fetchStats();
-// Simulación de Mapa 3D de Nodos Atacama
-function initMap() {
-    const mapDiv = document.getElementById('atacam-map');
-    mapDiv.innerHTML = '<div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; color:#555;">[ CARGANDO MALLA GEODÉSICA DE ATACAMA... ]</div>';
-    setTimeout(() => {
-        mapDiv.style.background = "url('https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?auto=format&fit=crop&w=1000&q=80')";
-        mapDiv.style.backgroundSize = "cover";
-        mapDiv.style.opacity = "0.4";
-    }, 2000);
-}
-initMap();
-
-// Handler de Worldcoin
-document.getElementById('worldid-verify').onclick = async () => {
-    document.getElementById('verification-status').innerText = "●";
-    document.getElementById('verification-status').style.color = "#39FF14";
-    alert("WORLD ID: Verificación de Humanidad Exitosa. Acceso Nivel Whale Concedido.");
-};
+setInterval(updateWhaleData, 10000);
+updateWhaleData();

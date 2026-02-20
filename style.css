@@ -1,6 +1,8 @@
-:root { --gold: #D4AF37; --neon: #39FF14; --bg: #030303; }
-body { margin: 0; background: var(--bg); color: white; font-family: 'Inter', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
-.btn-whale { background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 15px 30px; border-radius: 5px; font-weight: bold; cursor: pointer; transition: 0.4s; letter-spacing: 2px; }
-.btn-whale:hover { background: var(--gold); color: black; box-shadow: 0 0 20px rgba(212,175,55,0.4); }
-#map-container { margin-top: 30px; animation: fadeIn 2s ease-in; }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+:root { --gold: #D4AF37; --neon: #39FF14; --bg: #010101; --glass: rgba(255,255,255,0.03); }
+body { margin: 0; background: var(--bg); color: white; font-family: 'Inter', sans-serif; overflow: hidden; }
+#canvas-3d { position: fixed; top: 0; left: 0; z-index: -1; }
+.whale-interface { padding: 50px; display: flex; flex-direction: column; height: 100vh; justify-content: space-between; }
+.kpi-container { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.glass-card { background: var(--glass); backdrop-filter: blur(20px); border: 1px solid rgba(212,175,55,0.1); padding: 25px; border-radius: 12px; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+.glass-card:hover { border-color: var(--gold); transform: scale(1.02); }
+.impact-badge { background: linear-gradient(90deg, var(--gold), #f3e5ab); color: black; padding: 4px 12px; border-radius: 20px; font-size: 0.7rem; font-weight: bold; }
