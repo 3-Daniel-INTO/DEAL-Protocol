@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "public": true,
   "rewrites": [
     { "source": "/api/(.*)", "destination": "/api/server.js" },
     { "source": "/(.*)", "destination": "/index.html" }
-  ]
+  ],
+  "cleanUrls": true
 }
