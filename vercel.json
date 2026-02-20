@@ -1,15 +1,13 @@
 {
   "version": 2,
   "name": "deal-protocol",
-  "framework": "nextjs",
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        { "key": "X-Sovereign-Platform", "value": "DEAL-DALabs" },
-        { "key": "X-Neural-Engine", "value": "MIA-X" },
-        { "key": "Cache-Control", "value": "public, max-age=3600, must-revalidate" }
-      ]
-    }
+  "builds": [
+    { "src": "index.html", "use": "@vercel/static" },
+    { "src": "style.css", "use": "@vercel/static" },
+    { "src": "script.js", "use": "@vercel/static" }
+  ],
+  "routes": [
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
