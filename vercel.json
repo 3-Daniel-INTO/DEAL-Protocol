@@ -1,6 +1,16 @@
 {
+  "version": 2,
   "cleanUrls": true,
+  "trailingSlash": false,
   "rewrites": [
-    { "source": "/api/v1/:path*", "destination": "https://srv-d6bqorvtn9qs73di0npg.onrender.com/api/v1/:path*" }
+    { "source": "/api/(.*)", "destination": "https://srv-d6bqorvtn9qs73di0npg.onrender.com/api/$1" }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+      ]
+    }
   ]
 }
