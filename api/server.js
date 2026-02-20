@@ -4,13 +4,13 @@ const app = express();
 
 app.use(express.static(path.join(__dirname, '../')));
 
-// Endpoint para el Dashboard Whale (Métricas en tiempo real)
-app.get('/api/v1/metrics', (req, res) => {
+// Metrics para Inversores Institucionales
+app.get('/api/v1/whale-data', (req, res) => {
     res.json({
-        liquidity_pool: "$1.2B",
-        rwa_assets: ["Gold", "Lithium", "BTC", "SOL"],
-        active_ventures: 42,
-        sync_status: "ATACAMA_COMMAND_ACTIVE"
+        total_donations_civilization: "$45M",
+        rwa_tokenized_value: "$1.4B",
+        active_nodes: ["ATACAMA-MASTER", "SPACE-QUANTUM-01"],
+        foundation: "Harmony Foundation"
     });
 });
 
