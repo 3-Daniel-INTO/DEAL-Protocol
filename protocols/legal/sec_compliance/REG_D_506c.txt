@@ -1,4 +1,0 @@
-DEAL PROTOCOL - INSTITUTIONAL COMPLIANCE
-Status: Verified
-Regulation: SEC 506(c) Accredited Investors Only
-Infrastructure: MIA-X Persistence Layer

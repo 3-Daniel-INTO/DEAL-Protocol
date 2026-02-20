@@ -4,13 +4,13 @@ const app = express();
 
 app.use(express.static(path.join(__dirname, '../')));
 
-// Metrics para Inversores Institucionales
-app.get('/api/v1/whale-data', (req, res) => {
+app.get('/api/status', (req, res) => {
     res.json({
-        total_donations_civilization: "$45M",
-        rwa_tokenized_value: "$1.4B",
-        active_nodes: ["ATACAMA-MASTER", "SPACE-QUANTUM-01"],
-        foundation: "Harmony Foundation"
+        platform: "DEAL_SOVEREIGN",
+        engine: "G-AGI_NATIVE",
+        persistence: "MIA-X",
+        nodes: ["ATACAMA_MASTER", "QUANTUM_SPACE"],
+        rwa_collateral: "ACTIVE"
     });
 });
 
