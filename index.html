@@ -1,35 +1,47 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8"><title>DEAL | Sovereign Governance Portal</title>
+    <meta charset="UTF-8"><title>DEAL | Sovereign Investment Platform</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@web3modal/standalone/dist/index.min.js"></script>
 </head>
 <body>
     <canvas id="canvas-3d"></canvas>
     <div class="interface-layer">
-        <header>
-            <div class="logo">DEAL <span>Sovereign Platform</span></div>
-            <div id="auth-status">VERITAS_AUTH: LEVEL_WHALE_01</div>
+        <header class="navbar">
+            <div class="logo">DEAL <span>MIA-X Sychronized</span></div>
+            <div id="veritas-badge" class="badge">VERITAS: ACTIVE</div>
         </header>
 
-        <section class="pilar-container">
-            <div class="pillar">
-                <h2>VENTURE & INSTITUTIONAL</h2>
-                <div class="data-point"><small>VC FUND COMMITTED</small><h3 id="vc-val">--</h3></div>
-                <div class="data-point"><small>INSTITUTIONAL RWA</small><h3 id="rwa-val">--</h3></div>
+        <main class="main-dashboard">
+            <div class="hero-section">
+                <h1 class="glitchText">SOVEREIGN ASSET VAULT</h1>
+                <p>Absorción de activos y diversificación estratégica para la innovación global.</p>
             </div>
-            <div class="pillar">
-                <h2>CROWD & PHILANTHROPY</h2>
-                <div class="data-point"><small>CROWDFUNDING CAP</small><h3 id="crowd-val">--</h3></div>
-                <div class="data-point"><small>CO2 REDUCTION EQUITY</small><h3 id="co2-val">--</h3></div>
-            </div>
-        </section>
 
-        <div class="governance-action">
-            <button id="gov-btn" class="btn-main">PROPOSE NATIONAL PROJECT</button>
-            <button id="wallet-btn" class="btn-sec">ACCESS INSTITUTIONAL VAULT</button>
-        </div>
+            <div class="kpi-grid">
+                <div class="glass-card">
+                    <small>ABSORCIÓN TOTAL</small>
+                    <h2 id="total-val">--</h2>
+                    <div class="mini-bar"><div id="bar-abs" class="fill"></div></div>
+                </div>
+                <div class="glass-card">
+                    <small>REDUCCIÓN CO2</small>
+                    <h2 id="co2-val">--</h2>
+                    <div class="mini-bar"><div id="bar-co2" class="fill"></div></div>
+                </div>
+                <div class="glass-card">
+                    <small>AUDITORÍA VERITAS</small>
+                    <div id="audit-log" class="log-stream">Sincronizando...</div>
+                </div>
+            </div>
+
+            <div class="action-bar">
+                <button id="connect-wallet" class="btn-primary">CONNECT UNIVERSAL WALLET</button>
+                <button class="btn-secondary">INSTITUTIONAL REPORT (PDF)</button>
+            </div>
+        </main>
     </div>
     <script src="script.js"></script>
 </body>

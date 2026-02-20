@@ -1,13 +1,14 @@
 :root { --gold: #D4AF37; --neon: #39FF14; --bg: #000; }
-body { margin: 0; background: var(--bg); color: white; font-family: 'Inter', sans-serif; }
-#canvas-3d { position: fixed; z-index: -1; }
-.interface-layer { height: 100vh; display: flex; flex-direction: column; background: rgba(0,0,0,0.6); }
-.navbar { padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; }
-.institutional-grid { flex: 1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: rgba(255,255,255,0.05); }
-.data-pillar { padding: 40px; background: var(--bg); display: flex; flex-direction: column; gap: 20px; }
-.data-pillar.highlight { border-left: 1px solid var(--gold); border-right: 1px solid var(--gold); }
-.kpi-box { border-bottom: 1px solid #222; padding-bottom: 10px; }
-.kpi-box h3 { font-size: 2rem; margin: 5px 0; color: var(--gold); }
-.kpi-box small { color: #666; letter-spacing: 2px; }
-.btn-whale { background: white; color: black; border: none; padding: 15px 30px; font-weight: bold; cursor: pointer; border-radius: 4px; }
-.footer-terminal { padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #222; }
+body { margin: 0; background: var(--bg); color: #fff; font-family: 'Inter', sans-serif; overflow: hidden; }
+#canvas-3d { position: fixed; top: 0; left: 0; z-index: -1; }
+.interface-layer { height: 100vh; display: flex; flex-direction: column; background: radial-gradient(circle at center, transparent, rgba(0,0,0,0.9)); }
+.navbar { padding: 30px 50px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.logo { font-weight: 900; letter-spacing: 5px; font-size: 1.5rem; }
+.badge { color: var(--neon); font-size: 0.7rem; letter-spacing: 2px; text-shadow: 0 0 10px var(--neon); }
+.main-dashboard { flex: 1; padding: 50px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+.kpi-grid { display: grid; grid-template-columns: repeat(3, 300px); gap: 30px; margin-top: 50px; }
+.glass-card { background: rgba(255,255,255,0.02); backdrop-filter: blur(20px); border: 1px solid rgba(212,175,55,0.2); padding: 30px; border-radius: 15px; transition: 0.5s; }
+.glass-card:hover { border-color: var(--gold); transform: translateY(-10px); }
+.btn-primary { background: var(--gold); border: none; padding: 15px 40px; border-radius: 50px; font-weight: bold; cursor: pointer; margin: 10px; transition: 0.3s; }
+.btn-primary:hover { box-shadow: 0 0 30px rgba(212,175,55,0.5); transform: scale(1.05); }
+.log-stream { font-family: monospace; font-size: 0.6rem; color: #888; margin-top: 10px; }

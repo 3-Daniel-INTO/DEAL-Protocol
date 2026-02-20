@@ -1,21 +1,29 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
+app.use(cors());
+app.use(express.json());
 
-const getWhaleInsights = () => ({
-    market_context: {
-        ai_boom_status: "Acceleration Phase",
-        limiting_factor: "Power Supply & Data Centers", // Dato crítico actual 
-        sp500_ytd: "+16%",
-        nasdaq_ytd: "+23%"
+const DEAL_ENGINE = {
+    stats: {
+        absorption_total: "$1.89B",
+        channels: {
+            venture_capital: { committed: "$450M", growth: "+12%" },
+            institutional_rwa: { valuation: "$720M", assets: "Lithium/Energy" },
+            crowdfunding: { cap: "$52M", users: "1.2M Humans" },
+            philanthropy: { impact_fund: "$98M", co2_offset: "1.5M Tons" }
+        },
+        crypto_synergy: { btc: "High_Collateral", eth: "Yield_Active", sol: "Speed_Max" }
     },
-    deal_infrastructure: {
-        energy_grid_rwa: { status: "Active", capacity: "1.2GW", location: "Atacama Command Center" },
-        institutional_vault: { protected_assets: ["BTC", "ETH", "SOL"], backup: "Satellite/Quantum Sync" },
-        deal_tokenomics: { protocol: "Proof of Progress", engine: "G-AGI" }
+    veritas: {
+        last_audit: new Date().toISOString(),
+        proof_hash: "0xVERITAS_DEAL_777_SOVEREIGN",
+        status: "AUDITED_BY_MIA-X"
     }
-});
+};
 
-app.get('/api/v2/whale/dashboard', (req, res) => res.json(getWhaleInsights()));
+app.get('/api/v1/deal/all', (req, res) => res.json(DEAL_ENGINE));
+app.get('/', (req, res) => res.send('DEAL MASTER NODE: OPERATIONAL'));
 
 const PORT = process.env.PORT || 10000;
-app.listen(PORT, '0.0.0.0', () => console.log(`DEAL Whale Node running on port ${PORT}`));
+app.listen(PORT, '0.0.0.0', () => console.log(`DEAL Backend active on port ${PORT}`));

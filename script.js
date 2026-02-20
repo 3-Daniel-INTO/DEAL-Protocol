@@ -1,33 +1,35 @@
-// Escena 3D: Estructura de Red (Plexus)
+// 3D Background: Partículas de Atacama
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('canvas-3d'), alpha: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 
-const geometry = new THREE.IcosahedronGeometry(2, 2);
-const material = new THREE.MeshBasicMaterial({ color: 0xD4AF37, wireframe: true, transparent: true, opacity: 0.1 });
-const sphere = new THREE.Mesh(geometry, material);
-scene.add(sphere);
-camera.position.z = 5;
+const particles = new THREE.BufferGeometry();
+const count = 10000;
+const pos = new Float32Array(count * 3);
+for(let i=0; i<count*3; i++) pos[i] = (Math.random() - 0.5) * 10;
+particles.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+const material = new THREE.PointsMaterial({ size: 0.005, color: 0xD4AF37 });
+const mesh = new THREE.Points(particles, material);
+scene.add(mesh);
+camera.position.z = 3;
 
 function animate() {
     requestAnimationFrame(animate);
-    sphere.rotation.y += 0.002;
+    mesh.rotation.y += 0.0005;
     renderer.render(scene, camera);
 }
 animate();
 
-// Sync de Datos de Grado Institucional
-async function fetchWhaleData() {
+// Sync de Datos con Render
+async function syncDEAL() {
     try {
-        const res = await fetch('https://srv-d6bqorvtn9qs73di0npg.onrender.com/api/v1/institutional/stats');
-        const d = await res.json();
-        document.getElementById('total-cap').innerText = d.sovereign_metrics.total_absorption;
-        document.getElementById('vc-pipe').innerText = d.sovereign_metrics.vc_pipeline.committed;
-        document.getElementById('rwa-val').innerText = d.sovereign_metrics.institutional_rwa.valuation;
-        document.getElementById('co2-impact').innerText = d.sovereign_metrics.philanthropy_co2.credits_issued;
-        document.getElementById('crowd-flow').innerText = d.sovereign_metrics.philanthropy_co2.donation_flow;
-    } catch(e) { console.warn("Sincronizando con Nodo Atacama..."); }
+        const res = await fetch('https://srv-d6bqorvtn9qs73di0npg.onrender.com/api/v1/deal/all');
+        const data = await res.json();
+        document.getElementById('total-val').innerText = data.stats.absorption_total;
+        document.getElementById('co2-val').innerText = data.stats.channels.philanthropy.co2_offset;
+        document.getElementById('audit-log').innerHTML = `ID: ${data.veritas.proof_hash}<br>STATUS: ${data.veritas.status}`;
+    } catch(e) { console.log("Sincronizando con Nodo Maestro..."); }
 }
-setInterval(fetchWhaleData, 10000);
-fetchWhaleData();
+setInterval(syncDEAL, 10000);
+syncDEAL();
