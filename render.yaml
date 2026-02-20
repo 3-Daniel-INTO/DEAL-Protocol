@@ -1,15 +1,13 @@
 services:
   - type: web
-    name: deal-core-engine
+    name: deal-neural-engine
     env: node
     plan: pro
-    region: ohio
-    buildCommand: npm install && npm run build
-    startCommand: npm start
+    region: frankfurt
+    buildCommand: npm install
+    startCommand: node server.js
     envVars:
-      - key: NODE_ENV
-        value: production
-      - key: MIA_X_PERSISTENCE
-        value: ENABLED
-      - key: G_AGI_CORE
-        value: INDEPENDENT
+      - key: PROJECT_ROOT
+        value: DALABS_HARMONY
+      - key: AI_CORE
+        value: G_AGI_INDEPENDENT
