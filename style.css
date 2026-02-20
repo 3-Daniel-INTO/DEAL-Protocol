@@ -1,58 +1,28 @@
-:root { --gold: #D4AF37; --neon: #00F3FF; --deep-bg: #050505; }
-body { 
-    background: var(--deep-bg); 
-    color: #fff; 
-    font-family: 'Inter', sans-serif; 
-    margin: 0; 
-    overflow: hidden; 
-    letter-spacing: 1px;
-}
-#bg-canvas { position: fixed; top: 0; left: 0; z-index: -1; filter: brightness(0.4); }
+:root { --gold: #D4AF37; --cyan: #00F3FF; --bg: #030303; }
+body, html { margin: 0; padding: 0; background: var(--bg); color: #fff; font-family: 'Inter', sans-serif; overflow: hidden; }
+#bg-canvas { position: fixed; top: 0; left: 0; z-index: -1; }
 
-/* Capa de Identidad Militar */
-header {
-    padding: 30px 50px;
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-    background: rgba(0,0,0,0.8);
-    backdrop-filter: blur(10px);
+.portal-overlay { 
+    height: 100vh; display: flex; flex-direction: column; justify-content: space-between; 
+    align-items: center; background: radial-gradient(circle, transparent, rgba(0,0,0,0.95));
 }
-.logo { font-size: 2.5rem; font-weight: 900; color: var(--gold); text-shadow: 0 0 20px rgba(212,175,55,0.5); }
 
-/* Dashboard de Inversión */
-.vault-container {
-    height: 70vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-.kpi-row { display: flex; gap: 40px; margin-top: 50px; }
-.card-institutional {
-    background: linear-gradient(145deg, rgba(20,20,20,0.9), rgba(10,10,10,0.9));
-    border: 1px solid var(--gold);
-    padding: 40px 60px;
-    border-radius: 2px;
-    text-align: center;
-    box-shadow: 0 0 30px rgba(0,0,0,1);
-    transition: 0.4s;
-}
-.card-institutional:hover {
-    transform: translateY(-10px);
-    border-color: var(--neon);
-    box-shadow: 0 0 40px rgba(0,243,255,0.2);
-}
-.card-institutional h2 { font-size: 3.5rem; margin: 10px 0; color: #fff; }
+.militar-tag { padding: 20px; font-family: monospace; color: var(--gold); border-bottom: 1px solid var(--gold); letter-spacing: 3px; font-size: 0.8rem; }
 
-/* Botones de Acción */
-.btn-militar {
-    background: var(--gold);
-    color: #000;
-    padding: 20px 50px;
-    font-weight: 900;
-    border: none;
-    cursor: pointer;
-    text-transform: uppercase;
-    margin-top: 40px;
+.welcome-center { text-align: center; }
+.logo-gold { font-size: 6rem; letter-spacing: 15px; color: var(--gold); margin: 0; font-weight: 900; text-shadow: 0 0 30px rgba(212,175,55,0.4); }
+.mission-statement { font-size: 0.9rem; letter-spacing: 4px; color: #888; margin-top: -10px; }
+
+.whale-stats { display: flex; gap: 50px; margin: 40px 0; justify-content: center; }
+.stat-box { border-left: 1px solid var(--gold); padding-left: 20px; text-align: left; }
+.stat-box small { font-size: 0.7rem; color: var(--gold); }
+.stat-box .val { font-size: 2.5rem; font-weight: 900; }
+
+.btn-entry { 
+    background: transparent; border: 1px solid var(--gold); padding: 25px 50px; 
+    color: var(--gold); cursor: pointer; transition: 0.4s; position: relative; overflow: hidden;
 }
+.btn-entry:hover { background: var(--gold); color: #000; box-shadow: 0 0 50px var(--gold); }
+
+/* Glitch para el botón */
+.glitch-btn { position: relative; font-weight: 900; letter-spacing: 2px; }

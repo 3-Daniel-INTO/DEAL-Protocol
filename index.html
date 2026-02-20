@@ -2,55 +2,37 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>DEAL | Sovereign Investment Terminal</title>
+    <title>DEAL | Sovereign Entry Portal</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
 </head>
 <body>
-    <div id="loader">
-        <div class="loader-wrap">
-            <h2 class="glitch" data-text="SYNCING MIA-X SATELLITE...">SYNCING MIA-X SATELLITE...</h2>
-            <div class="progress-bar"><div class="progress-fill"></div></div>
-        </div>
-    </div>
-
     <canvas id="bg-canvas"></canvas>
-    
-    <div class="interface" style="display:none;">
+    <div class="portal-overlay">
         <header>
-            <div class="brand">
-                <h1 class="logo">DEAL</h1>
-                <span class="sub">MIA-X SYNCHRONIZED</span>
-            </div>
-            <div class="status-box">NETWORK_STATUS: <span class="neon">SECURE</span></div>
+            <div class="militar-tag">DEAL SECURE PROTOCOL // MIA-X v89.0</div>
         </header>
-
-        <main>
-            <h2 class="glitch main-title" data-text="SOVEREIGN ASSET VAULT">SOVEREIGN ASSET VAULT</h2>
+        <main class="welcome-center">
+            <h1 class="logo-gold">DEAL</h1>
+            <p class="mission-statement">PLATAFORMA SOBERANA DE INVERSIÓN INSTITUCIONAL Y CAPITAL PRIVADO</p>
             
-            <div class="stats-grid">
-                <div class="card hover-sfx">
-                    <small>VENTURE CAPITAL</small>
-                    <h3 id="vc-val">$450M</h3>
-                    <div class="bar"><div class="fill gold" style="width:85%"></div></div>
+            <div class="whale-stats">
+                <div class="stat-box">
+                    <small>TOTAL VC COMMITTED</small>
+                    <div class="val">$450,000,000</div>
                 </div>
-                <div class="card hover-sfx">
-                    <small>RWA LITHIUM & COMMODITIES</small>
-                    <h3 id="rwa-val">$720M</h3>
-                    <div class="bar"><div class="fill cyan" style="width:92%"></div></div>
-                </div>
-                <div class="card hover-sfx">
-                    <small>AUDITORÍA VERITAS</small>
-                    <div class="veritas-data">GENESIS_VERIFIED</div>
-                    <div class="bar"><div class="fill white" style="width:100%"></div></div>
+                <div class="stat-box">
+                    <small>RWA ASSETS (LITHIUM)</small>
+                    <div class="val">$720,000,000</div>
                 </div>
             </div>
-        </main>
 
+            <button class="btn-entry" onclick="location.href='/dashboard'">
+                <span class="glitch-btn" data-text="INGRESAR AL TERMINAL WHALE">INGRESAR AL TERMINAL WHALE</span>
+            </button>
+        </main>
         <footer>
-            <button class="btn-main hover-sfx">CONNECT UNIVERSAL WALLET</button>
-            <div class="sys-logs">ATACAMA_NODE_ALPHA | LATENCY: 12ms | POWERED BY G-AGI</div>
+            <div class="node-info">ATACAMA NODE 01 // VERITAS CERTIFIED // HARMONY FOUNDATION</div>
         </footer>
     </div>
     <script src="script.js"></script>

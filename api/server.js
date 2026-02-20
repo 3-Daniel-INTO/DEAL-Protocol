@@ -1,18 +1,16 @@
 const express = require('express');
-const cors = require('cors');
+const path = require('path');
 const app = express();
-app.use(cors());
 
-const DEAL_ASSETS = {
-    vc: "$450,000,000",
-    rwa: "$720,000,000",
-    nodes: "124 ACTIVE",
-    veritas: "GENESIS_VERIFIED_0x777",
-    ai_engine: "MIA-X (G-AGI Hybrid)"
-};
+app.use(express.static('.'));
 
-app.get('/api/v1/sync', (req, res) => res.json(DEAL_ASSETS));
-app.get('/', (req, res) => res.send("DEAL MASTER CORE ONLINE"));
+app.get('/dashboard', (req, res) => {
+    res.sendFile(path.join(__dirname, '../dashboard.html'));
+});
+
+app.get('/api/v1/sync', (req, res) => {
+    res.json({ vc: "$450,000,000", rwa: "$720,000,000", status: "SYNCED" });
+});
 
 const PORT = process.env.PORT || 10000;
-app.listen(PORT, '0.0.0.0', () => console.log(`Core ON ${PORT}`));
+app.listen(PORT, () => console.log(`Whale Engine ON ${PORT}`));
