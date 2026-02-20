@@ -1,9 +1,18 @@
 {
   "version": 2,
   "name": "deal-protocol",
-  "rootDir": "./",
+  "cleanUrls": true,
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api/server.js" },
+    { "source": "/api/v1/:path*", "destination": "https://srv-d6bqorvtn9qs73di0npg.onrender.com/api/v1/:path*" },
     { "source": "/(.*)", "destination": "/index.html" }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        { "key": "Content-Security-Policy", "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://*.render.com https://srv-d6bqorvtn9qs73di0npg.onrender.com;" }
+      ]
+    }
   ]
 }

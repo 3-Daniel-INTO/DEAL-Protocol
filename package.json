@@ -1,8 +1,11 @@
 {
   "name": "deal-protocol",
   "version": "1.0.0",
-  "description": "DEAL | Sovereign Investment Platform",
   "scripts": {
-    "start": "serve ."
+    "start": "node api/server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5"
   }
 }

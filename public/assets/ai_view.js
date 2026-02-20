@@ -1,6 +1,6 @@
 async function updateAIAnalysis() {
     try {
-        const response = await fetch('/api/v1/assets/realtime');
+        const response = await fetch('api/v1/assets/realtime');
         const data = await response.json();
         const statusDiv = document.getElementById('ai-status');
         statusDiv.innerHTML = `
