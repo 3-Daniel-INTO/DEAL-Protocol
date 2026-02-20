@@ -1,17 +1,22 @@
 const express = require('express');
-const path = require('path');
+const cors = require('cors');
 const app = express();
 
-app.use(express.static(path.join(__dirname, '../')));
+app.use(cors()); // Permite que el frontend de Vercel consulte al backend de Render
+app.use(express.json());
 
-app.get('/api/status', (req, res) => {
+// Endpoint de Salud del Sistema (Visto por inversores)
+app.get('/api/v1/health', (req, res) => {
     res.json({
-        platform: "DEAL_SOVEREIGN",
-        engine: "G-AGI_NATIVE",
-        persistence: "MIA-X",
-        nodes: ["ATACAMA_MASTER", "QUANTUM_SPACE"],
-        rwa_collateral: "ACTIVE"
+        status: "OPERATIONAL",
+        persistence_layer: "MIA-X ACTIVE",
+        security_protocol: "VERITAS v4",
+        node_location: "Atacama Desert, Chile",
+        quantum_link: "STABLE",
+        timestamp: new Date().toISOString()
     });
 });
 
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`DEAL Node active on port ${PORT}`));
 module.exports = app;
