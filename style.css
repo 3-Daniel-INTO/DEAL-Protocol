@@ -1,20 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Inter:wght@300;400;600&display=swap');
+:root { --gold: #D4AF37; --bg: #000; --font: 'Syncopate', sans-serif; }
+body { margin: 0; background: var(--bg); color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; }
 
-:root { --gold: #D4AF37; --bg: #000; --text: #fff; }
-body { margin: 0; background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; overflow: hidden; }
+#neural-canvas { position: fixed; inset: 0; z-index: -1; opacity: 0.5; }
+.institutional-nav { position: fixed; top: 0; width: 100%; padding: 40px; display: flex; justify-content: space-between; z-index: 100; backdrop-filter: blur(10px); }
+.brand { font-family: var(--font); font-size: 1.8rem; letter-spacing: 10px; color: var(--gold); }
+.sub-brand { font-size: 0.6rem; letter-spacing: 2px; color: #fff; opacity: 0.6; }
 
-#neural-background { position: fixed; inset: 0; z-index: -1; }
-#noise-filter { position: fixed; inset: 0; background: url('https://grainy-gradients.vercel.app/noise.svg'); opacity: 0.04; pointer-events: none; z-index: 10; }
+.scene { height: 100vh; display: flex; align-items: center; padding: 0 10%; position: relative; }
+.content { max-width: 600px; }
+.content.right { margin-left: auto; text-align: right; }
 
-.top-bar { padding: 50px 80px; display: flex; justify-content: space-between; align-items: center; }
-.logo { font-family: 'Syncopate'; font-size: 2.2rem; color: var(--gold); letter-spacing: 18px; }
+h1 { font-family: var(--font); font-size: 8rem; color: var(--gold); margin: 0; }
+h2 { font-family: var(--font); font-size: 3rem; color: var(--gold); }
 
-.wealth-summary { text-align: center; margin-top: 10vh; }
-.amount { font-family: 'Syncopate'; font-size: 5rem; letter-spacing: -2px; margin: 10px 0; }
-
-.action-grid { display: flex; justify-content: center; gap: 40px; margin-top: 80px; }
-.card { border: 1px solid rgba(255,255,255,0.1); padding: 50px; width: 350px; backdrop-filter: blur(30px); cursor: pointer; transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
-.card:hover { border-color: var(--gold); transform: translateY(-10px); box-shadow: 0 30px 60px rgba(212,175,55,0.1); }
-.card.gold { border-color: var(--gold); background: rgba(212,175,55,0.03); }
+.node-card { border: 1px solid rgba(255,255,255,0.1); padding: 50px; background: rgba(255,255,255,0.02); transition: 0.8s; cursor: pointer; }
+.node-card:hover { border-color: var(--gold); box-shadow: 0 0 50px rgba(212,175,55,0.15); }
+.node-card.gold { border-color: var(--gold); }
 
 .hidden { display: none; }
