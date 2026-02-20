@@ -2,21 +2,16 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 app.use(cors());
-app.use(express.json());
 
-// Datos de Inversión Soberana
-const DEAL_STATS = {
-    vc: "$450M",
-    co2: "1.5M Tons",
-    veritas: "v74_GENESIS_CONFIRMED",
-    rwa: { lithium: "$720M", energy: "5.8 GW" }
+const DEAL_ASSETS = {
+    vc_committed: "$450,000,000",
+    impact: "1.5M Tons CO2",
+    node: "ATACAMA_ALPHA_STABLE",
+    veritas: "0x777_GENESIS_VERIFIED"
 };
 
-// Ruta raíz para Render (evita el error de pantalla blanca)
-app.get('/', (req, res) => res.status(200).send("DEAL MASTER NODE: ACTIVE"));
-
-// API Unificada para Vercel
-app.get('/api/v1/deal/all', (req, res) => res.json(DEAL_STATS));
+app.get('/', (req, res) => res.send("DEAL SATELLITE NODE ONLINE"));
+app.get('/api/v1/sync', (req, res) => res.json(DEAL_ASSETS));
 
 const PORT = process.env.PORT || 10000;
-app.listen(PORT, '0.0.0.0', () => console.log(`Engine ON port ${PORT}`));
+app.listen(PORT, '0.0.0.0', () => console.log(`Satellite Link active on ${PORT}`));

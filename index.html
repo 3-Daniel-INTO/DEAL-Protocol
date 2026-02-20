@@ -2,49 +2,51 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DEAL | Sovereign Asset Vault</title>
+    <title>DEAL | Sovereign Investment Terminal</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
+    <div id="loader">
+        <div class="loader-content">
+            <h2 class="glitch" data-text="ESTABLISHING SATELLITE LINK...">ESTABLISHING SATELLITE LINK...</h2>
+            <div class="load-bar"><div class="load-fill"></div></div>
+            <p id="load-msg">MIA-X SYNCHRONIZING WITH ATACAMA NODE...</p>
+        </div>
+    </div>
+
     <canvas id="bg-canvas"></canvas>
     
-    <div class="interface">
+    <div class="interface" style="display:none;">
         <header>
-            <div class="brand">
-                <span class="logo">DEAL</span>
-                <span class="sub">MIA-X SYNCHRONIZED</span>
+            <div class="logo-area">
+                <h1 class="logo">DEAL</h1>
+                <span class="sub">SOVEREIGN SYSTEM</span>
             </div>
-            <div class="status">G-AGI: SCANNING_ASSETS</div>
+            <div class="node-badge">SATELLITE_LINK: SECURE</div>
         </header>
 
-        <section class="hero">
-            <h1 class="glitch" data-text="SOVEREIGN ASSET VAULT">SOVEREIGN ASSET VAULT</h1>
-            <p>Infraestructura líder para inversión en Venture Capital, Crowdfunding y RWA optimizada por MIA-X.</p>
-        </section>
-
-        <div class="dashboard">
-            <div class="card">
-                <small>VENTURE CAPITAL</small>
-                <div class="val" id="vc-val">$450M</div>
-                <div class="meter"><div class="fill gold" style="width:75%"></div></div>
+        <main>
+            <h1 class="glitch main-title" data-text="SOVEREIGN ASSET VAULT">SOVEREIGN ASSET VAULT</h1>
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <small>VENTURE CAPITAL</small>
+                    <h2 id="vc-val">$450M</h2>
+                </div>
+                <div class="kpi-card">
+                    <small>INFRAESTRUCTURA RWA</small>
+                    <h2 id="rwa-val">$720M</h2>
+                </div>
+                <div class="kpi-card">
+                    <small>AUDITORÍA VERITAS</small>
+                    <div class="veritas-data">STATUS: GENESIS_VERIFIED</div>
+                </div>
             </div>
-            <div class="card">
-                <small>REDUCCIÓN CO2</small>
-                <div class="val" id="co2-val">1.5M</div>
-                <div class="meter"><div class="fill neon" style="width:85%"></div></div>
-            </div>
-            <div class="card">
-                <small>AUDITORÍA VERITAS</small>
-                <div class="terminal" id="veritas-log">SYNCING...</div>
-                <div class="meter"><div class="fill white" style="width:100%"></div></div>
-            </div>
-        </div>
+        </main>
 
         <footer>
-            <button class="btn-main">CONNECT UNIVERSAL WALLET</button>
-            <div class="logs">STABILITY: 99.9% | ATACAMA_NODE_ONLINE</div>
+            <button class="btn-primary">CONNECT UNIVERSAL WALLET</button>
+            <div class="system-logs">LOAD_SIM: 10k REQ/SEC | NO_PACKET_LOSS</div>
         </footer>
     </div>
     <script src="script.js"></script>
