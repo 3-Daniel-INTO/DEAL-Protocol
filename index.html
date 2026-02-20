@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>DEAL | Sovereign Investment Platform</title>
+    <title>DEAL | Sovereign Investment Portal</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <style>
@@ -10,24 +10,24 @@
         body, html { margin: 0; padding: 0; font-family: 'Orbitron', sans-serif; background: var(--bg); color: #fff; scroll-behavior: smooth; overflow-x: hidden; }
         
         #canvas-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
-        #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.8) 100%); z-index: 0; pointer-events: none; }
+        #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, rgba(0,0,0,0) 0%, rgba(0,0,0,0.9) 100%); z-index: 0; pointer-events: none; }
         
-        header { position: fixed; width: 100%; top: 0; padding: 20px; display: flex; justify-content: space-between; z-index: 100; backdrop-filter: blur(5px); box-sizing: border-box; }
-        .logo-a { color: var(--green-arrow); font-size: 2rem; font-weight: bold; cursor: pointer; filter: drop-shadow(0 0 10px var(--green-arrow)); }
+        header { position: fixed; width: 100%; top: 0; padding: 25px; display: flex; justify-content: space-between; z-index: 100; backdrop-filter: blur(10px); box-sizing: border-box; border-bottom: 1px solid rgba(0,255,255,0.1); }
+        .logo-a { color: var(--green-arrow); font-size: 1.8rem; font-weight: bold; cursor: pointer; filter: drop-shadow(0 0 10px var(--green-arrow)); }
         
-        .ui-element { position: absolute; padding: 15px; background: rgba(0,0,0,0.7); border: 1px solid rgba(0,255,255,0.3); backdrop-filter: blur(10px); z-index: 10; font-family: 'Share Tech Mono', monospace; font-size: 0.8rem; }
-        #top-left-status { top: 80px; left: 20px; color: var(--neon); }
-        #exo-market-indicator { bottom: 20px; right: 20px; color: var(--purple); animation: pulse-purple 2s infinite; }
-        
-        @keyframes pulse-purple { 0%, 100% { box-shadow: 0 0 10px var(--purple); } 50% { box-shadow: 0 0 25px var(--purple); } }
+        .nav-tools { display: flex; gap: 20px; align-items: center; }
+        .wallet-btn { background: transparent; border: 1px solid var(--neon); color: var(--neon); padding: 8px 20px; font-family: 'Orbitron'; cursor: pointer; border-radius: 4px; transition: 0.3s; }
+        .wallet-btn:hover { background: var(--neon); color: #000; box-shadow: 0 0 20px var(--neon); }
 
-        section { min-height: 100vh; padding: 120px 50px; display: flex; flex-direction: column; justify-content: center; position: relative; z-index: 5; }
-        .glass-card { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(0, 255, 255, 0.2); padding: 30px; border-radius: 15px; backdrop-filter: blur(15px); transition: 0.5s; }
-        .glass-card:hover { border-color: var(--gold); transform: translateY(-5px); }
+        section { min-height: 100vh; padding: 150px 10%; display: flex; flex-direction: column; justify-content: center; position: relative; z-index: 5; }
+        .glass-card { background: rgba(0, 0, 0, 0.6); border: 1px solid rgba(0, 255, 255, 0.2); padding: 40px; border-radius: 20px; backdrop-filter: blur(20px); box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
         
-        .roadmap-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 30px; }
-        .button-glow { background: var(--neon); color: #000; border: none; padding: 15px 30px; font-weight: bold; cursor: pointer; border-radius: 5px; box-shadow: 0 0 15px var(--neon); transition: 0.3s; }
-        .button-glow:hover { box-shadow: 0 0 30px var(--neon); transform: scale(1.05); }
+        h1 { font-size: 5rem; margin: 0; color: var(--gold); text-shadow: 0 0 30px rgba(255,215,0,0.5); }
+        .accent-text { color: var(--neon); letter-spacing: 10px; text-transform: uppercase; font-size: 0.9rem; margin-bottom: 20px; }
+
+        .rwa-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 40px; }
+        .rwa-item { border-left: 3px solid var(--green-arrow); padding: 15px; background: rgba(57, 255, 20, 0.05); }
+        .rwa-item h4 { margin: 0; color: var(--green-arrow); }
     </style>
 </head>
 <body>
@@ -36,82 +36,71 @@
 
     <header>
         <div class="logo-a">DEAL ▲</div>
-        <div id="top-status" style="font-family:'Share Tech Mono'; color:var(--neon); font-size:0.7rem;">
-            MIA-X: ONLINE | G-AGI: SCANNING RWA
+        <div class="nav-tools">
+            <button class="wallet-btn" onclick="connectWallet()">CONNECT SOVEREIGN WALLET</button>
         </div>
     </header>
 
-    <div id="top-left-status" class="ui-element">
-        NODE: ATACAMA_SYNC<br>
-        PERSISTENCE: MIA-X ENABLED<br>
-        INFRASTRUCTURE: DALabs
-    </div>
-
     <section id="hero">
-        <h1 style="font-size: 4rem; color: var(--gold); text-shadow: 0 0 30px var(--gold); margin:0;">DEAL</h1>
-        <p style="letter-spacing: 5px; color: var(--neon); margin-bottom: 30px;">WHERE VISION MEETS CAPITAL</p>
-        <div class="glass-card" style="max-width: 600px;">
-            <p>Plataforma líder para inversión en Crowdfunding, Venture Capital e inversión institucional optimizada por la persistencia de MIA-X.</p>
-            <button class="button-glow" onclick="activateTerminal()">INICIAR PROTOCOLO SOBERANO</button>
+        <div class="accent-text">MIA-X Persistence Active</div>
+        <h1>DEAL</h1>
+        <p style="font-size: 1.2rem; max-width: 600px; color: #ccc;">La plataforma de inversión definitiva para Venture Capital y Crowdfunding de Innovación Real.</p>
+        
+        <div class="rwa-grid">
+            <div class="rwa-item"><h4>GOLD RWA</h4><p>Tokenized 1:1</p></div>
+            <div class="rwa-item"><h4>LITHIUM</h4><p>Future Supply</p></div>
+            <div class="rwa-item"><h4>BTC/SOL</h4><p>Collateralized</p></div>
         </div>
     </section>
-
-    <section id="tools">
-        <h2>Sovereign Whale Tools</h2>
-        <div class="roadmap-grid">
-            <div class="glass-card"><h3>Biometric ID</h3><p>Persistencia Neural MIA-X</p></div>
-            <div class="glass-card"><h3>Wallet Swarm</h3><p>Tracking Omnichain (BTC, ETH, SOL, RWA)</p></div>
-            <div class="glass-card"><h3>Institutional KPI</h3><p>Analítica de flujo en tiempo real</p></div>
-        </div>
-    </section>
-
-    <div id="exo-market-indicator" class="ui-element">
-        EXO-MARKET: <span id="exo-market-status">BUSCANDO SEÑAL...</span>
-    </div>
 
     <script>
-        let scene, camera, renderer, starField;
+        let scene, camera, renderer, starField, astronaut;
         
         function init3D() {
             scene = new THREE.Scene();
-            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 5000);
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 10000);
             renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
             renderer.setSize(window.innerWidth, window.innerHeight);
             document.getElementById('canvas-container').appendChild(renderer.domElement);
 
+            // Sistema de estrellas mejorado
             const starGeo = new THREE.BufferGeometry();
             const stars = [];
-            for (let i = 0; i < 8000; i++) {
-                stars.push(THREE.MathUtils.randFloatSpread(3000), THREE.MathUtils.randFloatSpread(3000), THREE.MathUtils.randFloatSpread(3000));
+            for (let i = 0; i < 10000; i++) {
+                stars.push(THREE.MathUtils.randFloatSpread(4000), THREE.MathUtils.randFloatSpread(4000), THREE.MathUtils.randFloatSpread(4000));
             }
             starGeo.setAttribute('position', new THREE.Float32BufferAttribute(stars, 3));
-            const starMat = new THREE.PointsMaterial({ color: 0xFFFFFF, size: 0.8 });
+            const starMat = new THREE.PointsMaterial({ color: 0xFFFFFF, size: 0.7, transparent: true });
             starField = new THREE.Points(starGeo, starMat);
             scene.add(starField);
 
-            camera.position.z = 1000;
+            camera.position.z = 1200;
         }
 
         function animate() {
             requestAnimationFrame(animate);
-            starField.rotation.y += 0.0005;
+            starField.rotation.y += 0.0003;
+            starField.rotation.x += 0.0001;
+            
             let scroll = window.scrollY;
-            camera.position.z = 1000 - (scroll * 0.4);
+            camera.position.z = 1200 - (scroll * 0.6);
+            camera.rotation.z = scroll * 0.0001;
+            
             renderer.render(scene, camera);
         }
+
+        function connectWallet() {
+            alert("Iniciando Protocolo de Conexión Segura... Sincronizando con MIA-X.");
+        }
+
+        init3D();
+        animate();
 
         window.addEventListener('resize', () => {
             camera.aspect = window.innerWidth / window.innerHeight;
             camera.updateProjectionMatrix();
             renderer.setSize(window.innerWidth, window.innerHeight);
         });
-
-        function activateTerminal() {
-            alert("Sincronizando con Nodo Atacama... Identidad MIA-X Verificada.");
-        }
-
-        init3D();
-        animate();
     </script>
 </body>
 </html>
