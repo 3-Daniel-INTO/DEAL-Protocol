@@ -2,41 +2,42 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>DEAL | Sovereign Venture & RWA Portal</title>
+    <title>DEAL | Where Vision Meets Capital</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
-<body class="deal-swarm-body">
-    <canvas id="vortex-canvas"></canvas>
+<body>
+    <div id="experience-container"></div>
 
-    <header class="header-deal">
-        <div class="logo-deal">DEAL</div>
-        <nav>
-            <a href="#vc">VENTURE CAPITAL</a>
-            <a href="#rwa">RWA INSTITUCIONAL</a>
-            <a href="#tools">HERRAMIENTAS</a>
-        </nav>
-    </header>
+    <main id="scroll-wrapper">
+        <section class="section hero">
+            <div class="logo-container">
+                <img src="logo_deal_verde.png" alt="DEAL - Where Vision Meets Capital" class="main-logo">
+            </div>
+        </section>
 
-    <section class="hero-astronaut">
-        <div class="astronaut-container" id="astro-trigger">
-            <h1 class="glitch-text" data-text="DEAL">DEAL</h1>
-            <p>Infraestructura DALabs para el Futuro Civilizatorio</p>
-        </div>
-    </section>
+        <section class="section" id="vc">
+            <div class="glass-card">
+                <h2>VENTURE CAPITAL</h2>
+                <p>Fondeo de innovación real bajo auditoría G-AGI.</p>
+                <button class="btn-neon">REGISTRAR STARTUP</button>
+            </div>
+        </section>
 
-    <section id="rwa" class="swarm-module">
-        <h2>ORÁCULO RWA INSTITUCIONAL</h2>
-        <div class="stats-grid">
-            <div class="stat-card">SOLANA COMMODITIES: <span id="sol-rwa">SYNCING...</span></div>
-            <div class="stat-card">BTC/ETH COLLATERAL: <span id="collateral">ACTIVE</span></div>
-        </div>
-    </section>
+        <section class="section" id="rwa">
+            <div class="glass-card">
+                <h2>RWA INSTITUCIONAL</h2>
+                <p>Tokenización de Litio y Commodities en Atacama.</p>
+                <div class="kpi-live">SOLANA NODE: <span class="green">ACTIVE</span></div>
+            </div>
+        </section>
 
-    <footer class="footer-swarm">
-        <p>© 2026 DALabs | Harmony Fundación | MIA-X Neural Network</p>
-    </footer>
+        <footer class="section-footer">
+            <p>© 2026 DALabs | Harmony Fundación | MIA-X</p>
+        </footer>
+    </main>
 
     <script src="script.js"></script>
 </body>
