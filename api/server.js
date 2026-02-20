@@ -1,19 +1,21 @@
 const express = require('express');
-const cors = require('cors');
 const app = express();
-app.use(cors());
-app.use(express.json());
 
-// Modelo de Segmentación de Activos para Whales y Naciones
-const getMacroStats = () => ({
-    venture_capital: { fund_alpha: "$450M", committed: "85%", active_deals: 24 },
-    institutional_rwa: { lithium_reserve: "12,000 Tons", energy_yield: "5.8 GW", valuation: "$720M" },
-    crowdfunding_global: { community_cap: "$52M", participants: "1.2M Verified Humans" },
-    philanthropy_impact: { co2_reduction: "1.2M Tons", clean_water_projects: 15, donation_total: "$98M" },
-    synergy: { btc_backing: "Premium", sol_throughput: "Optimized" }
+const getWhaleInsights = () => ({
+    market_context: {
+        ai_boom_status: "Acceleration Phase",
+        limiting_factor: "Power Supply & Data Centers", // Dato crítico actual 
+        sp500_ytd: "+16%",
+        nasdaq_ytd: "+23%"
+    },
+    deal_infrastructure: {
+        energy_grid_rwa: { status: "Active", capacity: "1.2GW", location: "Atacama Command Center" },
+        institutional_vault: { protected_assets: ["BTC", "ETH", "SOL"], backup: "Satellite/Quantum Sync" },
+        deal_tokenomics: { protocol: "Proof of Progress", engine: "G-AGI" }
+    }
 });
 
-app.get('/api/v1/macro/stats', (req, res) => res.json(getMacroStats()));
+app.get('/api/v2/whale/dashboard', (req, res) => res.json(getWhaleInsights()));
 
 const PORT = process.env.PORT || 10000;
-app.listen(PORT, '0.0.0.0', () => console.log(`DEAL Governance Node active on ${PORT}`));
+app.listen(PORT, '0.0.0.0', () => console.log(`DEAL Whale Node running on port ${PORT}`));
