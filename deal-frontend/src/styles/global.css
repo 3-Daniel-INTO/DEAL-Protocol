@@ -1,28 +1,50 @@
 :root {
   --bg: #000000;
   --neon: #39FF14;
-  --gray: #1a1a1a;
+  --glass: rgba(25, 25, 25, 0.8);
 }
+
 body {
   background-color: var(--bg);
   color: #fff;
-  font-family: 'Inter', sans-serif;
+  font-family: 'JetBrains Mono', monospace;
   margin: 0;
   overflow-x: hidden;
 }
-.dashboard-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  padding: 40px;
+
+/* Animación de entrada de datos */
+@keyframes flicker {
+  0% { opacity: 0.8; }
+  50% { opacity: 1; }
+  100% { opacity: 0.9; }
 }
-.card {
-  background: var(--gray);
-  border: 1px solid rgba(57, 255, 20, 0.2);
-  padding: 20px;
-  border-radius: 8px;
-  text-align: center;
+
+.neon-border {
+  border: 1px solid var(--neon);
+  box-shadow: 0 0 15px rgba(57, 255, 20, 0.2);
+  transition: all 0.3s ease;
 }
-.card h3 { color: var(--neon); font-size: 0.8rem; letter-spacing: 2px; }
-.card p { font-size: 2rem; font-weight: bold; margin: 10px 0; }
-.neon-text { color: var(--neon); text-shadow: 0 0 10px rgba(57, 255, 20, 0.5); }
+
+.kpi-card {
+  background: var(--glass);
+  backdrop-filter: blur(10px);
+  padding: 25px;
+  border-radius: 12px;
+  animation: flicker 2s infinite;
+}
+
+.pulse {
+  width: 10px;
+  height: 10px;
+  background: var(--neon);
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 10px var(--neon);
+  animation: pulse-animation 2s infinite;
+}
+
+@keyframes pulse-animation {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(57, 255, 20, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(57, 255, 20, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(57, 255, 20, 0); }
+}

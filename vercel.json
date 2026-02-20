@@ -1,20 +1,7 @@
 {
   "version": 2,
-  "name": "deal-protocol",
   "cleanUrls": true,
   "rewrites": [
-    {
-      "source": "/api/(.*)",
-      "destination": "https://deal-protocol.onrender.com/api/$1"
-    }
-  ],
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        { "key": "Access-Control-Allow-Origin", "value": "*" },
-        { "key": "Cache-Control", "value": "public, max-age=3600" }
-      ]
-    }
+    { "source": "/api/(.*)", "destination": "https://deal-protocol.onrender.com/api/$1" }
   ]
 }
