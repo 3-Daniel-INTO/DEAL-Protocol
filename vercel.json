@@ -1,11 +1,5 @@
 {
   "version": 2,
-  "name": "deal-protocol",
-  "builds": [
-    { "src": "server.js", "use": "@vercel/node" }
-  ],
-  "routes": [
-    { "src": "/api/swarm", "dest": "/server.js" },
-    { "src": "/(.*)", "dest": "/index.html" }
-  ]
+  "builds": [{ "src": "server.js", "use": "@vercel/node" }],
+  "routes": [{ "src": "/(.*)", "dest": "/index.html" }]
 }
