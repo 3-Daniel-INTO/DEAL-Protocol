@@ -4,12 +4,13 @@ const app = express();
 
 app.use(express.static(path.join(__dirname, '../')));
 
-app.get('/api/whale-metrics', (req, res) => {
+// Endpoint para el Dashboard Whale (Métricas en tiempo real)
+app.get('/api/v1/metrics', (req, res) => {
     res.json({
-        total_liquidity_absorption: "850M USD",
-        active_venture_pools: 12,
-        rwa_collateral_status: "VERIFIED",
-        system_nodes: ["ATACAMA-01", "QUANTUM-SPACE-01"]
+        liquidity_pool: "$1.2B",
+        rwa_assets: ["Gold", "Lithium", "BTC", "SOL"],
+        active_ventures: 42,
+        sync_status: "ATACAMA_COMMAND_ACTIVE"
     });
 });
 
