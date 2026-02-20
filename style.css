@@ -1,0 +1,12 @@
+:root { --gold: #D4AF37; --neon: #39FF14; --bg: #050505; }
+body { margin: 0; background: var(--bg); color: white; font-family: 'Inter', sans-serif; overflow: hidden; }
+#canvas-3d { position: fixed; top: 0; left: 0; z-index: -1; }
+#app-interface { position: relative; z-index: 1; padding: 40px; }
+.kpi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 50px; }
+.kpi-card { background: rgba(255,255,255,0.03); backdrop-filter: blur(15px); padding: 25px; border-radius: 15px; border: 1px solid rgba(212,175,55,0.2); transition: 0.5s ease; }
+.kpi-card:hover { border-color: var(--gold); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(212,175,55,0.1); }
+.logo { font-weight: 800; font-size: 1.5rem; letter-spacing: 3px; }
+.logo span { font-weight: 200; color: var(--gold); font-size: 0.8rem; }
+.dock { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.8); padding: 10px 30px; border-radius: 50px; border: 1px solid #222; }
+button { background: none; border: none; color: white; margin: 0 15px; cursor: pointer; font-size: 0.9rem; transition: 0.3s; }
+button:hover { color: var(--gold); }
