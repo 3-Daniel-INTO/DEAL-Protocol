@@ -2,7 +2,6 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DEAL | Where Vision Meets Capital</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -10,47 +9,49 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
 <body>
-    <div id="neural-canvas-container"></div>
+    <div id="vortex-canvas-container"></div>
+    <div class="satellite-scanner"></div>
 
     <div id="ui-layer">
-        <header class="sovereign-nav">
-            <img src="logo_deal_verde.png" alt="DEAL" class="deal-brand">
-            <div class="swarm-indicator">NETWORK: ONLINE</div>
+        <header class="sovereign-header">
+            <img src="logo_deal_verde.png" alt="DEAL" class="deal-logo-main">
+            <div class="network-status">NETWORK: SOVEREIGN | MIA-X ACTIVE</div>
         </header>
 
         <main>
-            <section class="hero-v">
-                <div class="vision-text">
-                    <h1>WHERE VISION <br> MEETS CAPITAL</h1>
-                    <p>La infraestructura definitiva para inversión real e innovación.</p>
+            <section class="hero">
+                <div class="hero-content">
+                    <h1 class="glitch-title">DEAL</h1>
+                    <p class="subtitle">Where Vision Meets Capital</p>
                 </div>
             </section>
 
-            <section class="portal-card" id="vc">
-                <div class="glass-morph">
-                    <h3>VENTURE CAPITAL</h3>
-                    <p>Registra tu startup para auditoría G-AGI y financiamiento institucional.</p>
-                    <button class="action-btn neon" onclick="location.href='#register'">REGISTRAR EMPRENDIMIENTO</button>
+            <section class="module" id="venture-capital">
+                <div class="glass-container">
+                    <span class="module-tag">STARTUP HUB</span>
+                    <h2>VENTURE CAPITAL</h2>
+                    <p>Acceso a financiamiento institucional para emprendimientos disruptivos auditados por G-AGI.</p>
+                    <button class="btn-neon" onclick="showVC()">REGISTRAR STARTUP</button>
                 </div>
             </section>
 
-            <section class="portal-card" id="rwa">
-                <div class="glass-morph gold">
-                    <h3>INSTITUCIONAL RWA</h3>
-                    <p>Tokenización de Litio y Commodities bajo Protocolo Veritas.</p>
-                    <div class="kpi-grid">
-                        <div class="kpi"><span>99.9%</span><label>ACCURACY</label></div>
-                        <div class="kpi"><span>SOL/BTC</span><label>COLLATERAL</label></div>
+            <section class="module" id="rwa-institutional">
+                <div class="glass-container gold-glow">
+                    <span class="module-tag gold">RWA PROTOCOL</span>
+                    <h2>INSTITUCIONALIDAD RWA</h2>
+                    <p>Inversión en commodities de Litio y activos reales en Atacama. Liquidación omnichain BTC/SOL/ETH.</p>
+                    <div class="live-stats">
+                        <div class="stat">COLLATERAL: <span>VERIFIED</span></div>
+                        <div class="stat">AUM: <span>$2.5B</span></div>
                     </div>
                 </div>
             </section>
         </main>
 
-        <footer class="dalabs-foot">
+        <footer class="footer-dalabs">
             <p>© 2026 DALabs | Harmony Fundación | MIA Rehace</p>
         </footer>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>
