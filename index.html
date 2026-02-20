@@ -1,68 +1,43 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DEAL | Multi-Chain Asset Vault</title>
+    <meta charset="UTF-8"><title>DEAL | Institutional Sovereign Portal</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@web3modal/standalone/dist/index.min.js"></script>
 </head>
 <body>
     <canvas id="canvas-3d"></canvas>
-    
     <div class="interface-layer">
         <header class="navbar">
-            <div class="logo">DEAL <span class="pop">Proof of Progress</span></div>
-            <div id="node-pulse" class="pulse">NODE: ATACAMA ONLINE</div>
+            <div class="logo">DEAL <span class="pop">Sovereign Financial System</span></div>
+            <div class="node-status">COMMUNICATION_LINK: SECURE</div>
         </header>
 
-        <main class="vault-container">
-            <section class="vault-header">
-                <h1 class="glitch" data-text="MULTI-CHAIN VAULT">MULTI-CHAIN VAULT</h1>
-                <p>Gestión soberana de activos RWA y Colaterales Crypto</p>
+        <main class="institutional-grid">
+            <section class="data-pillar">
+                <h2>VENTURE CAPITAL & INSTITUTIONAL</h2>
+                <div class="kpi-box"><small>TOTAL CAPITAL ABSORPTION</small><h3 id="total-cap">--</h3></div>
+                <div class="kpi-box"><small>VC PIPELINE</small><h3 id="vc-pipe">--</h3></div>
             </section>
 
-            <div class="grid-layout">
-<div class="glass-panel heatmap-container" style="grid-column: span 2; margin-top: 20px;"> 
-    <h3 style="color:var(--gold); margin-bottom:15px;">GLOBAL INNOVATION HEATMAP</h3> 
-    <div id="world-map" class="map-view"> 
-        <div id="node-atacama" class="map-node" style="top:75%; left:28%;"></div> 
-        <div id="node-miami" class="map-node" style="top:45%; left:32%;"></div> 
-    </div> 
-    <div id="heatmap-stats" class="stats-row"></div> 
-<div class="glass-panel civilization-panel" style="margin-top:20px; border-left: 4px solid var(--neon);"> 
-    <h3 style="color:var(--neon);">CIVILIZATION DIVIDEND</h3> 
-    <div id="civ-data" style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; font-size:0.7rem;"> 
-        Calculando impacto en la humanidad... 
-    </div> 
-</div>
-</div>
-                <div class="glass-card vault-card">
-                    <h3>CRYPTO COLLATERAL</h3>
-                    <div class="asset-row"><span>BTC</span><b id="btc-val">--</b></div>
-                    <div class="asset-row"><span>ETH</span><b id="eth-val">--</b></div>
-                    <div class="asset-row"><span>SOL</span><b id="sol-val">--</b></div>
-                </div>
+            <section class="data-pillar highlight">
+                <h2>REAL WORLD ASSETS (RWA)</h2>
+                <div class="kpi-box"><small>STRATEGIC RESERVE VALUATION</small><h3 id="rwa-val">--</h3></div>
+                <div class="kpi-box"><small>GLOBAL IMPACT (CO2)</small><h3 id="co2-impact">--</h3></div>
+            </section>
 
-                <div class="glass-card vault-card highlight">
-                    <h3>REAL WORLD ASSETS</h3>
-                    <div class="asset-row"><span>LITHIUM RESERVE</span><b id="li-val">--</b></div>
-                    <div class="asset-row"><span>GOLD TOKENIZED</span><b id="au-val">--</b></div>
-                    <div class="asset-row"><span>CLEAN ENERGY</span><b id="co2-val">--</b></div>
-                </div>
-            </div>
-
-<div class="veritas-terminal"> 
-    <div class="terminal-header">VERITAS AUDIT LOG [Proof of Progress]</div> 
-    <div id="veritas-log" class="terminal-body">Sincronizando registros de seguridad...</div> 
-</div>
-            <div class="action-zone">
-                <button id="connect-btn" class="btn-main">CONNECT UNIVERSAL WALLET</button>
-            </div>
+            <section class="data-pillar">
+                <h2>GLOBAL PHILANTHROPY</h2>
+                <div class="kpi-box"><small>CROWDFUNDING FLOW</small><h3 id="crowd-flow">--</h3></div>
+                <div class="kpi-box"><small>DONATION IMPACT SCORE</small><h3 id="donation-score">98.2</h3></div>
+            </section>
         </main>
+        
+        <footer class="footer-terminal">
+            <div id="veritas-ticker">VERITAS PROTOCOL: AUTHENTICATING GLOBAL ASSETS...</div>
+            <button id="connect-btn" class="btn-whale">INSTITUTIONAL ACCESS</button>
+        </footer>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>

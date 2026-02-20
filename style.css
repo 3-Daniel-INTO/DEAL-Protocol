@@ -1,53 +1,13 @@
-:root { --gold: #D4AF37; --neon: #39FF14; --bg: #000; --glass: rgba(255,255,255,0.02); }
-body, html { margin: 0; padding: 0; background: var(--bg); color: #fff; font-family: 'Inter', sans-serif; overflow: hidden; }
-#canvas-3d { position: fixed; top: 0; left: 0; z-index: -1; }
-
-.interface-layer { position: relative; z-index: 10; height: 100vh; display: flex; flex-direction: column; background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.8) 100%); }
-.navbar { padding: 30px 50px; display: flex; justify-content: space-between; align-items: center; }
-.logo { font-weight: 900; font-size: 1.8rem; letter-spacing: 5px; }
-.pop { font-size: 0.7rem; color: var(--gold); letter-spacing: 1px; }
-
-.vault-container { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 0 20px; text-align: center; }
-.grid-layout { display: grid; grid-template-columns: repeat(2, 350px); gap: 30px; margin-top: 40px; }
-
-.glass-card { background: var(--glass); backdrop-filter: blur(30px); border: 1px solid rgba(212,175,55,0.2); padding: 30px; border-radius: 20px; transition: 0.5s ease; }
-.glass-card:hover { border-color: var(--gold); transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
-.highlight { border-color: var(--neon); }
-
-.asset-row { display: flex; justify-content: space-between; margin: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 5px; }
-.btn-main { background: var(--gold); border: none; padding: 20px 40px; border-radius: 50px; font-weight: bold; cursor: pointer; margin-top: 40px; transition: 0.3s; }
-.btn-main:hover { transform: scale(1.05); box-shadow: 0 0 30px rgba(212,175,55,0.3); }
-
-.pulse { font-size: 0.6rem; color: var(--neon); text-shadow: 0 0 10px var(--neon); }
-.veritas-terminal {
-    width: 730px; margin-top: 30px;
-    background: rgba(0, 255, 20, 0.02);
-    border: 1px solid rgba(57, 255, 20, 0.2);
-    border-radius: 10px; font-family: 'Courier New', monospace;
-}
-.terminal-header {
-    background: rgba(57, 255, 20, 0.1);
-    padding: 5px 15px; color: var(--neon); font-size: 0.7rem;
-}
-.terminal-body {
-    padding: 15px; color: #888; font-size: 0.65rem; text-align: left;
-    height: 80px; overflow-y: hidden;
-}
-.audit-entry { color: var(--neon); margin-bottom: 5px; }
-.map-view {
-    height: 250px; background: rgba(255,255,255,0.02);
-    border-radius: 10px; position: relative; overflow: hidden;
-    background-image: radial-gradient(#111 1px, transparent 1px);
-    background-size: 20px 20px;
-}
-.map-node {
-    position: absolute; width: 10px; height: 10px;
-    background: var(--neon); border-radius: 50%;
-    box-shadow: 0 0 15px var(--neon); animation: pulse 2s infinite;
-}
-@keyframes pulse { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(3); opacity: 0; } }
-.stats-row { display: flex; justify-content: space-around; margin-top: 15px; font-size: 0.7rem; color: #888; }
-.civilization-panel { animation: slideIn 1s ease-out; }
-@keyframes slideIn { from { opacity: 0; transform: translateX(-50px); } to { opacity: 1; transform: translateX(0); } }
-.civ-item { background: rgba(57, 255, 20, 0.05); padding: 10px; border-radius: 5px; }
-.civ-item b { display: block; color: white; font-size: 0.9rem; }
+:root { --gold: #D4AF37; --neon: #39FF14; --bg: #000; }
+body { margin: 0; background: var(--bg); color: white; font-family: 'Inter', sans-serif; }
+#canvas-3d { position: fixed; z-index: -1; }
+.interface-layer { height: 100vh; display: flex; flex-direction: column; background: rgba(0,0,0,0.6); }
+.navbar { padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; }
+.institutional-grid { flex: 1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: rgba(255,255,255,0.05); }
+.data-pillar { padding: 40px; background: var(--bg); display: flex; flex-direction: column; gap: 20px; }
+.data-pillar.highlight { border-left: 1px solid var(--gold); border-right: 1px solid var(--gold); }
+.kpi-box { border-bottom: 1px solid #222; padding-bottom: 10px; }
+.kpi-box h3 { font-size: 2rem; margin: 5px 0; color: var(--gold); }
+.kpi-box small { color: #666; letter-spacing: 2px; }
+.btn-whale { background: white; color: black; border: none; padding: 15px 30px; font-weight: bold; cursor: pointer; border-radius: 4px; }
+.footer-terminal { padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #222; }

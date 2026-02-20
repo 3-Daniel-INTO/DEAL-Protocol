@@ -1,91 +1,33 @@
-// --- ESCENA 3D: MONTAÑAS DE ATACAMA ---
+// Escena 3D: Estructura de Red (Plexus)
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('canvas-3d'), alpha: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 
-const geometry = new THREE.PlaneGeometry(500, 500, 50, 50);
-const material = new THREE.PointsMaterial({ color: 0xD4AF37, size: 1.2 });
-const mesh = new THREE.Points(geometry, material);
-mesh.rotation.x = -Math.PI / 2.5;
-scene.add(mesh);
-camera.position.z = 200;
-camera.position.y = 100;
+const geometry = new THREE.IcosahedronGeometry(2, 2);
+const material = new THREE.MeshBasicMaterial({ color: 0xD4AF37, wireframe: true, transparent: true, opacity: 0.1 });
+const sphere = new THREE.Mesh(geometry, material);
+scene.add(sphere);
+camera.position.z = 5;
 
 function animate() {
     requestAnimationFrame(animate);
-    const positions = mesh.geometry.attributes.position.array;
-    for(let i=0; i<positions.length; i+=3) {
-        positions[i+2] = Math.sin(positions[i] / 20 + Date.now() * 0.001) * 15;
-    }
-    mesh.geometry.attributes.position.needsUpdate = true;
-    mesh.rotation.z += 0.001;
+    sphere.rotation.y += 0.002;
     renderer.render(scene, camera);
 }
 animate();
 
-// --- CONECTIVIDAD UNIVERSAL ---
-const connectBtn = document.getElementById('connect-btn');
-connectBtn.onclick = () => {
-    alert("Iniciando WalletConnect... Conectando con MetaMask, Phantom, Coinbase y World ID.");
-    // Aquí se inicializa Web3Modal Standalone
-};
-
-// --- SYNC DE BOVEDA (Backend Render) ---
-async function syncVault() {
+// Sync de Datos de Grado Institucional
+async function fetchWhaleData() {
     try {
-        const res = await fetch('https://srv-d6bqorvtn9qs73di0npg.onrender.com/api/v1/vault');
-        const data = await res.json();
-        document.getElementById('btc-val').innerText = data.crypto.btc;
-        document.getElementById('eth-val').innerText = data.crypto.eth;
-        document.getElementById('sol-val').innerText = data.crypto.sol;
-        document.getElementById('li-val').innerText = data.rwa.lithium;
-        document.getElementById('au-val').innerText = data.rwa.gold;
-        document.getElementById('co2-val').innerText = data.rwa.co2;
-    } catch(e) { console.log("MIA-X: Sincronizando con nodo..."); }
+        const res = await fetch('https://srv-d6bqorvtn9qs73di0npg.onrender.com/api/v1/institutional/stats');
+        const d = await res.json();
+        document.getElementById('total-cap').innerText = d.sovereign_metrics.total_absorption;
+        document.getElementById('vc-pipe').innerText = d.sovereign_metrics.vc_pipeline.committed;
+        document.getElementById('rwa-val').innerText = d.sovereign_metrics.institutional_rwa.valuation;
+        document.getElementById('co2-impact').innerText = d.sovereign_metrics.philanthropy_co2.credits_issued;
+        document.getElementById('crowd-flow').innerText = d.sovereign_metrics.philanthropy_co2.donation_flow;
+    } catch(e) { console.warn("Sincronizando con Nodo Atacama..."); }
 }
-setInterval(syncVault, 10000);
-syncVault();
-async function updateVeritas() {
-    try {
-        const res = await fetch('https://srv-d6bqorvtn9qs73di0npg.onrender.com/api/v1/vault');
-        const data = await res.json();
-        const log = document.getElementById('veritas-log');
-        
-        const entry = `<div class="audit-entry">[${data.veritas.timestamp}] ID: ${data.veritas.audit_id} - BACKING: ${data.veritas.backing_ratio} - OK</div>`;
-        log.innerHTML = entry + log.innerHTML;
-        
-        // Limitar entradas para estética
-        if (log.childNodes.length > 3) log.removeChild(log.lastChild);
-    } catch(e) { console.warn("Esperando Nodo..."); }
-}
-setInterval(updateVeritas, 5000);
-async function updateHeatmap() {
-    try {
-        const res = await fetch('https://srv-d6bqorvtn9qs73di0npg.onrender.com/api/v1/heatmap');
-        const data = await res.json();
-        const stats = document.getElementById('heatmap-stats');
-        
-        stats.innerHTML = data.active_zones.map(z => `
-            <div><b style="color:white;">${z.region}:</b> ${z.investment}</div>
-        `).join('');
-    } catch(e) { console.warn("Esperando datos geopolíticos..."); }
-}
-setInterval(updateHeatmap, 15000);
-updateHeatmap();
-async function updateCivReturn() {
-    try {
-        const res = await fetch('https://srv-d6bqorvtn9qs73di0npg.onrender.com/api/v1/civilization');
-        const data = await res.json();
-        const container = document.getElementById('civ-data');
-        
-        container.innerHTML = `
-            <div class="civ-item">REDUCCIÓN CO2<b>${data.social_equity.co2_reduction_equity}</b></div>
-            <div class="civ-item">ENERGÍA GENERADA<b>${data.social_equity.clean_energy_supplied}</b></div>
-            <div class="civ-item">DIVIDENDO EST.<b>${data.investor_impact.civilization_dividend}</b></div>
-            <div class="civ-item">RANGO<b>${data.investor_impact.status}</b></div>
-        `;
-    } catch(e) { console.warn("Sincronizando Retorno..."); }
-}
-setInterval(updateCivReturn, 12000);
-updateCivReturn();
+setInterval(fetchWhaleData, 10000);
+fetchWhaleData();
