@@ -2,69 +2,33 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DEAL | THE SOVEREIGN ENGINE</title>
+    <title>DEAL | GENESIS CORE</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
 <body>
-    <div id="grain-overlay"></div>
-    <div id="crt-scanline"></div>
-    <canvas id="render-canvas"></canvas>
+    <div id="noise"></div>
+    <canvas id="canvas-3d"></canvas>
 
-    <aside class="veritas-monitor">
-        <div class="monitor-header">VERITAS_PROTOCOL [ACTIVE]</div>
-        <div id="live-stream" class="stream-container"></div>
-        <div class="monitor-footer">SATELLITE_LINK: ATACAMA_01</div>
-    </aside>
+    <main class="terminal">
+        <header>
+            <div class="logo">DEAL</div>
+            <div class="status">G-AGI: LEARNING | MIA-X: PERSISTENT</div>
+        </header>
 
-    <nav class="deal-nav">
-        <div class="brand">DEAL</div>
-        <div class="nav-links">
-            <span class="nav-status">MIA-X SYNC: 99%</span>
-            <button class="btn-wallet" onclick="triggerAuth()">WALLET_CONNECT</button>
+        <section id="auth-zone">
+            <h2>SISTEMA FINANCIERO SOBERANO</h2>
+            <div class="biometric-trigger" onclick="initiateSovereignAuth()">
+                <div class="fingerprint"></div>
+                <span>FIRMA BIOMÉTRICA REQUERIDA</span>
+            </div>
+        </section>
+
+        <div id="secret-monitor" class="hidden">
+            <h3>DASHBOARD DE SALUD DEAL</h3>
+            <div id="admin-logs"></div>
         </div>
-    </nav>
-
-    <main class="scrolly-container">
-        <section class="step" id="hero">
-            <div class="content-box center">
-                <h1 class="glitch-title">DEAL</h1>
-                <p class="lead">SOVEREIGN WEALTH & INNOVATION INFRASTRUCTURE</p>
-                <div class="kpi-row">
-                    <div class="kpi">AUM <span>$1.17B</span></div>
-                    <div class="kpi">STATUS <span>SECURE</span></div>
-                </div>
-            </div>
-        </section>
-
-        <section class="step" id="vc">
-            <div class="content-box left">
-                <span class="label">MODULE_01</span>
-                <h2>VENTURE_CAPITAL</h2>
-                <p>Inversión en G-AGI y DALabs. El motor G x Grok potenciando el capital institucional.</p>
-                <div class="spec-card">
-                    <p>POOL_ALLOCATION: $450,000,000</p>
-                    <p>ROI_EST: 24.5%</p>
-                </div>
-                <button class="btn-main" onclick="triggerAuth()">ENTER_VAULT</button>
-            </div>
-        </section>
-
-        <section class="step" id="rwa">
-            <div class="content-box right">
-                <span class="label">MODULE_02</span>
-                <h2>RWA_COMMODITIES</h2>
-                <p>Tokenización de materias primas críticas. Litio de Atacama bajo protocolo Proof of Progress.</p>
-                <div class="spec-card">
-                    <p>VALUE_TOKENIZED: $720,000,000</p>
-                    <p>AUDIT_NAME: VERITAS</p>
-                </div>
-                <button class="btn-main" onclick="triggerAuth()">TRADE_ASSETS</button>
-            </div>
-        </section>
     </main>
 
     <script src="script.js"></script>
