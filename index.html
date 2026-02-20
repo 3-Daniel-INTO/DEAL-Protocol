@@ -2,54 +2,46 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>DEAL | NEURAL SOVEREIGN ENGINE</title>
+    <title>DEAL | SOVEREIGN WEALTH TERMINAL</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
 <body>
-    <div id="neural-overlay"></div>
-    <canvas id="fluid-canvas"></canvas>
+    <div id="noise-filter"></div>
+    <canvas id="neural-background"></canvas>
 
-    <nav class="elite-nav">
-        <div class="brand">DEAL</div>
-        <div class="neural-status">MIA-X: <span id="sync-pct">99.9%</span> SYNC</div>
-        <button class="wallet-btn" onclick="triggerBiometricAuth()">CONNECT_SOVEREIGN_ID</button>
-    </nav>
+    <div class="sovereign-wrapper">
+        <header class="top-bar">
+            <div class="logo">DEAL</div>
+            <div class="certification-badge">
+                <span class="shield-icon">🛡️</span> MIA-X CERTIFIED: UNBREAKABLE
+            </div>
+        </header>
 
-    <main id="smooth-scroll">
-        <section class="hero-panel">
-            <div class="reveal-text">
-                <h1 class="main-title">DEAL</h1>
-                <p class="subtitle">SISTEMA FINANCIERO NEURONAL INDEPENDIENTE</p>
-                <div class="stats-row">
-                    <div class="stat"><span>AUM</span> $1.17B</div>
-                    <div class="stat"><span>RWA</span> $720M</div>
+        <main class="dashboard">
+            <div class="wealth-summary">
+                <span class="label">GLOBAL_AUM</span>
+                <h1 class="amount">$1,170,000,000</h1>
+            </div>
+
+            <div class="action-grid">
+                <div class="card" onclick="sovereignFlow('VC')">
+                    <h3>G-AGI VENTURES</h3>
+                    <p>Acceso a DALabs y tecnología G x Grok.</p>
+                </div>
+                <div class="card gold" onclick="sovereignFlow('RWA')">
+                    <h3>RWA INSTITUCIONAL</h3>
+                    <p>Litio Atacama: Liquidez respaldada por Veritas.</p>
                 </div>
             </div>
-        </section>
+        </main>
 
-        <section class="panel" id="investment-advisor">
-            <div class="advisor-box">
-                <span class="label">G-AGI // INVEST_ADVISORY</span>
-                <h2>PREDICCIONES DE ALTA FIDELIDAD</h2>
-                <div id="ai-prediction-card" class="neural-card">
-                    <p>Detectando excedentes en Litio Atacama...</p>
-                    <button class="action-btn" onclick="executePrediction()">FORTALECER DALABS</button>
-                </div>
+        <div id="into-3-secure" class="hidden">
+            <div class="terminal-box">
+                <header>MIA-X SECURITY SCANNER v1.4</header>
+                <div id="security-logs"></div>
             </div>
-        </section>
-
-        <footer class="sovereign-footer">
-            <p>MIA REHACE | HARMONY FOUNDATION | VERITAS PROTOCOL</p>
-        </footer>
-    </main>
-
-    <div id="into-3-dashboard" class="hidden">
-        <div class="terminal-container">
-            <h3>MIA-X NEURAL LOGS</h3>
-            <div id="log-flow"></div>
         </div>
     </div>
 
