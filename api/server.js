@@ -4,13 +4,13 @@ const app = express();
 app.use(cors());
 
 const DEAL_ASSETS = {
-    vc_committed: "$450,000,000",
-    impact: "1.5M Tons CO2",
-    node: "ATACAMA_ALPHA_STABLE",
-    veritas: "0x777_GENESIS_VERIFIED"
+    vc: "$450M",
+    rwa: "$720M",
+    veritas: "VERIFIED_0x777",
+    node: "ATACAMA_STABLE"
 };
 
-app.get('/', (req, res) => res.send("DEAL SATELLITE NODE ONLINE"));
+app.get('/', (req, res) => res.status(200).send("DEAL SATELLITE NODE ONLINE"));
 app.get('/api/v1/sync', (req, res) => res.json(DEAL_ASSETS));
 
 const PORT = process.env.PORT || 10000;
