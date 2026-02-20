@@ -46,3 +46,17 @@ async function syncVault() {
 }
 setInterval(syncVault, 10000);
 syncVault();
+async function updateVeritas() {
+    try {
+        const res = await fetch('https://srv-d6bqorvtn9qs73di0npg.onrender.com/api/v1/vault');
+        const data = await res.json();
+        const log = document.getElementById('veritas-log');
+        
+        const entry = `<div class="audit-entry">[${data.veritas.timestamp}] ID: ${data.veritas.audit_id} - BACKING: ${data.veritas.backing_ratio} - OK</div>`;
+        log.innerHTML = entry + log.innerHTML;
+        
+        // Limitar entradas para estética
+        if (log.childNodes.length > 3) log.removeChild(log.lastChild);
+    } catch(e) { console.warn("Esperando Nodo..."); }
+}
+setInterval(updateVeritas, 5000);

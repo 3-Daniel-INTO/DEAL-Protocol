@@ -19,3 +19,18 @@ body, html { margin: 0; padding: 0; background: var(--bg); color: #fff; font-fam
 .btn-main:hover { transform: scale(1.05); box-shadow: 0 0 30px rgba(212,175,55,0.3); }
 
 .pulse { font-size: 0.6rem; color: var(--neon); text-shadow: 0 0 10px var(--neon); }
+.veritas-terminal {
+    width: 730px; margin-top: 30px;
+    background: rgba(0, 255, 20, 0.02);
+    border: 1px solid rgba(57, 255, 20, 0.2);
+    border-radius: 10px; font-family: 'Courier New', monospace;
+}
+.terminal-header {
+    background: rgba(57, 255, 20, 0.1);
+    padding: 5px 15px; color: var(--neon); font-size: 0.7rem;
+}
+.terminal-body {
+    padding: 15px; color: #888; font-size: 0.65rem; text-align: left;
+    height: 80px; overflow-y: hidden;
+}
+.audit-entry { color: var(--neon); margin-bottom: 5px; }
