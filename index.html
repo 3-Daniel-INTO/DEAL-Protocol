@@ -2,39 +2,101 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>DEAL | Sovereign Entry Portal</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DEAL | Sovereign Whale Terminal</title>
+    <style>
+        :root { --gold: #D4AF37; --bg: #030303; --glass: rgba(255,255,255,0.03); }
+        body, html { margin: 0; padding: 0; background: var(--bg); color: #fff; font-family: 'Inter', sans-serif; overflow: hidden; }
+        canvas { position: fixed; top: 0; left: 0; z-index: 1; }
+        
+        /* Capa UI */
+        .ui-layer { position: relative; z-index: 10; height: 100vh; display: flex; flex-direction: column; background: radial-gradient(circle, transparent, rgba(0,0,0,0.9)); }
+        
+        header { padding: 30px 50px; display: flex; justify-content: space-between; border-bottom: 1px solid rgba(212,175,55,0.2); }
+        .logo { font-size: 2rem; font-weight: 900; color: var(--gold); letter-spacing: 5px; }
+        
+        .hero { flex-grow: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+        .main-title { font-size: 4rem; font-weight: 900; margin: 0; letter-spacing: -2px; }
+        .data-row { display: flex; gap: 50px; margin: 40px 0; }
+        .stat-card { border-left: 1px solid var(--gold); padding: 10px 20px; text-align: left; background: var(--glass); backdrop-filter: blur(10px); }
+        .stat-card small { color: var(--gold); font-size: 0.7rem; letter-spacing: 2px; }
+        .stat-card div { font-size: 2.5rem; font-weight: 900; }
+
+        .btn-whale { background: var(--gold); color: #000; border: none; padding: 20px 60px; font-weight: 900; cursor: pointer; font-size: 1rem; transition: 0.3s; }
+        .btn-whale:hover { transform: scale(1.05); box-shadow: 0 0 30px var(--gold); }
+
+        .militar-footer { padding: 20px 50px; font-family: monospace; font-size: 0.7rem; color: #444; display: flex; justify-content: space-between; }
+    </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
-    <canvas id="bg-canvas"></canvas>
-    <div class="portal-overlay">
+    <canvas id="canvas-3d"></canvas>
+    <div class="ui-layer">
         <header>
-            <div class="militar-tag">DEAL SECURE PROTOCOL // MIA-X v89.0</div>
+            <div class="logo">DEAL</div>
+            <div class="status">SATELLITE SYNC: ACTIVE</div>
         </header>
-        <main class="welcome-center">
-            <h1 class="logo-gold">DEAL</h1>
-            <p class="mission-statement">PLATAFORMA SOBERANA DE INVERSIÓN INSTITUCIONAL Y CAPITAL PRIVADO</p>
+
+        <main class="hero">
+            <h1 class="main-title">SOVEREIGN WHALE TERMINAL</h1>
+            <p style="color:var(--gold); letter-spacing: 5px;">MIA-X ENCRYPTED PROTOCOL</p>
             
-            <div class="whale-stats">
-                <div class="stat-box">
-                    <small>TOTAL VC COMMITTED</small>
-                    <div class="val">$450,000,000</div>
+            <div class="data-row">
+                <div class="stat-card">
+                    <small>VENTURE CAPITAL</small>
+                    <div>$450M</div>
                 </div>
-                <div class="stat-box">
-                    <small>RWA ASSETS (LITHIUM)</small>
-                    <div class="val">$720,000,000</div>
+                <div class="stat-card">
+                    <small>RWA LITHIUM</small>
+                    <div>$720M</div>
                 </div>
             </div>
 
-            <button class="btn-entry" onclick="location.href='/dashboard'">
-                <span class="glitch-btn" data-text="INGRESAR AL TERMINAL WHALE">INGRESAR AL TERMINAL WHALE</span>
-            </button>
+            <button class="btn-whale" onclick="alert('Accediendo a Bóveda Institucional...')">INGRESAR A HERRAMIENTAS WHALE</button>
         </main>
-        <footer>
-            <div class="node-info">ATACAMA NODE 01 // VERITAS CERTIFIED // HARMONY FOUNDATION</div>
+
+        <footer class="militar-footer">
+            <span>VERITAS AUDIT: PASSED</span>
+            <span>ATACAMA NODE 01 // HARMONY FOUNDATION</span>
         </footer>
     </div>
-    <script src="script.js"></script>
+
+    <script>
+        // MOTOR DE MONTAÑAS DE ORO ATACAMA
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({canvas: document.getElementById('canvas-3d'), antialias: true, alpha: true});
+        renderer.setSize(window.innerWidth, window.innerHeight);
+
+        // Geometría del terreno
+        const geometry = new THREE.PlaneGeometry(100, 100, 100, 100);
+        const material = new THREE.PointsMaterial({color: 0xD4AF37, size: 0.03});
+        
+        const pos = geometry.attributes.position.array;
+        for(let i=0; i<pos.length; i+=3) {
+            const x = pos[i];
+            const y = pos[i+1];
+            pos[i+2] = Math.sin(x*0.3) * Math.cos(y*0.3) * 3; // Relieve montañoso
+        }
+
+        const terrain = new THREE.Points(geometry, material);
+        terrain.rotation.x = -Math.PI / 2.5;
+        scene.add(terrain);
+        camera.position.z = 20;
+        camera.position.y = 5;
+
+        function animate() {
+            requestAnimationFrame(animate);
+            terrain.rotation.z += 0.001;
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        window.onresize = () => {
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+        }
+    </script>
 </body>
 </html>

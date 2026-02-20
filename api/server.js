@@ -1,15 +1,16 @@
 const express = require('express');
 const path = require('path');
-const cors = require('cors');
 const app = express();
 
-app.use(cors());
+// Servir archivos estáticos desde la raíz
 app.use(express.static(path.join(__dirname, '../')));
 
-// Forzar que la raíz cargue el Dashboard de Lujo directamente en Render
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../dashboard.html'));
+// Ruta maestra: Todo lo que no sea API va al Dashboard
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../index.html'));
 });
 
 const PORT = process.env.PORT || 10000;
-app.listen(PORT, '0.0.0.0', () => console.log(`Whale Command Center Active on ${PORT}`));
+app.listen(PORT, '0.0.0.0', () => {
+    console.log(`DEAL CORE DEPLOYED ON PORT ${PORT}`);
+});
