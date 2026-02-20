@@ -4,6 +4,11 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use((req, res, next) => { 
+    res.setHeader("Connection", "keep-alive"); 
+    res.setHeader("Keep-Alive", "timeout=5, max=1000"); 
+    next(); 
+});
 
 app.get('/', (req, res) => {
     res.status(200).send('DEAL NODE: OPERATIONAL');
