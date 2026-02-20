@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>DEAL | Whale Authentication</title>
+    <style>
+        :root { --gold: #D4AF37; --bg: #050505; }
+        body { background: var(--bg); color: #fff; font-family: 'Inter', sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; overflow: hidden; }
+        .auth-box { width: 400px; padding: 40px; border: 1px solid var(--gold); background: rgba(212,175,55,0.05); backdrop-filter: blur(20px); text-align: center; }
+        .militar-line { height: 1px; background: var(--gold); margin: 20px 0; opacity: 0.3; }
+        .status-text { font-size: 0.7rem; letter-spacing: 2px; color: var(--gold); margin-bottom: 20px; }
+        .btn-wallet { width: 100%; padding: 15px; background: transparent; border: 1px solid var(--gold); color: var(--gold); cursor: pointer; font-weight: 900; margin-bottom: 10px; }
+        .btn-wallet:hover { background: var(--gold); color: #000; }
+        #biometric-area { display: none; margin-top: 20px; }
+        .fingerprint { width: 60px; height: 60px; border: 2px solid var(--gold); border-radius: 50%; margin: 20px auto; cursor: pointer; animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(212,175,55,0.7); } 70% { box-shadow: 0 0 0 20px rgba(212,175,55,0); } 100% { box-shadow: 0 0 0 0 rgba(212,175,55,0); } }
+    </style>
+</head>
+<body>
+    <div class="auth-box">
+        <h2 style="letter-spacing: 5px;">WHALE AUTH</h2>
+        <div class="militar-line"></div>
+        <p class="status-text">ESPERANDO CONEXIÓN DE WALLET...</p>
+        <button class="btn-wallet" onclick="connectWallet()">CONNECT UNIVERSAL WALLET</button>
+        
+        <div id="biometric-area">
+            <p class="status-text">REQUERIDA FIRMA BIOMÉTRICA DE WALLET</p>
+            <div class="fingerprint" onclick="signAndEnter()"></div>
+            <small>TOUCH SENSOR TO SIGN PROTOCOL</small>
+        </div>
+    </div>
+
+    <script>
+        function connectWallet() {
+            document.querySelector('.status-text').innerText = "WALLET: 0x777...DEAL CONECTADA";
+            document.getElementById('biometric-area').style.display = 'block';
+        }
+        function signAndEnter() {
+            document.querySelector('.status-text').innerText = "FIRMA VERIFICADA POR MIA-X";
+            setTimeout(() => { location.href = 'tools.html'; }, 1000);
+        }
+    </script>
+</body>
+</html>
