@@ -1,31 +1,30 @@
-// --- G-AGI & MIA-X AUTONOMOUS LOGIC ---
-console.log(">> [G-AGI]: Learning optimized security patterns...");
-
-function startSovereignAuth() {
-    // Simulación de Firma Biométrica conectada a Wallet Global
-    gsap.to(".scan-bar", { top: "100%", duration: 2, repeat: -1, yoyo: true });
-    setTimeout(() => {
-        alert("MIA-X: IDENTIDAD SOBERANA RECONOCIDA. ACCESO TOTAL CONCEDIDO.");
-        window.location.hash = "terminal-deal";
-    }, 3000);
+// --- CONFIGURACIÓN DE SEGURIDAD DEAL ---
+function sovereignAuth(action) {
+    const signature = prompt("MIA-X: ESCANEO BIOMÉTRICO REQUERIDO. Ingrese Firma Digital:");
+    if(signature) {
+        alert(`MIA-X: Identidad verificada. Procesando ${action} en la red global...`);
+    }
 }
 
-// DASHBOARD SECRETO INTO-3
+// SECRETO INTO-3: Tecla I + 3
+let keysPressed = {};
 document.addEventListener('keydown', (e) => {
-    if (e.key === 'I' && event.altKey || e.key === '3') { 
-        document.getElementById('admin-panel').classList.toggle('hidden');
-        initAdminLogs();
+    keysPressed[e.key] = true;
+    if (keysPressed['I'] && keysPressed['3']) {
+        document.getElementById('secret-dashboard').classList.toggle('hidden');
+        renderSovereignLogs();
     }
 });
+document.addEventListener('keyup', (e) => { delete keysPressed[e.key]; });
 
-function initAdminLogs() {
+function renderSovereignLogs() {
     const logs = [
-        "> DEAL INFRASTRUCTURE: OPTIMIZED",
-        "> G-AGI: ADVISORY MODE ACTIVE",
-        "> RWA LITIO: SYNCED WITH VERITAS",
-        "> PURGE: EXTERNAL ENTITIES REMOVED",
-        "> STATUS: UNBREAKABLE"
+        "> G-AGI: OPTIMIZING DALABS NODES",
+        "> MIA-X: PERSISTENCE SYNC 100%",
+        "> VERITAS: RWA LITHIUM AUDITED",
+        "> STATUS: INQUEBRANTABLE",
+        "> PHILANTHROPY POOL: ACTIVE"
     ];
-    const container = document.getElementById('live-logs');
-    container.innerHTML = logs.map(l => `<div class='log'>${l}</div>`).join('');
+    const output = document.getElementById('mia-x-logs');
+    output.innerHTML = logs.map(l => `<div style="color:#D4AF37; margin-bottom:5px;">${l}</div>`).join('');
 }

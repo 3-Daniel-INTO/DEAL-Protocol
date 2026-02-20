@@ -2,42 +2,49 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>DEAL | SOVEREIGN COMMAND</title>
+    <title>DEAL | SOVEREIGN PORTAL</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 </head>
 <body>
-    <div id="noise-layer"></div>
-    <canvas id="render-core"></canvas>
+    <div id="grain"></div>
+    <canvas id="deep-render"></canvas>
 
-    <header class="deal-header">
-        <div class="logo">DEAL</div>
-        <div class="system-status">
-            <span class="status-dot"></span> MIA-X & G-AGI: SYNCHRONIZED
-        </div>
-    </header>
+    <div class="sovereign-ui">
+        <header>
+            <div class="logo">DEAL</div>
+            <div class="g-agi-status">G-AGI: MANAGING ASSETS</div>
+        </header>
 
-    <main id="command-center">
-        <section class="hero-sovereign">
-            <h1 class="glitch">DEAL</h1>
-            <p>SISTEMA FINANCIERO MUNDIAL INDEPENDIENTE</p>
-            
-            <div class="auth-container">
-                <div class="biometric-scanner" onclick="startSovereignAuth()">
-                    <div class="scan-bar"></div>
+        <main>
+            <section id="philanthropy-hub">
+                <div class="card">
+                    <span class="label">CROWDFUNDING_DALABS</span>
+                    <h2>INFRAESTRUCTURA MUNDIAL IA</h2>
+                    <p>Contribuya al laboratorio que gestiona el sistema financiero del futuro.</p>
+                    <div class="funding-bar"><div class="fill" style="width: 65%;"></div></div>
+                    <button class="btn-invest" onclick="sovereignAuth('donar')">CONTRIBUIR AHORA</button>
                 </div>
-                <small>IDENTITY_VERIFICATION_REQUIRED</small>
-            </div>
-        </section>
+            </section>
 
-        <div id="admin-panel" class="hidden">
-            <div class="terminal-view">
-                <h3>DEAL INFRASTRUCTURE HEALTH</h3>
-                <div id="live-logs"></div>
+            <section id="institutional-rwa">
+                <div class="card gold-border">
+                    <span class="label">RWA_TOKENIZED</span>
+                    <h2>LITIO ATACAMA</h2>
+                    <p>Acceso directo a commodities estratégicos auditados por Veritas.</p>
+                    <button class="btn-main" onclick="sovereignAuth('invertir')">SOLICITAR ALLOCATION</button>
+                </div>
+            </section>
+        </main>
+
+        <div id="secret-dashboard" class="hidden">
+            <div class="terminal-overlay">
+                <h3>MIA-X: PERSISTENCE MONITOR</h3>
+                <div class="log-output" id="mia-x-logs"></div>
             </div>
         </div>
-    </main>
+    </div>
 
     <script src="script.js"></script>
 </body>
