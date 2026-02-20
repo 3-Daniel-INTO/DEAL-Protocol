@@ -1,79 +1,40 @@
-// Three.js: Atacama Particle Relief
+import { EthereumClient, w3mConnectors, w3mProvider } from '@web3modal/ethereum'
+import { Web3Modal } from '@web3modal/html'
+import { configureChains, createConfig } from '@wagmi/core'
+import { mainnet, polygon, bsc, arbitrum } from '@wagmi/core/chains'
+
+// 1. Configurar Cadenas (BTC-Bridge, ETH, SOL, etc.)
+const chains = [mainnet, polygon, bsc, arbitrum]
+const projectId = 'YOUR_WALLETCONNECT_PROJECT_ID' // Reemplazar con ID de cloud.walletconnect.com
+
+const { publicClient } = configureChains(chains, [w3mProvider({ projectId })])
+const wagmiConfig = createConfig({
+  autoConnect: true,
+  connectors: w3mConnectors({ projectId, chains }),
+  publicClient
+})
+const ethereumClient = new EthereumClient(wagmiConfig, chains)
+const web3Modal = new Web3Modal({ projectId }, ethereumClient)
+
+// Background Animado: Partículas de Montaña
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('canvas-3d'), alpha: true, antialias: true });
+const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('canvas-3d'), alpha: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 
-const geometry = new THREE.PlaneGeometry(1000, 1000, 100, 100);
-const material = new THREE.PointsMaterial({ color: 0xD4AF37, size: 1.5 });
-const mountain = new THREE.Points(geometry, material);
-mountain.rotation.x = -Math.PI / 2;
-scene.add(mountain);
-
-camera.position.y = 100;
-camera.position.z = 400;
+const particles = new THREE.BufferGeometry();
+const pCount = 8000;
+const posArray = new Float32Array(pCount * 3);
+for(let i=0; i < pCount * 3; i++) { posArray[i] = (Math.random() - 0.5) * 10; }
+particles.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+const pMaterial = new THREE.PointsMaterial({ size: 0.005, color: 0xD4AF37, transparent: true });
+const pMesh = new THREE.Points(particles, pMaterial);
+scene.add(pMesh);
+camera.position.z = 3;
 
 function animate() {
     requestAnimationFrame(animate);
-    const positions = mountain.geometry.attributes.position.array;
-    for(let i=2; i<positions.length; i+=3) {
-        positions[i] = Math.sin(i + Date.now()*0.001) * 20; 
-    }
-    mountain.geometry.attributes.position.needsUpdate = true;
+    pMesh.rotation.y += 0.001;
     renderer.render(scene, camera);
 }
 animate();
-
-// Sync con Render
-async function updateWhaleData() {
-    try {
-        const stats = await (await fetch('https://srv-d6bqorvtn9qs73di0npg.onrender.com/api/v1/stats')).json();
-        const impact = await (await fetch('https://srv-d6bqorvtn9qs73di0npg.onrender.com/api/v1/impact-report')).json();
-        document.getElementById('tvl-value').innerText = stats.tvl;
-        document.getElementById('impact-score').innerText = impact.civilization_score;
-    } catch(e) { console.log(">> [MIA-X]: Nodo Atacama en modo offline."); }
-}
-setInterval(updateWhaleData, 10000);
-updateWhaleData();
-async function refreshSynergy() {
-    try {
-        const res = await fetch('https://srv-d6bqorvtn9qs73di0npg.onrender.com/api/v1/synergy');
-        const data = await res.json();
-        const view = document.getElementById('synergy-view');
-        
-        view.innerHTML = `
-            <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
-                <span>CO2 OFFSET: <b style="color:var(--neon);">${data.impact_metrics.co2_reduction_target}</b></span>
-                <span>INFRA: <b style="color:white;">${data.impact_metrics.energy_infrastructure}</b></span>
-            </div>
-            <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:10px;">
-                <div style="border:1px solid #333; padding:5px;">BTC: ${data.crypto_appreciation.btc_impact}</div>
-                <div style="border:1px solid #333; padding:5px;">ETH: ${data.crypto_appreciation.eth_impact}</div>
-                <div style="border:1px solid #333; padding:5px;">SOL: ${data.crypto_appreciation.sol_impact}</div>
-            </div>
-        `;
-    } catch(e) { console.log(">> [MIA-X]: Nodo Atacama sincronizando..."); }
-}
-setInterval(refreshSynergy, 9000);
-refreshSynergy();
-async function refreshSynergy() {
-    try {
-        const res = await fetch('https://srv-d6bqorvtn9qs73di0npg.onrender.com/api/v1/synergy');
-        const data = await res.json();
-        const view = document.getElementById('synergy-view');
-        
-        view.innerHTML = `
-            <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
-                <span>CO2 OFFSET: <b style="color:var(--neon);">${data.impact_metrics.co2_reduction_target}</b></span>
-                <span>INFRA: <b style="color:white;">${data.impact_metrics.energy_infrastructure}</b></span>
-            </div>
-            <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:10px;">
-                <div style="border:1px solid #333; padding:5px;">BTC: ${data.crypto_appreciation.btc_impact}</div>
-                <div style="border:1px solid #333; padding:5px;">ETH: ${data.crypto_appreciation.eth_impact}</div>
-                <div style="border:1px solid #333; padding:5px;">SOL: ${data.crypto_appreciation.sol_impact}</div>
-            </div>
-        `;
-    } catch(e) { console.log(">> [MIA-X]: Nodo Atacama sincronizando..."); }
-}
-setInterval(refreshSynergy, 9000);
-refreshSynergy();
