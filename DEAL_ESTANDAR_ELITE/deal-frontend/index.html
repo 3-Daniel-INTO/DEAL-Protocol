@@ -10,15 +10,23 @@
         <h1 class="logo-deal">DEAL</h1>
         <p class="tagline">WHERE VISION MEETS CAPITAL</p>
     </div>
-</body><script>
-  // Reemplaza con tu URL de Render
-  const BACKEND_URL = "https://deal-protocol.onrender.com/api/v1/health";
+    
+    <script>
+        // Reemplaza con tu URL de Render
+        const BACKEND_URL = "https://deal-protocol.onrender.com/api/v1/health";
 
-  fetch(BACKEND_URL)
-    .then(response => response.json())
-    .then(data => {
-      console.log("DEAL Infrastructure: Connected", data);
-    })
-    .catch(err => console.error("DEAL Connection Error:", err));
-</script>
+        fetch(BACKEND_URL)
+            .then(response => response.json())
+            .then(data => {
+                console.log("DEAL Infrastructure: Connected", data);
+            })
+            .catch(err => console.error("DEAL Connection Error:", err));
+    </script>
+    
+    <!-- Vercel Speed Insights -->
+    <script>
+        window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/speed-insights/script.js"></script>
+</body>
 </html>

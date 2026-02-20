@@ -1,0 +1,45 @@
+# Vercel Speed Insights Implementation
+
+## Summary
+Successfully implemented Vercel Speed Insights for the DEAL Protocol frontend HTML project.
+
+## Changes Made
+
+### Modified Files:
+- **index.html** - Added Vercel Speed Insights tracking scripts
+
+## Implementation Details
+
+According to the Vercel Speed Insights documentation for HTML projects, I added the required script tags before the closing `</body>` tag:
+
+1. **Speed Insights Initialization Script**: Added the `window.si` function initialization that queues Speed Insights events.
+
+2. **Speed Insights Script Tag**: Added the deferred script tag that loads `/_vercel/speed-insights/script.js`.
+
+### Code Structure
+The implementation follows the official Vercel documentation for HTML projects:
+- No package installation required (HTML implementation doesn't need the `@vercel/speed-insights` package)
+- Scripts are placed at the end of the body, just before the closing `</body>` tag
+- The existing backend health check script was properly indented and moved inside the body tag for better HTML structure
+
+## Technical Notes
+
+- **No Dependencies Added**: For HTML projects, Speed Insights works via script tags only, no npm packages needed
+- **Route Addition**: After deployment, new routes will be available at `/_vercel/speed-insights/*`
+- **Deferred Loading**: The script uses `defer` attribute to avoid blocking page rendering
+- **Integration**: The Speed Insights script will automatically track Core Web Vitals and performance metrics once the app is deployed to Vercel
+
+## Next Steps
+
+To complete the Speed Insights setup:
+1. Enable Speed Insights in the Vercel dashboard for this project
+2. Deploy the updated code to Vercel
+3. Verify the script is loading by checking for `/_vercel/speed-insights/script.js` in the browser's network tab
+4. View metrics in the Vercel dashboard under the "Speed Insights" tab
+
+## Testing
+
+The implementation is ready for deployment. Once deployed to Vercel with Speed Insights enabled:
+- The tracking script will automatically begin collecting performance data
+- Metrics will appear in the Vercel dashboard after users visit the site
+- No additional configuration is required
