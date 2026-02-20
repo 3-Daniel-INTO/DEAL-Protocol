@@ -1,30 +1,30 @@
-// --- CONFIGURACIÓN DE SEGURIDAD DEAL ---
-function sovereignAuth(action) {
-    const signature = prompt("MIA-X: ESCANEO BIOMÉTRICO REQUERIDO. Ingrese Firma Digital:");
-    if(signature) {
-        alert(`MIA-X: Identidad verificada. Procesando ${action} en la red global...`);
-    }
+// --- SIMULACIÓN DE EXCEDENTES G-AGI ---
+setTimeout(() => {
+    document.getElementById('prediction-alert').classList.remove('hidden');
+    console.log(">> [G-AGI]: Alerta de capital sugerida basándose en ROI real.");
+}, 5000);
+
+function executeImpactContribution() {
+    alert("MIA-X: Procesando donación filantrópica a DALabs. Su identidad soberana ha sido acreditada.");
+    document.getElementById('prediction-alert').style.display = 'none';
 }
 
-// SECRETO INTO-3: Tecla I + 3
-let keysPressed = {};
+// SECRETO INTO-3
 document.addEventListener('keydown', (e) => {
-    keysPressed[e.key] = true;
-    if (keysPressed['I'] && keysPressed['3']) {
-        document.getElementById('secret-dashboard').classList.toggle('hidden');
-        renderSovereignLogs();
+    if (e.key === 'I' && event.altKey || e.key === '3') {
+        const dash = document.getElementById('secret-dashboard');
+        dash.classList.toggle('hidden');
+        renderPredictionLogs();
     }
 });
-document.addEventListener('keyup', (e) => { delete keysPressed[e.key]; });
 
-function renderSovereignLogs() {
+function renderPredictionLogs() {
     const logs = [
-        "> G-AGI: OPTIMIZING DALABS NODES",
-        "> MIA-X: PERSISTENCE SYNC 100%",
-        "> VERITAS: RWA LITHIUM AUDITED",
-        "> STATUS: INQUEBRANTABLE",
-        "> PHILANTHROPY POOL: ACTIVE"
+        "> ANALYZING ATACAMA LITHIUM YIELD...",
+        "> SURPLUS DETECTED: +3.4% ABOVE PROJECTION",
+        "> SYNCING WITH DALABS PHILANTHROPY POOL",
+        "> MIA-X: RECORDING HUMAN IMPACT DATA",
+        "> INFRASTRUCTURE: UNBREAKABLE STATUS"
     ];
-    const output = document.getElementById('mia-x-logs');
-    output.innerHTML = logs.map(l => `<div style="color:#D4AF37; margin-bottom:5px;">${l}</div>`).join('');
+    document.getElementById('prediction-logs').innerHTML = logs.map(l => `<p style="color:#D4AF37; font-size:12px;">${l}</p>`).join('');
 }

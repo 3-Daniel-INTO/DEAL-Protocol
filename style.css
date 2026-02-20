@@ -1,18 +1,17 @@
-:root { --gold: #D4AF37; --bg: #010101; --font: 'Space Mono', monospace; }
+:root { --gold: #D4AF37; --bg: #000; --font: 'JetBrains Mono', monospace; }
 body { margin: 0; background: var(--bg); color: #fff; font-family: var(--font); overflow: hidden; }
-#deep-render { position: fixed; top: 0; z-index: -1; filter: contrast(1.1) brightness(0.7); }
-#grain { position: fixed; inset: 0; background: url('https://grainy-gradients.vercel.app/noise.svg'); opacity: 0.03; pointer-events: none; z-index: 10; }
 
-.sovereign-ui { height: 100vh; display: flex; flex-direction: column; padding: 40px; box-sizing: border-box; }
-header { display: flex; justify-content: space-between; align-items: center; }
-.logo { font-size: 2.5rem; font-weight: 900; color: var(--gold); letter-spacing: 12px; }
+#organic-canvas { position: fixed; inset: 0; z-index: -1; opacity: 0.6; }
+.main-nav { display: flex; justify-content: space-between; padding: 40px; }
+.logo { font-family: 'Syncopate', sans-serif; font-size: 2rem; color: var(--gold); letter-spacing: 15px; }
 
-main { flex-grow: 1; display: flex; align-items: center; justify-content: space-around; }
-.card { background: rgba(255,255,255,0.02); border: 1px solid rgba(212,175,55,0.2); padding: 40px; max-width: 400px; backdrop-filter: blur(20px); transition: 0.5s; }
-.card:hover { border-color: var(--gold); box-shadow: 0 0 40px rgba(212,175,55,0.1); }
-.gold-border { border: 1px solid var(--gold); }
+/* Banner de Predicción G-AGI */
+.prediction-banner { background: linear-gradient(90deg, transparent, rgba(212,175,55,0.1), transparent); border-y: 1px solid var(--gold); padding: 20px; text-align: center; animation: slideIn 1s ease; }
+.btn-glow { background: var(--gold); border: none; padding: 10px 25px; font-weight: bold; cursor: pointer; box-shadow: 0 0 20px rgba(212,175,55,0.4); margin-left: 20px; }
 
-.funding-bar { height: 4px; background: rgba(255,255,255,0.1); margin: 20px 0; }
-.fill { height: 100%; background: var(--gold); box-shadow: 0 0 10px var(--gold); }
-.btn-invest, .btn-main { background: var(--gold); color: #000; border: none; padding: 15px 30px; font-weight: bold; cursor: pointer; width: 100%; margin-top: 20px; }
-.hidden { display: none !important; }
+.dashboard-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; padding: 0 10%; margin-top: 5vh; }
+.card-sovereign { border: 1px solid rgba(255,255,255,0.1); padding: 40px; backdrop-filter: blur(10px); }
+.card-sovereign.gold { border-color: var(--gold); }
+
+@keyframes slideIn { from { transform: translateY(-100%); } to { transform: translateY(0); } }
+.hidden { display: none; }

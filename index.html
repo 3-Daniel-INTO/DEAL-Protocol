@@ -2,46 +2,51 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>DEAL | SOVEREIGN PORTAL</title>
+    <title>DEAL | PREDICTIVE COMMAND</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 </head>
 <body>
-    <div id="grain"></div>
-    <canvas id="deep-render"></canvas>
+    <div id="grain-overlay"></div>
+    <canvas id="organic-canvas"></canvas>
 
-    <div class="sovereign-ui">
-        <header>
+    <div class="sovereign-app">
+        <header class="main-nav">
             <div class="logo">DEAL</div>
-            <div class="g-agi-status">G-AGI: MANAGING ASSETS</div>
+            <div id="g-agi-pulse" class="active">G-AGI: PREDICTING...</div>
         </header>
 
-        <main>
-            <section id="philanthropy-hub">
-                <div class="card">
-                    <span class="label">CROWDFUNDING_DALABS</span>
-                    <h2>INFRAESTRUCTURA MUNDIAL IA</h2>
-                    <p>Contribuya al laboratorio que gestiona el sistema financiero del futuro.</p>
-                    <div class="funding-bar"><div class="fill" style="width: 65%;"></div></div>
-                    <button class="btn-invest" onclick="sovereignAuth('donar')">CONTRIBUIR AHORA</button>
-                </div>
-            </section>
+        <section class="prediction-banner hidden" id="prediction-alert">
+            <div class="alert-content">
+                <span class="sparkle">✦</span> 
+                <p>G-AGI ha detectado excedentes en su cartera de Litio. ¿Desea fortalecer DALabs?</p>
+                <button class="btn-glow" onclick="executeImpactContribution()">CONTRIBUIR EXCEDENTE</button>
+            </div>
+        </section>
 
-            <section id="institutional-rwa">
-                <div class="card gold-border">
-                    <span class="label">RWA_TOKENIZED</span>
-                    <h2>LITIO ATACAMA</h2>
-                    <p>Acceso directo a commodities estratégicos auditados por Veritas.</p>
-                    <button class="btn-main" onclick="sovereignAuth('invertir')">SOLICITAR ALLOCATION</button>
-                </div>
-            </section>
+        <main class="dashboard-grid">
+            <div class="card-sovereign" id="vc-core">
+                <span class="label">VC // DALABS</span>
+                <h2>SISTEMA MUNDIAL</h2>
+                <div class="data-row"><span>STATUS:</span> <strong>EVOLVING</strong></div>
+            </div>
+
+            <div class="card-sovereign gold" id="rwa-core">
+                <span class="label">RWA // ATACAMA</span>
+                <h2>LITHIUM ASSETS</h2>
+                <div class="data-row"><span>YIELD:</span> <strong id="yield-val">+18.4%</strong></div>
+            </div>
         </main>
 
         <div id="secret-dashboard" class="hidden">
-            <div class="terminal-overlay">
-                <h3>MIA-X: PERSISTENCE MONITOR</h3>
-                <div class="log-output" id="mia-x-logs"></div>
+            <div class="admin-panel">
+                <h3>MIA-X: HUMAN-CAPITAL SYNC</h3>
+                <div id="prediction-logs"></div>
+                <div class="grid-stats">
+                    <div class="stat">USER_PERSISTENCE: OK</div>
+                    <div class="stat">PREDICTION_ACCURACY: 98.7%</div>
+                </div>
             </div>
         </div>
     </div>
