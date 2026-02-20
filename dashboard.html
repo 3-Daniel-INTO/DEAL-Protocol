@@ -4,57 +4,69 @@
     <meta charset="UTF-8">
     <title>DEAL | Whale Command Center</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
 </head>
-<body class="whale-bg">
-    <div class="sidebar">
-        <div class="logo-small">DEAL</div>
-        <nav>
-            <div class="nav-btn active">RESUMEN GLOBAL</div>
-            <div class="nav-btn">VENTURE CAPITAL</div>
-            <div class="nav-btn">CROWDFUNDING</div>
-            <div class="nav-btn">FILANTROPÍA</div>
-        </nav>
-        <div class="veritas-tag">VERIFIED BY MIA-X</div>
-    </div>
+<body class="militar-dark">
+    <canvas id="atacama-canvas"></canvas>
+    
+    <div class="ui-wrapper">
+        <aside class="sidebar-militar">
+            <div class="logo-area">
+                <h1 class="glitch" data-text="DEAL">DEAL</h1>
+                <span class="node-status">SATELLITE: ONLINE</span>
+            </div>
+            <nav>
+                <div class="nav-link active">TERMINAL PRINCIPAL</div>
+                <div class="nav-link">VENTURE CAPITAL</div>
+                <div class="nav-link">CROWDFUNDING RWA</div>
+                <div class="nav-link">DONACIONES HARMONY</div>
+            </nav>
+            <div class="veritas-seal">VERITAS AUDITED 2026</div>
+        </aside>
 
-    <main class="dashboard-core">
-        <header class="top-bar">
-            <h2>TERMINAL DE INVERSIÓN SOBERANA</h2>
-            <div class="network-status">BTC / ETH / SOL ACTIVE</div>
-        </header>
+        <main class="main-console">
+            <header class="console-header">
+                <div class="bread-crumb">WHALE_ACCESS / TERMINAL_01 / ATACAMA</div>
+                <div class="wallet-badge">0x777...DEAL</div>
+            </header>
 
-        <section class="whale-tools">
-            <div class="tool-box">
-                <h3>FILANTROPÍA & DONACIONES</h3>
-                <p>Inyectar capital directo a la Fundación Harmony.</p>
-                <div class="payment-options">
-                    <button class="pay-btn" onclick="alert('BTC Address: bc1q...')">DONAR BTC</button>
-                    <button class="pay-btn" onclick="alert('ETH Address: 0x777...')">DONAR ETH</button>
+            <section class="kpi-whale-row">
+                <div class="glass-card">
+                    <small>TOTAL VC</small>
+                    <h2>$450M</h2>
+                    <div class="mini-chart gold"></div>
                 </div>
-            </div>
+                <div class="glass-card">
+                    <small>RWA ASSETS</small>
+                    <h2>$720M</h2>
+                    <div class="mini-chart cyan"></div>
+                </div>
+                <div class="glass-card">
+                    <small>GLOBAL NODES</small>
+                    <h2>124</h2>
+                    <div class="mini-chart white"></div>
+                </div>
+            </section>
 
-            <div class="tool-box gold-border">
-                <h3>CROWDFUNDING RWA</h3>
-                <p>Inversión en Commodities Tokenizados (Litio/Energía).</p>
-                <h2 id="rwa-val">$720,000,000</h2>
-                <button class="btn-action">GESTIONAR INVERSIÓN</button>
-            </div>
-
-            <div class="tool-box">
-                <h3>VENTURE CAPITAL</h3>
-                <p>Acceso a rondas privadas de innovación tecnológica.</p>
-                <h2 id="vc-val">$450,000,000</h2>
-                <button class="btn-action">SOLICITAR ACCESO WHALE</button>
-            </div>
-        </section>
-
-        <section class="global-analytics">
-            <h3>MAPA DE CAPAS DE INVERSIÓN MUNDIAL (HEATMAP)</h3>
-            <div class="heatmap-viz">
-                <div class="pulse-node" style="top:60%; left:30%;"></div>
-                <div class="pulse-node" style="top:40%; left:70%;"></div>
-            </div>
-        </section>
-    </main>
+            <section class="action-grid">
+                <div class="action-card main-entry">
+                    <h3>PORTAL DE INVERSIÓN WHALE</h3>
+                    <p>Acceda a la infraestructura mundial de IA y commodities tokenizados.</p>
+                    <div class="button-group">
+                        <button class="btn-primary">INVERTIR EN VC</button>
+                        <button class="btn-secondary">FILANTROPÍA</button>
+                    </div>
+                </div>
+                <div class="action-card analytics">
+                    <h3>FLUJO DE CAPITAL (GLOBAL)</h3>
+                    <div class="radar-container">
+                        <div class="radar"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
