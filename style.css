@@ -1,33 +1,36 @@
-:root { --gold: #D4AF37; --bg: #010101; --text: #fff; }
-body, html { margin:0; padding:0; background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; overflow: hidden; }
+:root { --gold: #D4AF37; --bg: #020202; --text: #fff; --militar: #1a1a1a; }
+body, html { margin:0; padding:0; background: var(--bg); color: var(--text); font-family: 'Courier New', monospace; overflow: hidden; }
 
-#bg-canvas { position: fixed; top:0; left:0; z-index: 1; filter: brightness(0.4); }
-.view { position: absolute; width: 100%; height: 100vh; display: none; z-index: 10; opacity:0; background: radial-gradient(circle, transparent, rgba(0,0,0,0.8)); }
+/* 3D Canvas y Ruido */
+canvas { position: fixed; top:0; left:0; z-index: 1; }
+#noise-overlay { position: fixed; width: 100%; height: 100%; z-index: 2; background: url('https://grainy-gradients.vercel.app/noise.svg'); opacity: 0.05; pointer-events: none; }
+
+.view { position: absolute; width:100%; height:100vh; z-index: 10; display: none; opacity: 0; }
 .view.active { display: flex; opacity: 1; flex-direction: column; }
 
-header { padding: 30px 60px; display: flex; justify-content: space-between; align-items: center; z-index: 20; }
-.logo { font-size: 2rem; font-weight: 900; color: var(--gold); letter-spacing: 10px; }
-.btn-terminal-access { background: var(--gold); border: none; padding: 15px 30px; font-weight: 900; cursor: pointer; }
+/* Header & Buttons */
+.militar-header { padding: 30px 60px; display: flex; justify-content: space-between; align-items: center; background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent); }
+.logo { font-size: 2.5rem; font-weight: 900; color: var(--gold); letter-spacing: 12px; }
+.btn-connect { border: 1px solid var(--gold); background: transparent; color: var(--gold); padding: 10px 20px; cursor: pointer; transition: 0.3s; }
+.btn-connect:hover { background: var(--gold); color: #000; }
 
-.hero-portal { flex-grow: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
-.reveal-text { font-size: 7rem; margin: 0; color: var(--gold); letter-spacing: -2px; }
+.hero-content { flex-grow: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+.glitch { font-size: 8rem; font-weight: 900; color: var(--gold); margin: 0; }
 
 /* Terminal Layout */
-.terminal-container { display: flex; width: 100%; height: 100vh; }
-.terminal-nav { width: 300px; border-right: 1px solid rgba(212,175,55,0.2); padding: 50px; background: rgba(0,0,0,0.9); }
-.terminal-content { flex-grow: 1; padding: 60px; overflow-y: auto; }
+.terminal-frame { display: flex; width: 100%; height: 100vh; background: rgba(0,0,0,0.85); backdrop-filter: blur(20px); z-index: 50; }
+.side-menu { width: 320px; border-right: 1px solid rgba(212,175,55,0.2); padding: 50px; display: flex; flex-direction: column; }
+.nav-btn { background: transparent; border: none; color: #555; text-align: left; padding: 15px 0; font-size: 1rem; cursor: pointer; transition: 0.3s; }
+.nav-btn.active { color: var(--gold); border-left: 2px solid var(--gold); padding-left: 15px; }
+.nav-btn.donation { margin-top: auto; color: #00F3FF; }
 
-.tab-pane { display: none; }
-.tab-pane.active { display: block; }
+.terminal-display { flex-grow: 1; padding: 80px; }
+.tool-view { display: none; opacity: 0; }
+.tool-view.active { display: block; opacity: 1; }
 
-/* Bloqueo de Inversión */
-.lock-overlay { 
-    position: absolute; width: 100%; height: 100%; background: rgba(0,0,0,0.8); 
-    backdrop-filter: blur(10px); display: flex; justify-content: center; align-items: center; z-index: 50; 
-}
-.blur-effect { filter: blur(5px); pointer-events: none; }
-
-/* Modal */
-.modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); display: none; z-index: 100; justify-content: center; align-items: center; }
-.fingerprint-btn { width: 80px; height: 80px; border: 2px solid var(--gold); border-radius: 50%; cursor: pointer; animation: pulse 2s infinite; }
+/* Animations */
+.finger-print { width: 80px; height: 80px; border: 2px solid var(--gold); border-radius: 50%; margin: 30px auto; cursor: pointer; animation: pulse 2s infinite; }
 @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(212,175,55,0.7); } 70% { box-shadow: 0 0 0 20px rgba(212,175,55,0); } 100% { box-shadow: 0 0 0 0 rgba(212,175,55,0); } }
+.hidden { display: none !important; }
+.blink { animation: blink 1s infinite; color: var(--gold); font-size: 0.8rem; }
+@keyframes blink { 50% { opacity: 0; } }

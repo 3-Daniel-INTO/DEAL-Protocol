@@ -2,85 +2,97 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>DEAL | PORTAL</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DEAL | SOVEREIGN TERMINAL</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
 </head>
 <body>
-    <canvas id="bg-canvas"></canvas>
-    
-    <div id="view-portal" class="view active">
-        <header>
-            <div class="logo">DEAL</div>
-            <div class="header-tools">
-                <button class="btn-ghost" onclick="connectGlobalWallet()">WALLET_CONNECT</button>
-                <button class="btn-terminal-access" onclick="navTo('view-terminal')">INGRESAR AL TERMINAL</button>
-            </div>
+    <div id="noise-overlay"></div>
+    <canvas id="canvas-3d"></canvas>
+
+    <section id="view-welcome" class="view active">
+        <header class="militar-header">
+            <div class="logo-wrap"><span class="logo">DEAL</span><span class="version">v99.0</span></div>
+            <button class="btn-connect" onclick="triggerConnect()">WALLET_CONNECT</button>
         </header>
-
-        <main class="hero-portal">
-            <h1 class="reveal-text">DEAL</h1>
-            <p class="tagline">SOVEREIGN WEALTH & INNOVATION INFRASTRUCTURE</p>
-            
-            <div class="global-stats">
-                <div class="stat-box">
-                    <small>VC ASSETS</small>
-                    <div class="val">$450M</div>
-                </div>
-                <div class="stat-box">
-                    <small>RWA CUSTODY</small>
-                    <div class="val">$720M</div>
-                </div>
+        <div class="hero-content">
+            <h1 class="glitch" data-text="DEAL">DEAL</h1>
+            <p class="mission">INFRAESTRUCTURA DE INNOVACIÓN Y ACTIVOS REALES</p>
+            <div class="stats-ribbon">
+                <div class="s-item"><span>VC_POOL:</span> <strong>$450M</strong></div>
+                <div class="s-item"><span>RWA_LITHIUM:</span> <strong>$720M</strong></div>
+                <div class="s-item"><span>NODES:</span> <strong>124_ACTIVE</strong></div>
             </div>
-        </main>
-    </div>
+            <button class="btn-enter" onclick="triggerConnect()">INGRESAR AL TERMINAL</button>
+        </div>
+    </section>
 
-    <div id="view-terminal" class="view">
-        <div class="terminal-container">
-            <aside class="terminal-nav">
-                <div class="nav-brand">DEAL_CORE</div>
-                <div class="nav-links">
-                    <div class="link active" onclick="showSection('overview')">OVERVIEW</div>
-                    <div class="link" onclick="showSection('crowdfunding')">CROWDFUNDING</div>
-                    <div class="link" onclick="showSection('vc')">VENTURE_CAPITAL</div>
-                    <div class="link" onclick="showSection('rwa')">RWA_INSTITUTIONAL</div>
+    <section id="view-terminal" class="view">
+        <div class="terminal-frame">
+            <aside class="side-menu">
+                <div class="nav-title">DEAL_SERVICES</div>
+                <nav>
+                    <button class="nav-btn active" onclick="showTool('vc')">VENTURE CAPITAL</button>
+                    <button class="nav-btn" onclick="showTool('inst')">INSTITUCIONAL</button>
+                    <button class="nav-btn" onclick="showTool('crowd')">CROWDFUNDING</button>
+                    <button class="nav-btn donation" onclick="showTool('donate')">DONACIÓN_DEAL</button>
+                </nav>
+                <div class="user-info">
+                    <small>CONNECTED_USER</small>
+                    <div class="wallet-id">0x777...DEAL</div>
                 </div>
             </aside>
 
-            <main class="terminal-content">
-                <section id="section-overview" class="tab-pane active">
-                    <h2>MIA-X REAL-TIME ANALYTICS</h2>
-                    <div class="analytics-row">
-                        <div class="chart-box">
-                            <div class="radar-scan"></div>
-                            <p>SATELLITE_LINK: ATACAMA_01</p>
-                        </div>
-                        <div class="log-box" id="transaction-log">
-                            <div class="log-entry"> > MIA-X: ANALYZING LIQUIDITY...</div>
-                        </div>
+            <main class="terminal-display">
+                <div id="tool-vc" class="tool-view active">
+                    <h2>VENTURE_CAPITAL_VAULT</h2>
+                    <div class="kpi-box">
+                        <div class="kpi"><span>ROI_EST:</span> 24.5%</div>
+                        <div class="kpi"><span>STATUS:</span> SEED_OPEN</div>
                     </div>
-                </section>
+                    <p>Inversión en IA (G-AGI) y Labs Web3 (DALabs). Acceso exclusivo a rondas privadas.</p>
+                    <button class="btn-action">SOLICITAR ALLOCATION</button>
+                </div>
 
-                <section id="section-crowdfunding" class="tab-pane">
-                    <h2>CROWDFUNDING OPPORTUNITIES</h2>
-                    <div id="crowd-lock" class="lock-overlay">
-                        <button class="btn-primary" onclick="triggerAuth()">CONECTAR WALLET PARA INVERTIR</button>
+                <div id="tool-inst" class="tool-view">
+                    <h2>RWA_INSTITUTIONAL</h2>
+                    <div class="kpi-box">
+                        <div class="kpi"><span>ASSETS:</span> LITHIUM_RWA</div>
+                        <div class="kpi"><span>AUDIT:</span> VERITAS_PASS</div>
                     </div>
-                    <div class="project-grid blur-effect">
-                        <div class="card"><h3>LAB WEB3 DALABS</h3><p>Infraestructura IA.</p></div>
-                        <div class="card"><h3>OMNICHAIN V2</h3><p>Protocolo de interoperabilidad.</p></div>
+                    <div class="rwa-graph"></div>
+                    <button class="btn-action">ADQUIRIR COMMODITIES</button>
+                </div>
+
+                <div id="tool-crowd" class="tool-view">
+                    <h2>CROWDFUNDING_HUB</h2>
+                    <div class="project-card">
+                        <span>OMNICHAIN_V2_PROTOCOL</span>
+                        <strong>75% FUNDED</strong>
+                        <div class="bar"><div class="fill"></div></div>
+                        <button class="btn-invest">INVERTIR_AHORA</button>
                     </div>
-                </section>
+                </div>
+
+                <div id="tool-donate" class="tool-view">
+                    <h2>SOPORTE_SISTEMA_DEAL</h2>
+                    <p>Donaciones directas para el blindaje satelital y expansión de nodos Atacama.</p>
+                    <div class="donate-options">
+                        <button class="btn-donate">DONAR_BTC</button>
+                        <button class="btn-donate">DONAR_SOL</button>
+                    </div>
+                </div>
             </main>
         </div>
-    </div>
+    </section>
 
-    <div id="auth-modal" class="modal">
-        <div class="modal-content">
-            <h3>BIOMETRIC_VERIFICATION</h3>
-            <div class="fingerprint-btn" onclick="verifySignature()"></div>
-            <p id="auth-status">AWAITING SCAN...</p>
+    <div id="signature-overlay" class="overlay hidden">
+        <div class="sign-box">
+            <h3>MIA-X_AUTH</h3>
+            <div class="finger-print" onclick="finalizeAuth()"></div>
+            <p class="blink">REQUIERE FIRMA BIOMÉTRICA</p>
         </div>
     </div>
 
