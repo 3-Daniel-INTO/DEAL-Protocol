@@ -73,3 +73,19 @@ async function updateHeatmap() {
 }
 setInterval(updateHeatmap, 15000);
 updateHeatmap();
+async function updateCivReturn() {
+    try {
+        const res = await fetch('https://srv-d6bqorvtn9qs73di0npg.onrender.com/api/v1/civilization');
+        const data = await res.json();
+        const container = document.getElementById('civ-data');
+        
+        container.innerHTML = `
+            <div class="civ-item">REDUCCIÓN CO2<b>${data.social_equity.co2_reduction_equity}</b></div>
+            <div class="civ-item">ENERGÍA GENERADA<b>${data.social_equity.clean_energy_supplied}</b></div>
+            <div class="civ-item">DIVIDENDO EST.<b>${data.investor_impact.civilization_dividend}</b></div>
+            <div class="civ-item">RANGO<b>${data.investor_impact.status}</b></div>
+        `;
+    } catch(e) { console.warn("Sincronizando Retorno..."); }
+}
+setInterval(updateCivReturn, 12000);
+updateCivReturn();
