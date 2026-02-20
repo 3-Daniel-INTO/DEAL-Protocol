@@ -4,69 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="src/styles/global.css">
-    <title>DEAL | Global Infrastructure</title>
+    <title>DEAL | Global Financial Infrastructure</title>
 </head>
 <body>
-    <div style="padding: 20px; border-bottom: 1px solid #222; display: flex; justify-content: space-between;">
-        <div>
-            <span style="color:#39FF14; font-weight:bold; font-size:1.5rem;">DEAL</span>
-            <span style="font-size:10px; margin-left:10px; color:#555;">v2.0.26 - DALabs Core</span>
+    <nav style="padding: 20px; border-bottom: 1px solid #222; display: flex; justify-content: space-between; align-items: center;">
+        <span style="color:#39FF14; font-weight:900; font-size:1.8rem; letter-spacing:2px;">DEAL</span>
+        <div id="connection-status" style="font-size: 12px; font-family: monospace;">
+            <span class="pulse"></span> <span id="node-text">CONNECTING TO ATACAMA NODE...</span>
         </div>
-        <div id="connection-status"><span class="pulse"></span> CONNECTED</div>
-    </div>
+    </nav>
 
     <main style="padding: 40px;">
-        <h2 style="letter-spacing:10px; text-align:center; margin-bottom:50px;">OPERATIONAL DASHBOARD</h2>
-        
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
-            <div class="kpi-card neon-border">
-                <small style="color:#39FF14">TOTAL LIQUIDITY ABSORPTION</small>
-                <div style="font-size: 2.5rem; margin: 15px 0;">$ <span id="tvl-counter">0</span></div>
-                <div style="width:100%; background:#333; height:4px;"><div style="width:75%; background:#39FF14; height:100%;"></div></div>
-            </div>
-            <div class="kpi-card neon-border">
-                <small style="color:#39FF14">OMNICHAIN NODES (BTC/SOL/ETH)</small>
-                <div style="font-size: 2.5rem; margin: 15px 0;" id="nodes-count">248</div>
-                <small style="color:#555">Active Sync: Atacama Command Center</small>
-            </div>
-            <div class="kpi-card neon-border">
-                <small style="color:#39FF14">PROOF OF PROGRESS (PoP) VALIDATIONS</small>
-                <div style="font-size: 2.5rem; margin: 15px 0;">99.8%</div>
-                <small style="color:#555">Sovereign Verification Enabled</small>
-            </div>
+        <div style="text-align: center; margin-bottom: 60px;">
+            <h1 style="letter-spacing: 15px; font-size: 1rem; color: #555;">SYSTEM STATUS: OPERATIONAL</h1>
         </div>
 
-        <section style="margin-top:60px; border-top: 1px solid #222; padding-top:40px;">
-            <h3 style="color:#39FF14">SYSTEM LOGS</h3>
-            <div id="logs" style="background:#0a0a0a; padding:20px; font-size:12px; height:150px; overflow-y:auto; color:#666; border: 1px solid #1a1a1a;">
-                [INFO] Initializing DEAL Protocol...<br>
-                [INFO] Sincronizando con nodos Atacama...<br>
-                [INFO]Persistent Memory MÍA Rehace: ACTIVE
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">
+            <div class="kpi-card neon-border">
+                <small>TOTAL LIQUIDITY (TVL)</small>
+                <div style="font-size: 3rem; margin: 10px 0; color: #39FF14;">$ <span id="tvl">0</span></div>
             </div>
-        </section>
+            <div class="kpi-card neon-border">
+                <small>ACTIVE OMNICHAIN PROJECTS</small>
+                <div style="font-size: 3rem; margin: 10px 0;">12</div>
+            </div>
+            <div class="kpi-card neon-border">
+                <small>MÍA REHACE PERSISTENCE</small>
+                <div style="font-size: 1.5rem; margin: 10px 0; color: #39FF14;">ACTIVE</div>
+            </div>
+        </div>
     </main>
 
     <script>
-        // Animación de números para TVL
-        let count = 0;
-        const target = 1250000;
-        function updateCounter() {
-            if(count < target) {
-                count += 15632;
-                document.getElementById('tvl-counter').innerText = count.toLocaleString();
-                setTimeout(updateCounter, 50);
+        // Conexión dinámica usando el dominio corregido
+        async function fetchStatus() {
+            try {
+                const response = await fetch('/api/v1/health');
+                const data = await response.json();
+                document.getElementById('node-text').innerText = 'NODE: ONLINE | ' + data.persistence;
+                document.getElementById('tvl').innerText = '1,250,400';
+            } catch (e) {
+                document.getElementById('node-text').innerText = 'NODE: OFFLINE';
+                document.getElementById('node-text').style.color = 'red';
             }
         }
-        updateCounter();
-
-        // Logs dinámicos
-        const logsDiv = document.getElementById('logs');
-        setInterval(() => {
-            const entry = document.createElement('div');
-            entry.innerHTML = `[SYNC] Hito verificado en bloque #${Math.floor(Math.random()*100000)} - Protocolo PoP OK`;
-            logsDiv.appendChild(entry);
-            logsDiv.scrollTop = logsDiv.scrollHeight;
-        }, 4000);
+        fetchStatus();
     </script>
 </body>
 </html>
