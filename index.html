@@ -2,42 +2,64 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>DEAL | Portal de Inversión Soberana</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DEAL | Sovereign Asset Vault</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
-    <canvas id="canvas-3d"></canvas>
-    <div class="interface-layer">
-        <header class="navbar">
-            <div class="logo">DEAL <span class="pop">MIA-X</span></div>
-            <div class="status-indicator">G-AGI: SCANNING_ASSETS</div>
+    <canvas id="bg-canvas"></canvas>
+    
+    <div class="ui-wrapper">
+        <header class="main-header">
+            <div class="brand">
+                <h1 class="logo">DEAL</h1>
+                <span class="sub-logo">MIA-X Synchronized</span>
+            </div>
+            <div class="g-agi-status">
+                <span class="pulse-dot"></span> G-AGI: SCANNING_ASSETS
+            </div>
         </header>
 
-        <main class="dashboard-whale">
-            <section class="kpi-soberano">
-                <div class="glass-card">
-                    <small>VENTURE CAPITAL</small>
-                    <h2 id="vc-display">--</h2>
-                </div>
-                <div class="glass-card">
-                    <small>INFRAESTRUCTURA RWA</small>
-                    <h2 id="rwa-display">--</h2>
-                </div>
-            </section>
+        <section class="hero">
+            <h2 class="hero-title">SOVEREIGN ASSET VAULT</h2>
+            <p class="hero-desc">Absorción de activos y diversificación estratégica para la innovación global.</p>
+        </section>
 
-            <div class="central-vault">
-                <div class="quantum-vault-ui">
-                    <h1>BOVEDA MULTI-CHAIN</h1>
-                    <button id="connect-btn" class="btn-glow">ACTIVAR WALLETCONNECT</button>
-                </div>
+        <div class="kpi-container">
+            <div class="kpi-card">
+                <span class="card-label">VENTURE CAPITAL</span>
+                <div class="card-value">$450M</div>
+                <div class="progress-bar"><div class="fill" style="width: 75%;"></div></div>
             </div>
 
-            <section class="tools-sector">
-                <div id="veritas-log" class="terminal-text">AUDITORÍA VERITAS: PENDIENTE...</div>
-            </section>
-        </main>
+            <div class="kpi-card">
+                <span class="card-label">REDUCCIÓN CO2</span>
+                <div class="card-value">1.5M</div>
+                <span class="card-unit">TONELADAS REDUCIDAS</span>
+                <div class="progress-bar"><div class="fill neon" style="width: 85%;"></div></div>
+            </div>
+
+            <div class="kpi-card veritas">
+                <span class="card-label">AUDITORÍA VERITAS</span>
+                <div class="veritas-log" id="log-stream">
+                    ID: v74_GENESIS_CONFIRMED...<br>
+                    STATUS: AUDITED_BY_MIA-X<br>
+                    BLOCK_HEIGHT: 832,109<br>
+                    SYNC_RATE: 100%
+                </div>
+                <div class="progress-bar"><div class="fill white" style="width: 100%;"></div></div>
+            </div>
+        </div>
+
+        <div class="action-footer">
+            <button class="btn-gold">CONNECT UNIVERSAL WALLET</button>
+            <button class="btn-dark">INSTITUTIONAL REPORT (PDF)</button>
+            <div class="load-status">LOAD_SIM: 10k REQ/SEC - STABLE</div>
+        </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
