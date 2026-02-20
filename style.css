@@ -1,25 +1,28 @@
-:root { --gold: #D4AF37; --bg: #050505; --font-main: 'Syncopate', sans-serif; }
-@import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Inter:wght@300;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=JetBrains+Mono:wght@300;500&display=swap');
 
-body, html { margin: 0; background: var(--bg); color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; }
-#main-canvas { position: fixed; top: 0; z-index: -1; filter: contrast(1.2) brightness(0.6); }
-#noise { position: fixed; inset: 0; z-index: 100; background: url('https://grainy-gradients.vercel.app/noise.svg'); opacity: 0.04; pointer-events: none; }
+:root { --gold: #D4AF37; --bg: #030303; --text: #E0E0E0; }
+body, html { margin: 0; padding: 0; background: var(--bg); color: var(--text); font-family: 'JetBrains Mono', monospace; overflow-x: hidden; }
 
-/* Navegación Grado Militar */
-.military-nav { position: fixed; top: 0; width: 100%; padding: 25px 50px; display: flex; justify-content: space-between; align-items: center; z-index: 200; backdrop-filter: blur(10px); border-bottom: 1px solid rgba(212,175,55,0.1); box-sizing: border-box; }
-.logo { font-family: var(--font-main); font-weight: 700; font-size: 1.4rem; letter-spacing: 6px; color: var(--gold); }
-.nav-status { font-size: 0.7rem; letter-spacing: 2px; color: #00F3FF; display: flex; align-items: center; gap: 8px; }
-.pulse-icon { width: 6px; height: 6px; background: #00F3FF; border-radius: 50%; box-shadow: 0 0 10px #00F3FF; animation: pulse 2s infinite; }
+#render-canvas { position: fixed; top: 0; left: 0; z-index: -1; }
+#grain-overlay { position: fixed; inset: 0; background: url('https://grainy-gradients.vercel.app/noise.svg'); opacity: 0.05; pointer-events: none; z-index: 10; }
+#crt-scanline { position: fixed; inset: 0; background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%); background-size: 100% 4px; z-index: 5; pointer-events: none; }
+
+/* Monitor Veritas */
+.veritas-monitor { position: fixed; left: 0; top: 0; height: 100vh; width: 280px; background: rgba(0,0,0,0.85); border-right: 1px solid rgba(212,175,55,0.2); padding: 50px 25px; z-index: 100; backdrop-filter: blur(15px); }
+.monitor-header { font-family: 'Syncopate'; font-size: 0.65rem; color: var(--gold); letter-spacing: 2px; border-bottom: 1px solid var(--gold); padding-bottom: 10px; }
+.stream-container { margin-top: 30px; font-size: 0.7rem; color: #00F3FF; height: 70%; overflow: hidden; line-height: 1.6; }
+
+/* Navegación */
+.deal-nav { position: fixed; top: 0; right: 0; width: calc(100% - 280px); padding: 30px 60px; display: flex; justify-content: space-between; align-items: center; z-index: 150; }
+.brand { font-family: 'Syncopate'; font-size: 1.8rem; color: var(--gold); letter-spacing: 10px; }
+.btn-wallet { background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 10px 20px; cursor: pointer; font-weight: bold; }
 
 /* Scrollytelling Panels */
-.panel { height: 100vh; display: flex; align-items: center; justify-content: center; padding: 0 10%; position: relative; border-bottom: 1px solid rgba(255,255,255,0.05); }
-.main-title { font-family: var(--font-main); font-size: 8rem; margin: 0; color: var(--gold); letter-spacing: -5px; }
-.massive { font-family: var(--font-main); font-size: 5rem; color: var(--gold); line-height: 1; }
+.step { height: 100vh; display: flex; align-items: center; padding-left: 320px; box-sizing: border-box; position: relative; }
+.content-box { max-width: 600px; opacity: 0; transform: translateY(50px); }
+.content-box.center { text-align: center; margin: 0 auto; padding-right: 320px; }
+.content-box.right { margin-left: auto; margin-right: 100px; text-align: right; }
 
-/* Botones y Cards */
-.btn-action { background: var(--gold); border: none; padding: 15px 40px; font-weight: 900; font-family: var(--font-main); cursor: pointer; transition: 0.3s; margin-top: 30px; }
-.btn-action:hover { box-shadow: 0 0 30px var(--gold); transform: scale(1.05); }
-.kpi-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(212,175,55,0.2); padding: 20px; display: inline-block; font-family: var(--font-main); font-size: 1.2rem; }
-
-@keyframes pulse { 0% { opacity: 0.4; } 50% { opacity: 1; } 100% { opacity: 0.4; } }
-.hidden { display: none; }
+h1.glitch-title { font-family: 'Syncopate'; font-size: 7rem; margin: 0; color: var(--gold); letter-spacing: -5px; }
+h2 { font-family: 'Syncopate'; font-size: 3.5rem; color: var(--gold); margin: 0; }
+.btn-main { background: var(--gold); color: #000; border: none; padding: 15px 40px; font-weight: 900; margin-top: 25px; cursor: pointer; }
