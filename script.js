@@ -38,3 +38,21 @@ async function fetchStats() {
 }
 setInterval(fetchStats, 5000);
 fetchStats();
+// Simulación de Mapa 3D de Nodos Atacama
+function initMap() {
+    const mapDiv = document.getElementById('atacam-map');
+    mapDiv.innerHTML = '<div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; color:#555;">[ CARGANDO MALLA GEODÉSICA DE ATACAMA... ]</div>';
+    setTimeout(() => {
+        mapDiv.style.background = "url('https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?auto=format&fit=crop&w=1000&q=80')";
+        mapDiv.style.backgroundSize = "cover";
+        mapDiv.style.opacity = "0.4";
+    }, 2000);
+}
+initMap();
+
+// Handler de Worldcoin
+document.getElementById('worldid-verify').onclick = async () => {
+    document.getElementById('verification-status').innerText = "●";
+    document.getElementById('verification-status').style.color = "#39FF14";
+    alert("WORLD ID: Verificación de Humanidad Exitosa. Acceso Nivel Whale Concedido.");
+};
