@@ -2,31 +2,30 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>DEAL | Institutional Venture Capital Portal</title>
+    <title>DEAL | Sovereign Investment & Veritas Audit</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <style>
-        :root { --neon: #00FFFF; --gold: #FFD700; --green: #39FF14; --bg: #000; }
+        :root { --neon: #00FFFF; --gold: #FFD700; --green: #39FF14; --bg: #000; --red: #FF3131; }
         body, html { margin: 0; padding: 0; font-family: 'Orbitron', sans-serif; background: var(--bg); color: #fff; overflow-x: hidden; scroll-behavior: smooth; }
         
         #canvas-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
-        #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, transparent 10%, #000 90%); z-index: 0; pointer-events: none; }
+        #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, transparent 20%, #000 100%); z-index: 0; pointer-events: none; }
         
-        header { position: fixed; width: 100%; top: 0; padding: 25px; display: flex; justify-content: space-between; z-index: 100; backdrop-filter: blur(20px); border-bottom: 1px solid rgba(57, 255, 20, 0.2); box-sizing: border-box; }
-        .logo-a { color: var(--green); font-size: 1.8rem; font-weight: bold; letter-spacing: 2px; }
+        header { position: fixed; width: 100%; top: 0; padding: 20px; display: flex; justify-content: space-between; z-index: 100; backdrop-filter: blur(15px); border-bottom: 1px solid rgba(0,255,255,0.1); box-sizing: border-box; }
+        .logo-a { color: var(--green); font-size: 1.5rem; font-weight: bold; text-shadow: 0 0 10px var(--green); }
 
-        section { min-height: 100vh; padding: 120px 10%; display: flex; flex-direction: column; justify-content: center; z-index: 5; position: relative; }
+        section { min-height: 100vh; padding: 100px 10%; display: flex; flex-direction: column; justify-content: center; z-index: 5; position: relative; }
         
-        .vc-card { background: rgba(255, 215, 0, 0.03); border: 1px solid var(--gold); padding: 50px; border-radius: 2px; backdrop-filter: blur(30px); max-width: 800px; margin: auto; }
-        .vc-card h2 { color: var(--gold); font-size: 2.5rem; margin-top: 0; }
+        .glass-panel { background: rgba(0, 10, 10, 0.85); border: 1px solid var(--neon); padding: 30px; border-radius: 5px; backdrop-filter: blur(20px); }
         
-        .form-input { background: #000; border: 1px solid #333; color: var(--green); padding: 15px; width: 100%; margin-bottom: 20px; font-family: 'Share Tech Mono'; box-sizing: border-box; }
-        .form-input:focus { border-color: var(--green); outline: none; }
+        /* Veritas Console */
+        .veritas-console { font-family: 'Share Tech Mono', monospace; font-size: 0.85rem; color: var(--green); background: #050505; padding: 20px; border: 1px solid #222; height: 250px; overflow-y: hidden; margin-top: 20px; }
+        .log-entry { margin-bottom: 5px; border-bottom: 1px solid #111; }
+        .log-entry.critical { color: var(--gold); }
 
-        .btn-vc { background: var(--gold); color: #000; border: none; padding: 20px 40px; font-family: 'Orbitron'; font-weight: bold; cursor: pointer; width: 100%; transition: 0.4s; }
-        .btn-vc:hover { background: #fff; box-shadow: 0 0 40px rgba(255,215,0,0.4); }
-
-        .footer-info { font-family: 'Share Tech Mono'; font-size: 0.7rem; color: #444; margin-top: 50px; text-align: center; }
+        .btn-main { background: var(--green); color: #000; border: none; padding: 15px 40px; font-family: 'Orbitron'; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        .btn-main:hover { box-shadow: 0 0 25px var(--green); transform: scale(1.05); }
     </style>
 </head>
 <body>
@@ -35,28 +34,29 @@
 
     <header>
         <div class="logo-a">DEAL ▲</div>
-        <div style="font-family:'Share Tech Mono'; color:var(--gold); font-size:0.7rem;">INSTITUTIONAL_PORTAL_V1</div>
+        <div style="font-family:'Share Tech Mono'; color:var(--neon); font-size:0.7rem;">VERITAS_PROTOCOL: ACTIVE</div>
     </header>
 
-    <section>
-        <div class="vc-card">
-            <h2>VENTURE CAPITAL ACCESS</h2>
-            <p style="color: var(--neon); font-family: 'Share Tech Mono'; margin-bottom: 30px;">APPLY FOR EXCLUSIVE DEALS & INFRASTRUCTURE INNOVATION</p>
-            
-            <input type="text" class="form-input" placeholder="INSTITUTION_NAME">
-            <input type="email" class="form-input" placeholder="AUTHORIZED_OFFICER_EMAIL">
-            <input type="number" class="form-input" placeholder="ALLOCATION_INTENT_USD">
-            
-            <button class="btn-vc" onclick="submitApplication()">REQUEST WHITE-LIST ACCESS</button>
-            
-            <p style="font-size: 0.7rem; margin-top: 20px; opacity: 0.6;">Sincronizado con MIA-X. Tus datos están blindados en el Nodo Atacama.</p>
+    <section id="veritas-section">
+        <h2 style="color: var(--gold); margin-bottom: 10px;">VERITAS AUDIT</h2>
+        <p style="color: var(--neon); letter-spacing: 2px; font-size: 0.8rem;">REAL-TIME PROOF OF PROGRESS (PoP)</p>
+        
+        <div class="glass-panel">
+            <div class="veritas-console" id="console">
+                <div class="log-entry">> INITIATING VERITAS PROTOCOL...</div>
+                <div class="log-entry">> SYNCING ATACAMA MASTER NODE [STATUS: OK]</div>
+                <div class="log-entry">> QUANTUM SPACE RELAY: CONNECTED</div>
+                <div class="log-entry critical">> MIA-X PERSISTENCE HASH: 0x8F3A...E92D</div>
+            </div>
+            <div style="margin-top: 20px; display: flex; gap: 20px;">
+                <button class="btn-main" onclick="location.href='#invest'">INVEST IN INNOVATION</button>
+            </div>
         </div>
-        <div class="footer-info">OPERATED BY DALABS | HARMONY FOUNDATION | © 2026</div>
     </section>
 
     <script>
-        let scene, camera, renderer, cloud;
-        
+        let scene, camera, renderer, starField;
+
         function init3D() {
             scene = new THREE.Scene();
             camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 5000);
@@ -64,27 +64,49 @@
             renderer.setSize(window.innerWidth, window.innerHeight);
             document.getElementById('canvas-container').appendChild(renderer.domElement);
 
-            const geo = new THREE.TorusKnotGeometry(200, 60, 100, 16);
-            const mat = new THREE.MeshBasicMaterial({ color: 0xFFD700, wireframe: true, transparent: true, opacity: 0.15 });
-            cloud = new THREE.Mesh(geo, mat);
-            scene.add(cloud);
+            const starGeo = new THREE.BufferGeometry();
+            const stars = [];
+            for (let i = 0; i < 10000; i++) {
+                stars.push(THREE.MathUtils.randFloatSpread(4000), THREE.MathUtils.randFloatSpread(4000), THREE.MathUtils.randFloatSpread(4000));
+            }
+            starGeo.setAttribute('position', new THREE.Float32BufferAttribute(stars, 3));
+            const starMat = new THREE.PointsMaterial({ color: 0x39FF14, size: 0.6 });
+            starField = new THREE.Points(starGeo, starMat);
+            scene.add(starField);
 
-            camera.position.z = 800;
+            camera.position.z = 1000;
         }
 
         function animate() {
             requestAnimationFrame(animate);
-            cloud.rotation.y += 0.002;
-            cloud.rotation.x += 0.001;
+            starField.rotation.y += 0.0007;
             renderer.render(scene, camera);
         }
 
-        function submitApplication() {
-            alert("Application Sent. MIA-X is validating Institutional Credentials...");
+        // Simulación de Logs Veritas
+        function startLogs() {
+            const consoleBox = document.getElementById('console');
+            const messages = [
+                "> VALIDATING RWA COLLATERAL: GOLD_VAULT_01",
+                "> MIA-X INDIVIDUAL MEMORY SYNC... COMPLETE",
+                "> HARMONY FOUNDATION BALANCE VERIFIED",
+                "> CROSS-CHAIN BRIDGE: BTC/SOL ACTIVE",
+                "> ATACAMA BLINDAGE: 100% OPERATIONAL"
+            ];
+            let i = 0;
+            setInterval(() => {
+                const div = document.createElement('div');
+                div.className = 'log-entry';
+                div.innerHTML = messages[i % messages.length];
+                consoleBox.appendChild(div);
+                if (consoleBox.childNodes.length > 10) consoleBox.removeChild(consoleBox.firstChild);
+                i++;
+            }, 3000);
         }
 
         init3D();
         animate();
+        startLogs();
     </script>
 </body>
 </html>
