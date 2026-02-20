@@ -9,3 +9,9 @@
 
 ### 📊 KPI Globales
 - **AUM:** $2.5B+ | **Nodos:** OMNI Reach | **Status:** Online
+
+## 🚀 Portal de Emprendedores (Crowdfunding)
+Los emprendedores pueden registrar sus startups directamente en la red MIA-X a través del portal de ingreso DEAL. Cada proyecto es auditado por G-AGI para asegurar el alineamiento con Harmony Fundación.
+
+## 🏛️ Filantropía DALabs
+Recaudo destinado exclusivamente a la expansión de los nodos Atacama y blindaje de datos vitales.

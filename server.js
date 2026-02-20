@@ -1,20 +1,19 @@
 const express = require('express');
 const path = require('path');
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 10000; // Render usa 10000 por defecto
 
-// Servir archivos estáticos con caché optimizada
-app.use(express.static(path.join(__dirname, '/'), {
-  maxAge: '1d',
-  setHeaders: (res, path) => {
-    res.setHeader('X-Sovereign-Platform', 'DEAL-DALabs');
-  }
-}));
+app.use(express.static(path.join(__dirname, '/')));
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
+// Endpoint de Salud para evitar que Render marque el despliegue como fallido
+app.get('/healthz', (req, res) => {
+    res.status(200).send('DEAL NEURAL ENGINE ONLINE');
 });
 
-app.listen(PORT, () => {
-  console.log(`>> [G-AGI]: DEAL Neural Engine Active on Port ${PORT}`);
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+app.listen(PORT, '0.0.0.0', () => {
+    console.log(`>> [G-AGI]: Ecosistema DEAL operando en puerto ${PORT}`);
 });

@@ -2,12 +2,13 @@
   "version": 2,
   "name": "deal-protocol",
   "builds": [
+    { "src": "server.js", "use": "@vercel/node" },
     { "src": "index.html", "use": "@vercel/static" },
     { "src": "style.css", "use": "@vercel/static" },
     { "src": "script.js", "use": "@vercel/static" }
   ],
   "routes": [
-    { "handle": "filesystem" },
+    { "src": "/healthz", "dest": "/server.js" },
     { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
