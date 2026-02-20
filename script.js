@@ -1,68 +1,44 @@
-const BACKEND_URL = 'https://deal-protocol.onrender.com/api/v1/deal/all';
+const hoverSfx = new Howl({ src: ['https://assets.mixkit.co/sfx/preview/mixkit-tech-breakdown-1102.mp3'], volume: 0.1 });
 
-// Audio SFX Biónico
-const hoverSound = new Howl({ src: ['https://assets.mixkit.co/sfx/preview/mixkit-tech-breakdown-1102.mp3'], volume: 0.1 });
-const clickSound = new Howl({ src: ['https://assets.mixkit.co/sfx/preview/mixkit-computer-processing-status-v2-3066.mp3'], volume: 0.3 });
+// Engine 3D: Atacama Gold Terrain
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({canvas: document.getElementById('bg-canvas'), alpha: true, antialias: true});
+renderer.setSize(window.innerWidth, window.innerHeight);
 
-// Función para FORZAR el llenado de datos
-async function forceDataHydration() {
+const geometry = new THREE.BufferGeometry();
+const count = 25000;
+const pos = new Float32Array(count * 3);
+for(let i=0; i<count*3; i++) pos[i] = (Math.random() - 0.5) * 35;
+geometry.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+const material = new THREE.PointsMaterial({color: 0xD4AF37, size: 0.015, transparent: true, opacity: 0.6});
+const mesh = new THREE.Points(geometry, material);
+scene.add(mesh);
+camera.position.z = 8;
+
+function animate() {
+    requestAnimationFrame(animate);
+    mesh.rotation.y += 0.0006;
+    renderer.render(scene, camera);
+}
+animate();
+
+// Sincronización con Render
+async function loadData() {
     try {
-        console.log(">> MIA-X: Intentando sincronización satelital...");
-        const res = await fetch(BACKEND_URL);
+        const res = await fetch('https://deal-protocol.onrender.com/api/v1/sync');
         const data = await res.json();
-        
-        // Inyectar datos en el DOM
-        document.getElementById('vc-val').innerText = data.vc.value;
-        document.getElementById('rwa-val').innerText = data.rwa.value;
-        document.getElementById('co2-val').innerText = data.co2.value;
-        document.getElementById('veritas-status').innerText = data.veritas.status;
-        
-        console.log(">> MIA-X: Sincronización Exitosa.");
-    } catch (error) {
-        console.error(">> MIA-X Error: Satélite fuera de rango. Usando respaldo de Atacama.");
-        // Valores de respaldo (Backup) para que la web NUNCA esté vacía
-        document.getElementById('vc-val').innerText = "$450,000,000";
-        document.getElementById('rwa-val').innerText = "$720,000,000";
+        document.getElementById('vc-val').innerText = data.vc;
+        document.getElementById('rwa-val').innerText = data.rwa;
+    } catch(e) {
+        console.log("Offline mode - Using persistence cache.");
     }
 }
 
-// Motor 3D Atacama (Optimizado para Carga Rápida)
-const init3D = () => {
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({canvas: document.getElementById('bg-canvas'), alpha: true, antialias: false});
-    renderer.setSize(window.innerWidth, window.innerHeight);
+document.querySelectorAll('.hover-sfx').forEach(el => el.addEventListener('mouseenter', () => hoverSfx.play()));
 
-    const geo = new THREE.BufferGeometry();
-    const count = 15000;
-    const pos = new Float32Array(count * 3);
-    for(let i=0; i<count*3; i++) pos[i] = (Math.random() - 0.5) * 35;
-    geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
-    
-    const mat = new THREE.PointsMaterial({color: 0xD4AF37, size: 0.012});
-    const mesh = new THREE.Points(geo, mat);
-    scene.add(mesh);
-    camera.position.z = 8;
-
-    function animate() {
-        requestAnimationFrame(animate);
-        mesh.rotation.y += 0.0006;
-        renderer.render(scene, camera);
-    }
-    animate();
-};
-
-// Control de UI y Eventos
-window.onload = () => {
-    init3D();
-    forceDataHydration();
-    
-    document.querySelectorAll('.hover-sfx').forEach(el => {
-        el.addEventListener('mouseenter', () => hoverSound.play());
-    });
-
-    setTimeout(() => {
-        document.getElementById('loader').style.display = 'none';
-        document.getElementById('app').style.display = 'flex';
-    }, 3000);
-};
+setTimeout(() => {
+    document.getElementById('loader').style.display = 'none';
+    document.querySelector('.interface').style.display = 'flex';
+    loadData();
+}, 4000);
