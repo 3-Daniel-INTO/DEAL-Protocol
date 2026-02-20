@@ -1,0 +1,28 @@
+:root {
+  --bg: #000000;
+  --neon: #39FF14;
+  --gray: #1a1a1a;
+}
+body {
+  background-color: var(--bg);
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  overflow-x: hidden;
+}
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 40px;
+}
+.card {
+  background: var(--gray);
+  border: 1px solid rgba(57, 255, 20, 0.2);
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+}
+.card h3 { color: var(--neon); font-size: 0.8rem; letter-spacing: 2px; }
+.card p { font-size: 2rem; font-weight: bold; margin: 10px 0; }
+.neon-text { color: var(--neon); text-shadow: 0 0 10px rgba(57, 255, 20, 0.5); }

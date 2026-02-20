@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="src/styles/global.css">
+    <title>DEAL | Dashboard</title>
+</head>
+<body>
+    <nav style="padding: 20px; border-bottom: 1px solid #333; display: flex; justify-content: space-between; align-items: center;">
+        <span class="neon-text" style="font-weight: 900; font-size: 1.5rem;">DEAL</span>
+        <div id="status-indicator" style="font-size: 10px; color: #555;">SYSTEM: SCANNING...</div>
+    </nav>
+
+    <div class="dashboard-grid">
+        <div class="card">
+            <h3>TOTAL VALUE LOCKED (TVL)</h3>
+            <p id="tvl">$0.00</p>
+        </div>
+        <div class="card">
+            <h3>ACTIVE PROJECTS</h3>
+            <p id="projects">0</p>
+        </div>
+        <div class="card">
+            <h3>$DEAL BURNED</h3>
+            <p id="burned">0</p>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = "https://deal-protocol.onrender.com/api/v1/health";
+        
+        async function updateDashboard() {
+            try {
+                const res = await fetch(API_URL);
+                const data = await res.json();
+                document.getElementById('status-indicator').innerHTML = `SYSTEM: ${data.status} | PROVIDER: ${data.provider}`;
+                document.getElementById('status-indicator').style.color = "#39FF14";
+                
+                // Simulación de datos financieros DEAL
+                document.getElementById('tvl').innerText = "$1.2M";
+                document.getElementById('projects').innerText = "12";
+                document.getElementById('burned').innerText = "450K";
+            } catch (err) {
+                document.getElementById('status-indicator').innerText = "SYSTEM: OFFLINE";
+                document.getElementById('status-indicator').style.color = "red";
+            }
+        }
+        updateDashboard();
+        setInterval(updateDashboard, 10000);
+    </script>
+</body>
+</html>
