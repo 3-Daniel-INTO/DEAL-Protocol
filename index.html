@@ -3,127 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DEAL | SOVEREIGN TERMINAL</title>
+    <title>DEAL | THE SOVEREIGN ENGINE</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollToPlugin.min.js"></script>
 </head>
 <body>
-    <div id="noise-overlay"></div>
-    <canvas id="canvas-3d"></canvas>
+    <div id="noise"></div>
+    <canvas id="yuga-canvas"></canvas>
 
-    <header class="main-header">
-        <div class="logo-wrap"><span class="logo">DEAL</span><span class="version">v100.0</span></div>
-        <div class="header-actions">
-            <button class="btn-connect" onclick="triggerConnect()">WALLET_CONNECT</button>
-            <button class="btn-enter-terminal" onclick="navTo('view-terminal')">TERMINAL</button>
+    <nav class="deal-nav">
+        <div class="logo">DEAL</div>
+        <div class="nav-links">
+            <button onclick="scrollToSection('vc')">VENTURE_CAPITAL</button>
+            <button onclick="scrollToSection('rwa')">INSTITUCIONAL_RWA</button>
+            <button onclick="scrollToSection('crowd')">CROWDFUNDING</button>
+            <button class="btn-wallet" onclick="triggerAuth()">WALLET_CONNECT</button>
         </div>
-    </header>
+    </nav>
 
-    <div id="app-container">
-        
-        <section id="view-welcome" class="view active scrolly-section" data-scroll-zoom="1" data-scroll-rotate="0.05">
-            <div class="hero-content">
-                <h1 class="glitch" data-text="DEAL">DEAL</h1>
-                <p class="mission">INFRAESTRUCTURA DE INNOVACIÓN Y ACTIVOS REALES</p>
-                <div class="stats-ribbon">
-                    <div class="s-item"><span>VC_POOL:</span> <strong>$450M</strong></div>
-                    <div class="s-item"><span>RWA_LITHIUM:</span> <strong>$720M</strong></div>
-                    <div class="s-item"><span>NODES:</span> <strong>124_ACTIVE</strong></div>
-                </div>
-            </div>
-        </section>
-
-        <section id="scrolly-vc" class="view scrolly-section" data-scroll-zoom="1.5" data-scroll-rotate="0.01">
-            <div class="content-left">
-                <h2>VENTURE_CAPITAL_VAULT</h2>
-                <p>Inversión en IA (G-AGI) y Labs Web3 (DALabs). Acceso exclusivo a rondas privadas.</p>
-                <div class="kpi-box">
-                    <div class="kpi"><span>ROI_EST:</span> 24.5%</div>
-                    <div class="kpi"><span>STATUS:</span> SEED_OPEN_2026</div>
-                </div>
-                <button class="btn-action" onclick="triggerConnect()">ACCEDER_VAULT</button>
-            </div>
-        </section>
-
-        <section id="scrolly-rwa" class="view scrolly-section" data-scroll-zoom="2" data-scroll-rotate="-0.03">
-            <div class="content-right">
-                <h2>RWA_INSTITUCIONAL</h2>
-                <p>Activos reales tokenizados: Litio de Atacama, energía limpia y commodities estratégicos.</p>
-                <div class="rwa-map-preview">
-                    <div class="radar-scan"></div>
-                    <small>MAPA DE DEMANDA GLOBAL (MIA-X)</small>
-                </div>
-                <button class="btn-action" onclick="triggerConnect()">ADQUIRIR_RWAs</button>
-            </div>
-        </section>
-
-        <section id="scrolly-crowd" class="view scrolly-section" data-scroll-zoom="1.2" data-scroll-rotate="0.02">
-            <div class="content-center">
-                <h2>CROWDFUNDING_HUB</h2>
-                <p>Financiamiento colectivo de proyectos disruptivos bajo el protocolo DEAL.</p>
-                <div class="project-card">
-                    <span>OMNICHAIN_V2_PROTOCOL</span>
-                    <strong>75% FUNDED</strong>
-                    <div class="bar"><div class="fill"></div></div>
-                    <button class="btn-invest" onclick="triggerConnect()">INVERTIR_AHORA</button>
-                </div>
-            </div>
-        </section>
-
-        <section id="scrolly-donate" class="view scrolly-section" data-scroll-zoom="1.8" data-scroll-rotate="0.0">
-            <div class="content-right">
-                <h2>SOPORTE_SISTEMA_DEAL</h2>
-                <p>Donaciones directas para el blindaje satelital y expansión de nodos Atacama.</p>
-                <div class="donate-options">
-                    <button class="btn-donate" onclick="alert('Donar BTC')">DONAR_BTC</button>
-                    <button class="btn-donate" onclick="alert('Donar SOL')">DONAR_SOL</button>
-                </div>
-            </div>
-        </section>
-
-        <section id="view-terminal" class="view">
-            <div class="terminal-frame">
-                <aside class="side-menu">
-                    <div class="nav-title">DEAL_SERVICES</div>
-                    <nav>
-                        <button class="nav-btn active" onclick="showTool('summary')">OVERVIEW</button>
-                        <button class="nav-btn" onclick="showTool('analytics')">MIA-X_ANALYTICS</button>
-                        <button class="nav-btn" onclick="showTool('portfolio')">PORTFOLIO</button>
-                        <button class="nav-btn" onclick="navTo('view-welcome')">EXIT</button>
-                    </nav>
-                    <div class="user-info">
-                        <small>CONNECTED_USER</small>
-                        <div class="wallet-id">0x777...DEAL</div>
+    <main id="smooth-wrapper">
+        <div id="smooth-content">
+            
+            <section class="y-section hero" id="home">
+                <div class="inner">
+                    <h1 class="y-title">DEAL</h1>
+                    <p class="y-subtitle">INFRAESTRUCTURA DE INNOVACIÓN Y ACTIVOS REALES</p>
+                    <div class="kpi-hero">
+                        <div class="kpi-item">AUM: $1.17B</div>
+                        <div class="kpi-item">MIA-X: ACTIVE</div>
                     </div>
-                </aside>
-                <main class="terminal-display">
-                    <div id="tool-summary" class="tool-view active">
-                        <h2>OVERVIEW_OPERATIONAL</h2>
-                        <p>Resumen consolidado de sus activos y rendimiento en el ecosistema DEAL.</p>
-                        <div class="grid-summary">
-                            <div class="sum-card"><h3>TOTAL_AUM</h3><span>$1.17B</span></div>
-                            <div class="sum-card"><h3>NET_ROI</h3><span>+18.3%</span></div>
-                        </div>
-                    </div>
-                    <div id="tool-analytics" class="tool-view">
-                        <h2>MIA-X_ANALYTICS_LOG</h2>
-                        <div class="log-output" id="transaction-log"></div>
-                    </div>
-                    <div id="tool-portfolio" class="tool-view">
-                        <h2>ACTIVE_ALLOCATIONS</h2>
-                        <p>Gestión de su cartera de inversión DEAL.</p>
-                    </div>
-                </main>
-            </div>
-        </section>
+                    <div class="scroll-indicator">DESCUBRE EL FUTURO</div>
+                </div>
+            </section>
 
-    </div> <div id="signature-overlay" class="overlay hidden">
-        <div class="sign-box">
-            <h3>MIA-X_AUTH_PROTOCOL</h3>
-            <div class="finger-print" onclick="finalizeAuth()"></div>
-            <p class="blink">REQUIERE FIRMA BIOMÉTRICA</p>
+            <section class="y-section" id="vc">
+                <div class="grid-layout">
+                    <div class="text-block">
+                        <span class="label">01 // VENTURE CAPITAL</span>
+                        <h2>G-AGI & DALABS</h2>
+                        <p>Inversión en el motor de inteligencia independiente G x Grok. DALabs: La base del sistema financiero mundial.</p>
+                        <div class="kpi-tag">ALLOCATION: $450,000,000</div>
+                        <button class="btn-invest-internal" onclick="triggerAuth()">SOLICITAR ACCESO SEED</button>
+                    </div>
+                    <div class="visual-container">
+                        <div class="floating-tech-card">MIA-X PERSISTENCE</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="y-section" id="rwa">
+                <div class="inner center">
+                    <span class="label">02 // RWA INSTITUCIONAL</span>
+                    <h2 class="massive-text">ATACAMA LITHIUM</h2>
+                    <p>Tokenización de materias primas críticas bajo auditoría Proof of Progress.</p>
+                    <div class="rwa-stats">
+                        <div class="stat"><h3>720M</h3><p>VALUE_TOKENIZED</p></div>
+                        <div class="stat"><h3>VERITAS</h3><p>PROTOCOL_NAME</p></div>
+                    </div>
+                    <button class="btn-action-rwa" onclick="triggerAuth()">EXPLORAR COMMODITIES</button>
+                </div>
+            </section>
+
+            <section class="y-section" id="crowd">
+                <div class="cards-container">
+                    <div class="y-card">
+                        <span class="label">03 // CROWDFUNDING</span>
+                        <h3>OMNICHAIN V2</h3>
+                        <p>Protocolos de interoperabilidad para BTC, ETH y SOL.</p>
+                        <button class="y-btn" onclick="triggerAuth()">PARTICIPAR</button>
+                    </div>
+                    <div class="y-card special">
+                        <span class="label" style="color:#000;">SUPPORT</span>
+                        <h3>DONATE TO DEAL</h3>
+                        <p>Blindaje de datos vitales en nodos satelitales y quantum.</p>
+                        <button class="y-btn-black">CONTRIBUTE_BTC</button>
+                    </div>
+                </div>
+            </section>
+
+            <footer class="deal-footer">
+                <div class="footer-logo">2 TOUCH</div>
+                <p>MIA REHACE // HARMONY FOUNDATION // 2026</p>
+            </footer>
+
+        </div>
+    </main>
+
+    <div id="auth-modal" class="modal-y hidden">
+        <div class="modal-inner">
+            <div class="fingerprint-scanner" onclick="accessGranted()"></div>
+            <h3>SIGNATURE_REQUIRED</h3>
+            <p>MIA-X BIOMETRIC AUTHENTICATION</p>
+            <small id="auth-status">AWAITING SCAN...</small>
         </div>
     </div>
 
