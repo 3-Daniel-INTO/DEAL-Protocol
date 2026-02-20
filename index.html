@@ -3,101 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DEAL | THE SOVEREIGN ENGINE</title>
+    <title>DEAL | SOVEREIGN TERMINAL</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollToPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
 <body>
     <div id="noise"></div>
-    <canvas id="yuga-canvas"></canvas>
+    <canvas id="main-canvas"></canvas>
 
-    <nav class="deal-nav">
+    <nav class="military-nav">
         <div class="logo">DEAL</div>
+        <div class="nav-status">
+            <span class="pulse-icon"></span> MIA-X: ACTIVE
+        </div>
         <div class="nav-links">
-            <button onclick="scrollToSection('vc')">VENTURE_CAPITAL</button>
-            <button onclick="scrollToSection('rwa')">INSTITUCIONAL_RWA</button>
-            <button onclick="scrollToSection('crowd')">CROWDFUNDING</button>
+            <button onclick="gsap.to(window, {scrollTo: '#vc', duration: 1})">VENTURE_CAPITAL</button>
+            <button onclick="gsap.to(window, {scrollTo: '#rwa', duration: 1})">RWA_INSTITUTIONAL</button>
             <button class="btn-wallet" onclick="triggerAuth()">WALLET_CONNECT</button>
         </div>
     </nav>
 
-    <main id="smooth-wrapper">
+    <div id="smooth-wrapper">
         <div id="smooth-content">
             
-            <section class="y-section hero" id="home">
-                <div class="inner">
-                    <h1 class="y-title">DEAL</h1>
-                    <p class="y-subtitle">INFRAESTRUCTURA DE INNOVACIÓN Y ACTIVOS REALES</p>
-                    <div class="kpi-hero">
-                        <div class="kpi-item">AUM: $1.17B</div>
-                        <div class="kpi-item">MIA-X: ACTIVE</div>
+            <section class="panel hero" id="home">
+                <div class="reveal-box">
+                    <h1 class="main-title">DEAL</h1>
+                    <div class="divider"></div>
+                    <p class="tagline">INFRAESTRUCTURA DE INNOVACIÓN Y ACTIVOS REALES</p>
+                    <div class="hero-stats">
+                        <div class="s-block"><h4>TOTAL_AUM</h4><h3>$1.17B</h3></div>
+                        <div class="s-block"><h4>MIA-X_CORE</h4><h3>ONLINE</h3></div>
                     </div>
-                    <div class="scroll-indicator">DESCUBRE EL FUTURO</div>
                 </div>
             </section>
 
-            <section class="y-section" id="vc">
+            <section class="panel" id="vc">
                 <div class="grid-layout">
-                    <div class="text-block">
-                        <span class="label">01 // VENTURE CAPITAL</span>
+                    <div class="content-text">
+                        <span class="category">01 // INVESTMENT</span>
                         <h2>G-AGI & DALABS</h2>
-                        <p>Inversión en el motor de inteligencia independiente G x Grok. DALabs: La base del sistema financiero mundial.</p>
-                        <div class="kpi-tag">ALLOCATION: $450,000,000</div>
-                        <button class="btn-invest-internal" onclick="triggerAuth()">SOLICITAR ACCESO SEED</button>
-                    </div>
-                    <div class="visual-container">
-                        <div class="floating-tech-card">MIA-X PERSISTENCE</div>
+                        <p>Inversión estratégica en el motor de inteligencia G x Grok. DALabs: Infraestructura soberana para el sistema financiero global.</p>
+                        <div class="kpi-card">ALLOCATION: $450,000,000</div>
+                        <button class="btn-action" onclick="triggerAuth()">SOLICITAR ACCESO SEED</button>
                     </div>
                 </div>
             </section>
 
-            <section class="y-section" id="rwa">
-                <div class="inner center">
-                    <span class="label">02 // RWA INSTITUCIONAL</span>
-                    <h2 class="massive-text">ATACAMA LITHIUM</h2>
-                    <p>Tokenización de materias primas críticas bajo auditoría Proof of Progress.</p>
-                    <div class="rwa-stats">
-                        <div class="stat"><h3>720M</h3><p>VALUE_TOKENIZED</p></div>
-                        <div class="stat"><h3>VERITAS</h3><p>PROTOCOL_NAME</p></div>
-                    </div>
-                    <button class="btn-action-rwa" onclick="triggerAuth()">EXPLORAR COMMODITIES</button>
-                </div>
-            </section>
-
-            <section class="y-section" id="crowd">
-                <div class="cards-container">
-                    <div class="y-card">
-                        <span class="label">03 // CROWDFUNDING</span>
-                        <h3>OMNICHAIN V2</h3>
-                        <p>Protocolos de interoperabilidad para BTC, ETH y SOL.</p>
-                        <button class="y-btn" onclick="triggerAuth()">PARTICIPAR</button>
-                    </div>
-                    <div class="y-card special">
-                        <span class="label" style="color:#000;">SUPPORT</span>
-                        <h3>DONATE TO DEAL</h3>
-                        <p>Blindaje de datos vitales en nodos satelitales y quantum.</p>
-                        <button class="y-btn-black">CONTRIBUTE_BTC</button>
+            <section class="panel" id="rwa">
+                <div class="inner-center">
+                    <span class="category">02 // COMMODITIES</span>
+                    <h2 class="massive">ATACAMA LITHIUM</h2>
+                    <p>Tokenización de materias primas críticas bajo protocolo Proof of Progress (Veritas).</p>
+                    <div class="rwa-grid">
+                        <div class="r-stat"><h3>$720M</h3><p>VALUE_TOKENIZED</p></div>
+                        <div class="r-stat"><h3>SECURE</h3><p>AUDIT_STATUS</p></div>
                     </div>
                 </div>
             </section>
-
-            <footer class="deal-footer">
-                <div class="footer-logo">2 TOUCH</div>
-                <p>MIA REHACE // HARMONY FOUNDATION // 2026</p>
-            </footer>
 
         </div>
-    </main>
+    </div>
 
-    <div id="auth-modal" class="modal-y hidden">
-        <div class="modal-inner">
-            <div class="fingerprint-scanner" onclick="accessGranted()"></div>
+    <div id="auth-modal" class="modal hidden">
+        <div class="modal-box">
+            <div class="scanner"></div>
             <h3>SIGNATURE_REQUIRED</h3>
-            <p>MIA-X BIOMETRIC AUTHENTICATION</p>
-            <small id="auth-status">AWAITING SCAN...</small>
+            <p>MIA-X PERSISTENCE MODULE</p>
         </div>
     </div>
 

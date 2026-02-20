@@ -1,71 +1,25 @@
-:root { --gold: #D4AF37; --bg: #020202; --text: #fff; --militar: #1a1a1a; }
-body, html { margin:0; padding:0; background: var(--bg); color: var(--text); font-family: 'Courier New', monospace; overflow-y: scroll; /* Habilitar scroll */ }
+:root { --gold: #D4AF37; --bg: #050505; --font-main: 'Syncopate', sans-serif; }
+@import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Inter:wght@300;600&display=swap');
 
-/* Overlay de ruido para efecto CRT */
-#noise-overlay { position: fixed; width: 100%; height: 100%; z-index: 2; background: url('https://grainy-gradients.vercel.app/noise.svg'); opacity: 0.05; pointer-events: none; }
+body, html { margin: 0; background: var(--bg); color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+#main-canvas { position: fixed; top: 0; z-index: -1; filter: contrast(1.2) brightness(0.6); }
+#noise { position: fixed; inset: 0; z-index: 100; background: url('https://grainy-gradients.vercel.app/noise.svg'); opacity: 0.04; pointer-events: none; }
 
-/* Canvas 3D de fondo */
-canvas { position: fixed; top:0; left:0; z-index: 1; filter: brightness(0.4); }
+/* Navegación Grado Militar */
+.military-nav { position: fixed; top: 0; width: 100%; padding: 25px 50px; display: flex; justify-content: space-between; align-items: center; z-index: 200; backdrop-filter: blur(10px); border-bottom: 1px solid rgba(212,175,55,0.1); box-sizing: border-box; }
+.logo { font-family: var(--font-main); font-weight: 700; font-size: 1.4rem; letter-spacing: 6px; color: var(--gold); }
+.nav-status { font-size: 0.7rem; letter-spacing: 2px; color: #00F3FF; display: flex; align-items: center; gap: 8px; }
+.pulse-icon { width: 6px; height: 6px; background: #00F3FF; border-radius: 50%; box-shadow: 0 0 10px #00F3FF; animation: pulse 2s infinite; }
 
-/* Vistas y Scrollytelling */
-.view { 
-    position: relative; /* Cambiado a relative para el scroll */
-    width: 100%; height: 100vh; /* Cada sección ocupa el 100% del viewport */
-    display: flex; flex-direction: column; justify-content: center; align-items: center; 
-    z-index: 10; opacity: 0; /* Las vistas inactivas son transparentes */
-    background: radial-gradient(circle, transparent, rgba(0,0,0,0.8)); /* Viñeteado */
-    scroll-snap-align: start; /* Para un scroll suave entre secciones */
-}
-.view.active { opacity: 1; } /* La vista activa se muestra */
+/* Scrollytelling Panels */
+.panel { height: 100vh; display: flex; align-items: center; justify-content: center; padding: 0 10%; position: relative; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.main-title { font-family: var(--font-main); font-size: 8rem; margin: 0; color: var(--gold); letter-spacing: -5px; }
+.massive { font-family: var(--font-main); font-size: 5rem; color: var(--gold); line-height: 1; }
 
-/* Estilos de Contenido para Scrollytelling */
-.hero-content, .content-left, .content-right, .content-center { 
-    max-width: 800px; padding: 40px; background: rgba(0,0,0,0.7); 
-    border: 1px solid rgba(212,175,55,0.2); backdrop-filter: blur(15px);
-    text-align: center; margin: 20px;
-}
-.content-left { text-align: left; align-self: flex-start; margin-left: 10%; }
-.content-right { text-align: right; align-self: flex-end; margin-right: 10%; }
-.content-center { text-align: center; }
+/* Botones y Cards */
+.btn-action { background: var(--gold); border: none; padding: 15px 40px; font-weight: 900; font-family: var(--font-main); cursor: pointer; transition: 0.3s; margin-top: 30px; }
+.btn-action:hover { box-shadow: 0 0 30px var(--gold); transform: scale(1.05); }
+.kpi-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(212,175,55,0.2); padding: 20px; display: inline-block; font-family: var(--font-main); font-size: 1.2rem; }
 
-/* Header principal siempre visible */
-.main-header { 
-    position: fixed; top: 0; left: 0; width: 100%; padding: 20px 60px; 
-    display: flex; justify-content: space-between; align-items: center; 
-    background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent); 
-    z-index: 100; color: var(--text);
-}
-.logo-wrap { display: flex; align-items: baseline; }
-.logo { font-size: 2.2rem; font-weight: 900; color: var(--gold); letter-spacing: 8px; }
-.version { font-size: 0.7rem; color: #555; margin-left: 10px; }
-
-/* Botones */
-.btn-connect, .btn-enter-terminal, .btn-action, .btn-donate, .btn-invest { 
-    background: transparent; border: 1px solid var(--gold); color: var(--gold); 
-    padding: 12px 25px; cursor: pointer; transition: all 0.3s; font-weight: bold; letter-spacing: 2px;
-}
-.btn-connect:hover, .btn-enter-terminal:hover, .btn-action:hover, .btn-donate:hover, .btn-invest:hover { background: var(--gold); color: #000; box-shadow: 0 0 20px var(--gold); }
-
-/* Glitch Text */
-.glitch { font-size: 6rem; font-weight: 900; color: var(--gold); margin: 0; position: relative; }
-
-/* Terminal View */
-#view-terminal { display: none; background: rgba(0,0,0,0.95); } /* Terminal es una vista separada */
-.terminal-frame { display: flex; width: 100%; height: 100%; }
-.side-menu { width: 300px; border-right: 1px solid rgba(212,175,55,0.2); padding: 50px; background: rgba(0,0,0,0.9); }
-.terminal-display { flex-grow: 1; padding: 60px; overflow-y: auto; }
-.tool-view { display: none; opacity: 0; }
-.tool-view.active { display: block; opacity: 1; }
-
-/* Log de transacciones */
-.log-output { height: 300px; overflow-y: scroll; border: 1px solid rgba(0,243,255,0.2); padding: 15px; background: rgba(0,243,255,0.05); }
-.log-output div { color: #00F3FF; font-size: 0.85rem; margin-bottom: 5px; }
-
-/* Fingerprint Modal */
-.overlay { position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.9); display: flex; justify-content: center; align-items: center; z-index: 200; }
-.sign-box { background: rgba(0,0,0,0.95); border: 1px solid var(--gold); padding: 40px; text-align: center; }
-.finger-print { width: 90px; height: 90px; border: 2px solid var(--gold); border-radius: 50%; margin: 30px auto; cursor: pointer; animation: pulse 2s infinite; }
-@keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(212,175,55,0.7); } 70% { box-shadow: 0 0 0 20px rgba(212,175,55,0); } 100% { box-shadow: 0 0 0 0 rgba(212,175,55,0); } }
-.hidden { display: none !important; }
-.blink { animation: blink 1s infinite; color: var(--gold); font-size: 0.8rem; }
-@keyframes blink { 50% { opacity: 0; } }
+@keyframes pulse { 0% { opacity: 0.4; } 50% { opacity: 1; } 100% { opacity: 0.4; } }
+.hidden { display: none; }
