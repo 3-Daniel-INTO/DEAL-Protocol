@@ -1,46 +1,49 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8"><title>DEAL | Sovereign Investment Platform</title>
+    <meta charset="UTF-8"><title>DEAL | Genesis Institutional Portal</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@web3modal/standalone/dist/index.min.js"></script>
 </head>
 <body>
     <canvas id="canvas-3d"></canvas>
     <div class="interface-layer">
         <header class="navbar">
-            <div class="logo">DEAL <span>MIA-X Sychronized</span></div>
-            <div id="veritas-badge" class="badge">VERITAS: ACTIVE</div>
-<div id="stress-test-indicator" style="color:var(--neon); font-size:0.5rem; margin-top:5px;">LOAD_SIM: 10k REQ/SEC - STABLE</div>
+            <div class="logo">DEAL <span class="pop">Proof of Progress</span></div>
+            <div class="status-box"><span id="live-pulse">●</span> NODE_ATACAMA_SYNC</div>
         </header>
 
-        <main class="main-dashboard">
-            <div class="hero-section">
-                <h1 class="glitchText">SOVEREIGN ASSET VAULT</h1>
-                <p>Absorción de activos y diversificación estratégica para la innovación global.</p>
-            </div>
-
-            <div class="kpi-grid">
-                <div class="glass-card">
-                    <small>ABSORCIÓN TOTAL</small>
-                    <h2 id="total-val">--</h2>
-                    <div class="mini-bar"><div id="bar-abs" class="fill"></div></div>
+        <main class="genesis-dashboard">
+            <div class="data-column">
+                <div class="glass-module">
+                    <small>VENTURE CAPITAL PIPELINE</small>
+                    <h2 id="vc-val">$450M</h2>
                 </div>
-                <div class="glass-card">
-                    <small>REDUCCIÓN CO2</small>
-                    <h2 id="co2-val">--</h2>
-                    <div class="mini-bar"><div id="bar-co2" class="fill"></div></div>
-                </div>
-                <div class="glass-card">
-                    <small>AUDITORÍA VERITAS</small>
-                    <div id="audit-log" class="log-stream">Sincronizando...</div>
+                <div class="glass-module">
+                    <small>RWA LITHIUM VALUE</small>
+                    <h2 id="rwa-val">$13.4K</h2>
                 </div>
             </div>
 
-            <div class="action-bar">
-                <button id="connect-wallet" class="btn-primary">CONNECT UNIVERSAL WALLET</button>
-                <button class="btn-secondary">INSTITUTIONAL REPORT (PDF)</button>
+            <div class="center-focus">
+                <div class="quantum-circle">
+                    <div class="inner-data">
+                        <small>IMPACTO CO2</small>
+                        <h1 id="impact-val">1.5M</h1>
+                        <p>TONELADAS REDUCIDAS</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="data-column">
+                <div class="glass-module">
+                    <small>INSTITUTIONAL LIQUIDITY</small>
+                    <h2 id="liq-val">AA+</h2>
+                </div>
+                <div class="glass-module">
+                    <small>SATELLITE PERSISTENCE</small>
+                    <h2 id="sec-val">ACTIVE</h2>
+                </div>
             </div>
         </main>
     </div>
