@@ -1,36 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Inter:wght@300;600&display=swap');
+:root { --neon-green: #39FF14; --gold: #D4AF37; --deep-bg: #030303; }
+body { margin: 0; background: var(--deep-bg); color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; }
 
-:root { --gold: #D4AF37; --bg: #000; --text: #fff; }
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; overflow: hidden; }
+/* Vortex Animation */
+#vortex-container { position: fixed; inset: 0; z-index: -1; }
+#ui-overlay { position: fixed; inset: 0; background: radial-gradient(circle, transparent 20%, #000 100%); pointer-events: none; }
 
-#ar-mockup-bg { position: fixed; inset: 0; z-index: -1; }
-#neural-noise { position: fixed; inset: 0; background: url('https://grainy-gradients.vercel.app/noise.svg'); opacity: 0.05; pointer-events: none; z-index: 10; }
+.glass-nav { position: fixed; width: 100%; padding: 30px 60px; display: flex; justify-content: space-between; z-index: 1000; box-sizing: border-box; }
+.logo { font-size: 2rem; font-weight: 800; letter-spacing: 5px; color: var(--neon-green); }
+.glow-btn { background: transparent; border: 1px solid var(--neon-green); color: var(--neon-green); padding: 10px 25px; cursor: pointer; transition: 0.3s; box-shadow: 0 0 15px rgba(57, 255, 20, 0.2); }
+.glow-btn:hover { background: var(--neon-green); color: #000; box-shadow: 0 0 30px var(--neon-green); }
 
-.deal-nav { position: fixed; top: 0; width: 100%; padding: 40px; display: flex; justify-content: space-between; z-index: 100; font-family: 'Syncopate'; }
-.logo { color: var(--gold); letter-spacing: 10px; font-size: 1.5rem; }
+/* Portal Grid */
+.portal-window { position: fixed; inset: 50px; background: rgba(0,0,0,0.95); border: 1px solid var(--neon-green); z-index: 2000; padding: 40px; backdrop-filter: blur(20px); overflow-y: auto; }
+.portal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
+.p-card { border: 1px solid rgba(57, 255, 20, 0.3); padding: 30px; background: rgba(255,255,255,0.02); }
 
-.panel { height: 100vh; display: flex; align-items: center; justify-content: center; padding: 0 10%; position: relative; border-bottom: 1px solid rgba(212, 175, 55, 0.1); }
+.veritas-btn { width: 100%; background: var(--neon-green); color: #000; border: none; padding: 15px; font-weight: bold; margin-top: 20px; cursor: pointer; }
+.hidden { display: none !important; }
 
-/* Grid de Herramientas */
-.grid-tools { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; width: 100%; }
-.tool-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 30px; backdrop-filter: blur(10px); }
-.tool-card.gold { border-color: var(--gold); }
-.btn-group { display: flex; gap: 10px; margin-top: 15px; }
-button { padding: 10px; border: none; cursor: pointer; font-weight: bold; text-transform: uppercase; }
-.buy { background: var(--gold); color: #000; flex: 1; }
-.sell { background: transparent; border: 1px solid var(--gold); color: var(--gold); flex: 1; }
-.buy.full { width: 100%; margin-top: 15px; }
-
-/* KPI Section */
-.kpi-grid { display: flex; gap: 50px; margin: 40px 0; }
-.kpi-item { text-align: center; }
-.kpi-item .val { display: block; font-size: 3rem; font-family: 'Syncopate'; color: var(--gold); }
-.kpi-item .desc { font-size: 0.8rem; opacity: 0.6; letter-spacing: 2px; }
-
-/* Footer */
-footer { text-align: center; flex-direction: column; }
-.footer-content { opacity: 0.7; font-size: 0.9rem; }
-.social-icons, .links-direct { margin: 20px 0; display: flex; gap: 30px; justify-content: center; }
-.social-icons a, .links-direct a { color: var(--gold); text-decoration: none; font-size: 0.7rem; letter-spacing: 2px; }
-.copyright { margin-top: 40px; font-size: 0.6rem; color: #fff; }
+@keyframes glitch { 0% { opacity: 1; } 50% { opacity: 0.8; } 100% { opacity: 1; } }

@@ -1,44 +1,43 @@
-gsap.registerPlugin(ScrollTrigger);
-
-// --- FONDO DE REALIDAD AUMENTADA (3D NEURAL) ---
+// --- ESCENA 3D: VORTEX NEON ---
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('ar-mockup-bg'), alpha: true });
+const renderer = new THREE.WebGLRenderer({ alpha: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
+document.getElementById('vortex-container').appendChild(renderer.domElement);
 
-const geometry = new THREE.IcosahedronGeometry(20, 1);
-const material = new THREE.MeshBasicMaterial({ color: 0xD4AF37, wireframe: true, transparent: true, opacity: 0.15 });
-const mesh = new THREE.Mesh(geometry, material);
-scene.add(mesh);
-camera.position.z = 50;
+const points = [];
+for (let i = 0; i < 5000; i++) {
+    let p = new THREE.Vector3(Math.random()*100-50, Math.random()*100-50, Math.random()*100-50);
+    points.push(p);
+}
+const geo = new THREE.BufferGeometry().setFromPoints(points);
+const mat = new THREE.PointsMaterial({ color: 0x39FF14, size: 0.1 });
+const cloud = new THREE.Points(geo, mat);
+scene.add(cloud);
+camera.position.z = 30;
 
 function animate() {
     requestAnimationFrame(animate);
-    mesh.rotation.y += 0.002;
-    mesh.rotation.x += 0.001;
+    cloud.rotation.y += 0.001;
+    cloud.rotation.z += 0.001;
     renderer.render(scene, camera);
 }
 animate();
 
-// --- STORYTELLING ANIMATION ---
-gsap.utils.toArray(".panel").forEach((panel, i) => {
-    gsap.from(panel.children, {
-        scrollTrigger: {
-            trigger: panel,
-            start: "top center",
-            toggleActions: "play none none reverse",
-        },
-        y: 50,
-        opacity: 0,
-        duration: 1.2,
-        stagger: 0.2
-    });
-});
-
-function runBiometricScan() {
-    alert("MIA-X: Escaneando huella digital... Identidad Soberana Certificada.");
+// --- WALLETCONNECT & AUTH ---
+async function connectWallet() {
+    // Simulación de WalletConnect para el flujo de DEAL
+    console.log(">> [MIA-X]: Iniciando validación de identidad soberana...");
+    const btn = document.getElementById('connect-btn');
+    btn.innerText = "VERIFICANDO...";
+    
+    setTimeout(() => {
+        btn.innerText = "ID: 0x88...D4A";
+        document.getElementById('user-portal').classList.remove('hidden');
+        gsap.from(".p-card", { opacity: 0, y: 30, stagger: 0.2 });
+    }, 2000);
 }
 
-function scrollToSection(id) {
-    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+function executeVeritas() {
+    alert("PROTOCOLO VERITAS ACTIVADO: Sincronizando propiedad de patentes DEAL-QBT-01...");
 }
