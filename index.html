@@ -2,28 +2,42 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DEAL | Neural Sovereign Portal</title>
+    <title>DEAL | Sovereign Venture & RWA Portal</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 </head>
-<body>
-    <div id="vortex-background"></div>
-    <nav class="nav-deal">
-        <div class="logo">DEAL</div>
-        <div class="sw-status">ENJAMBRE: ACTIVO</div>
-    </nav>
-    
-    <main class="portal-core">
-        <h1 class="glow-text">DEAL</h1>
-        <p>Infraestructura DALabs para el Futuro Civilizatorio</p>
-        <button class="wallet-trigger" onclick="connectSwarm()">ACCESO SOBERANO</button>
-    </main>
+<body class="deal-swarm-body">
+    <canvas id="vortex-canvas"></canvas>
 
-    <footer class="dalabs-footer">
-        <p>© 2026 DALabs | Harmony Fundación | MIA Rehace</p>
+    <header class="header-deal">
+        <div class="logo-deal">DEAL</div>
+        <nav>
+            <a href="#vc">VENTURE CAPITAL</a>
+            <a href="#rwa">RWA INSTITUCIONAL</a>
+            <a href="#tools">HERRAMIENTAS</a>
+        </nav>
+    </header>
+
+    <section class="hero-astronaut">
+        <div class="astronaut-container" id="astro-trigger">
+            <h1 class="glitch-text" data-text="DEAL">DEAL</h1>
+            <p>Infraestructura DALabs para el Futuro Civilizatorio</p>
+        </div>
+    </section>
+
+    <section id="rwa" class="swarm-module">
+        <h2>ORÁCULO RWA INSTITUCIONAL</h2>
+        <div class="stats-grid">
+            <div class="stat-card">SOLANA COMMODITIES: <span id="sol-rwa">SYNCING...</span></div>
+            <div class="stat-card">BTC/ETH COLLATERAL: <span id="collateral">ACTIVE</span></div>
+        </div>
+    </section>
+
+    <footer class="footer-swarm">
+        <p>© 2026 DALabs | Harmony Fundación | MIA-X Neural Network</p>
     </footer>
+
     <script src="script.js"></script>
 </body>
 </html>
