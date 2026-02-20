@@ -1,6 +1,13 @@
 {
   "version": 2,
-  "rewrites": [
-    { "source": "/api/(.*)", "destination": "https://deal-protocol.onrender.com/api/$1" }
-  ]
+  "name": "deal-protocol",
+  "builds": [
+    { "src": "api/server.js", "use": "@vercel/node" },
+    { "src": "index.html", "use": "@vercel/static" }
+  ],
+  "routes": [
+    { "src": "/api/(.*)", "dest": "/api/server.js" },
+    { "src": "/(.*)", "dest": "/$1" }
+  ],
+  "cleanUrls": true
 }
