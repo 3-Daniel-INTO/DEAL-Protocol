@@ -34,3 +34,16 @@ body, html { margin: 0; padding: 0; background: var(--bg); color: #fff; font-fam
     height: 80px; overflow-y: hidden;
 }
 .audit-entry { color: var(--neon); margin-bottom: 5px; }
+.map-view {
+    height: 250px; background: rgba(255,255,255,0.02);
+    border-radius: 10px; position: relative; overflow: hidden;
+    background-image: radial-gradient(#111 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+.map-node {
+    position: absolute; width: 10px; height: 10px;
+    background: var(--neon); border-radius: 50%;
+    box-shadow: 0 0 15px var(--neon); animation: pulse 2s infinite;
+}
+@keyframes pulse { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(3); opacity: 0; } }
+.stats-row { display: flex; justify-content: space-around; margin-top: 15px; font-size: 0.7rem; color: #888; }

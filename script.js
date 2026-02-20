@@ -60,3 +60,16 @@ async function updateVeritas() {
     } catch(e) { console.warn("Esperando Nodo..."); }
 }
 setInterval(updateVeritas, 5000);
+async function updateHeatmap() {
+    try {
+        const res = await fetch('https://srv-d6bqorvtn9qs73di0npg.onrender.com/api/v1/heatmap');
+        const data = await res.json();
+        const stats = document.getElementById('heatmap-stats');
+        
+        stats.innerHTML = data.active_zones.map(z => `
+            <div><b style="color:white;">${z.region}:</b> ${z.investment}</div>
+        `).join('');
+    } catch(e) { console.warn("Esperando datos geopolíticos..."); }
+}
+setInterval(updateHeatmap, 15000);
+updateHeatmap();
