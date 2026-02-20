@@ -41,3 +41,35 @@ async function connectWallet() {
 function executeVeritas() {
     alert("PROTOCOLO VERITAS ACTIVADO: Sincronizando propiedad de patentes DEAL-QBT-01...");
 }
+// --- RENDERIZADO DE PATENTES VERITAS ---
+function loadPatentLedger() {
+    const list = document.getElementById('patent-list');
+    const patents = [
+        { id: "DEAL-QBT-01", name: "Quantum Bridge", type: "PATENT" },
+        { id: "DEAL-LIT-AT", name: "Lithium RWA", type: "COMMODITY" },
+        { id: "DEAL-MIA-X", name: "Neural Engine", type: "TECH" }
+    ];
+
+    list.innerHTML = patents.map(p => `
+        <div class="patent-item">
+            <span>${p.name} <small>[${p.id}]</small></span>
+            <span class="status-tag">CERTIFIED</span>
+        </div>
+    `).join('');
+
+    // Animación de incremento de Equity
+    let val = 0;
+    const target = 450000; // Equity inicial de ejemplo
+    const interval = setInterval(() => {
+        val += 5000;
+        document.getElementById('equity-val').innerText = `$${val.toLocaleString()}`;
+        if(val >= target) clearInterval(interval);
+    }, 20);
+}
+
+// Modificar la función de conexión para cargar el Ledger
+const originalConnect = connectWallet;
+connectWallet = async () => {
+    await originalConnect();
+    setTimeout(loadPatentLedger, 3000);
+};
