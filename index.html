@@ -2,7 +2,8 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>DEAL | Sovereign Investment Terminal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>DEAL | Global Investment Terminal</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
@@ -10,9 +11,9 @@
 <body>
     <div id="loader">
         <div class="loader-content">
-            <h2 class="glitch-text" data-text="ESTABLISHING SATELLITE LINK...">ESTABLISHING SATELLITE LINK...</h2>
-            <div class="load-bar"><div class="load-fill"></div></div>
-            <p id="load-msg">MIA-X ENCRYPTING CONNECTION...</p>
+            <h2 class="glitch" data-text="DEAL SATELLITE SYNC...">DEAL SATELLITE SYNC...</h2>
+            <div class="bar-container"><div class="bar-fill"></div></div>
+            <p id="status-text">INITIALIZING MIA-X AGENT...</p>
         </div>
     </div>
 
@@ -20,34 +21,36 @@
     
     <div class="interface" style="display:none;">
         <header>
-            <div class="logo-group">
-                <h1 class="logo">DEAL</h1>
-                <span class="sub">MIA-X SYNCHRONIZED</span>
+            <div class="brand">
+                <h1>DEAL</h1>
+                <span class="tag">GLOBAL_LIQUIDITY_MAP</span>
             </div>
-            <div class="node-status">NODE_ATACAMA: ONLINE</div>
+            <div class="veritas-shield">VERITAS AUDITED</div>
         </header>
 
         <main>
-            <h1 class="glitch-text main-vault" data-text="SOVEREIGN ASSET VAULT">SOVEREIGN ASSET VAULT</h1>
-            <div class="dashboard">
-                <div class="kpi-card hover-trigger">
+            <h2 class="glitch title-vault" data-text="SOVEREIGN ASSET VAULT">SOVEREIGN ASSET VAULT</h2>
+            <div class="grid-stats">
+                <div class="stat-card hover-sfx">
                     <small>VENTURE CAPITAL</small>
-                    <h2 id="vc-val">$450M</h2>
+                    <h3 id="vc-display">$450M</h3>
                 </div>
-                <div class="kpi-card hover-trigger">
-                    <small>INFRAESTRUCTURA RWA</small>
-                    <h2 id="rwa-val">$720M</h2>
+                <div class="stat-card hover-sfx">
+                    <small>RWA COMMODITIES</small>
+                    <h3 id="rwa-display">$720M</h3>
                 </div>
-                <div class="kpi-card hover-trigger">
-                    <small>AUDITORÍA VERITAS</small>
-                    <div class="veritas-badge">GENESIS_VERIFIED</div>
+                <div class="stat-card hover-sfx">
+                    <small>CO2 OFFSET</small>
+                    <h3 id="co2-display">1.5M</h3>
                 </div>
             </div>
         </main>
 
         <footer>
-            <button id="wallet-btn" class="btn-primary hover-trigger">CONNECT UNIVERSAL WALLET</button>
-            <div class="sys-info">SATELLITE PERSISTENCE ACTIVE | MIA-X ENGINE</div>
+            <div class="control-box">
+                <button id="cta-btn" class="btn-primary hover-sfx">ACTIVATE WALLET_CONNECT</button>
+            </div>
+            <div class="footer-meta">MIA-X PERSISTENCE: ACTIVE | NODE_STABILITY: 100%</div>
         </footer>
     </div>
     <script src="script.js"></script>

@@ -1,34 +1,36 @@
-:root { --gold: #D4AF37; --neon: #39FF14; --bg: #000; }
-body { background: var(--bg); color: #fff; font-family: 'Inter', sans-serif; margin: 0; overflow: hidden; }
-#bg-canvas { position: fixed; top: 0; left: 0; z-index: -1; }
+:root { --gold: #D4AF37; --neon: #00F3FF; --bg: #000; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: var(--bg); color: #fff; font-family: 'Inter', system-ui, sans-serif; overflow: hidden; }
 
-#loader { height: 100vh; display: flex; align-items: center; justify-content: center; background: #000; z-index: 9999; position: absolute; width: 100%; }
-.load-bar { width: 300px; height: 1px; background: rgba(212,175,55,0.2); margin: 20px auto; overflow: hidden; }
-.load-fill { width: 0%; height: 100%; background: var(--gold); animation: fill 3.5s forwards ease-in-out; }
-@keyframes fill { to { width: 100%; } }
+#bg-canvas { position: fixed; top: 0; left: 0; z-index: -1; pointer-events: none; }
 
-.interface { height: 100vh; padding: 60px; display: flex; flex-direction: column; justify-content: space-between; align-items: center; background: radial-gradient(circle, transparent, rgba(0,0,0,0.95)); }
-.logo { font-size: 2.5rem; color: var(--gold); letter-spacing: 8px; margin: 0; font-weight: 900; }
-.main-vault { font-size: 4rem; text-align: center; font-weight: 900; }
+#loader { height: 100vh; width: 100%; display: flex; align-items: center; justify-content: center; position: fixed; background: #000; z-index: 9999; }
+.bar-container { width: 250px; height: 1px; background: rgba(212,175,55,0.2); margin: 20px 0; overflow: hidden; }
+.bar-fill { width: 0%; height: 100%; background: var(--gold); animation: load 3s forwards; }
+@keyframes load { to { width: 100%; } }
 
-.dashboard { display: grid; grid-template-columns: repeat(3, 330px); gap: 30px; }
-.kpi-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(212,175,55,0.15); padding: 40px; border-radius: 12px; backdrop-filter: blur(20px); text-align: center; transition: 0.3s; }
-.kpi-card:hover { border-color: var(--gold); transform: translateY(-10px); background: rgba(212,175,55,0.05); }
-.kpi-card h2 { font-size: 3rem; margin: 15px 0; font-weight: 900; }
+.interface { 
+    height: 100vh; display: flex; flex-direction: column; justify-content: space-between; 
+    padding: 50px; background: radial-gradient(circle at center, transparent, rgba(0,0,0,0.9));
+}
 
-.btn-primary { background: var(--gold); border: none; padding: 20px 60px; font-weight: 900; border-radius: 4px; cursor: pointer; transition: 0.4s; letter-spacing: 1px; }
-.btn-primary:hover { box-shadow: 0 0 40px rgba(212,175,55,0.4); transform: scale(1.05); }
+header { width: 100%; display: flex; justify-content: space-between; align-items: center; }
+header h1 { font-size: 2rem; color: var(--gold); letter-spacing: 5px; font-weight: 900; }
+.tag { font-family: monospace; color: var(--neon); font-size: 0.7rem; }
+
+.title-vault { font-size: 3.5rem; text-align: center; font-weight: 900; letter-spacing: 2px; }
+
+.grid-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; width: 100%; max-width: 1100px; margin: 0 auto; }
+.stat-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(212,175,55,0.1); padding: 40px; border-radius: 10px; backdrop-filter: blur(15px); text-align: center; transition: 0.3s ease; }
+.stat-card:hover { border-color: var(--neon); background: rgba(0,243,255,0.05); transform: translateY(-5px); }
+.stat-card h3 { font-size: 2.8rem; margin-top: 10px; font-weight: 900; }
+
+.btn-primary { background: var(--gold); border: none; padding: 20px 50px; font-weight: 900; color: #000; border-radius: 3px; cursor: pointer; transition: 0.3s; }
+.btn-primary:hover { transform: scale(1.05); box-shadow: 0 0 30px rgba(212,175,55,0.4); }
 
 /* Glitch Engine */
-.glitch-text { position: relative; }
-.glitch-text::before, .glitch-text::after { content: attr(data-text); position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0.7; }
-.glitch-text::before { color: #ff00c1; z-index: -1; animation: glitch 4s infinite; }
-.glitch-text::after { color: #00fff9; z-index: -2; animation: glitch 2s infinite reverse; }
-@keyframes glitch { 
-    0% { transform: translate(0); }
-    20% { transform: translate(-2px, 2px); }
-    40% { transform: translate(-2px, -2px); }
-    60% { transform: translate(2px, 2px); }
-    80% { transform: translate(2px, -2px); }
-    100% { transform: translate(0); }
-}
+.glitch { position: relative; }
+.glitch::before, .glitch::after { content: attr(data-text); position: absolute; top: 0; left: 0; width: 100%; opacity: 0.8; }
+.glitch::before { color: #ff00c1; z-index: -1; animation: gl 3s infinite; }
+.glitch::after { color: #00fff9; z-index: -2; animation: gl 2s infinite reverse; }
+@keyframes gl { 0%, 100% { transform: translate(0); } 20% { transform: translate(-2px, 2px); } 60% { transform: translate(2px, -2px); } }
