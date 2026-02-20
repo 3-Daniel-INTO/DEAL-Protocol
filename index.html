@@ -2,77 +2,86 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DEAL | TERMINAL</title>
+    <title>DEAL | PORTAL</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
 </head>
 <body>
-    <div id="scanline"></div>
-    <canvas id="main-canvas"></canvas>
-
-    <div id="app-container">
-        
-        <section id="portal" class="view active">
-            <div class="center-content">
-                <h1 class="reveal-text">DEAL</h1>
-                <div class="militar-divider"></div>
-                <div class="kpi-stream">
-                    <span class="stream-item">VC_ALLOCATION: $450M</span>
-                    <span class="stream-item">RWA_CUSTODY: $720M</span>
-                    <span class="stream-item">STATUS: SECURE</span>
-                </div>
-                <button class="btn-terminal" onclick="transitionTo('auth')">ACCEDER AL TERMINAL</button>
+    <canvas id="bg-canvas"></canvas>
+    
+    <div id="view-portal" class="view active">
+        <header>
+            <div class="logo">DEAL</div>
+            <div class="header-tools">
+                <button class="btn-ghost" onclick="connectGlobalWallet()">WALLET_CONNECT</button>
+                <button class="btn-terminal-access" onclick="navTo('view-terminal')">INGRESAR AL TERMINAL</button>
             </div>
-        </section>
+        </header>
 
-        <section id="auth" class="view">
-            <div class="auth-card">
-                <h3 class="gold-text">AUTHENTICATION_PROTOCOL</h3>
-                <div class="auth-steps">
-                    <button class="btn-outline" id="btn-wallet" onclick="fakeConnect()">CONNECT_WALLET</button>
-                    <div id="biometric-trigger" class="hidden">
-                        <div class="fingerprint-scanner" onclick="transitionTo('dashboard')">
-                            <div class="scan-bar"></div>
-                        </div>
-                        <p class="blink">AWAITING BIOMETRIC SIGNATURE</p>
-                    </div>
+        <main class="hero-portal">
+            <h1 class="reveal-text">DEAL</h1>
+            <p class="tagline">SOVEREIGN WEALTH & INNOVATION INFRASTRUCTURE</p>
+            
+            <div class="global-stats">
+                <div class="stat-box">
+                    <small>VC ASSETS</small>
+                    <div class="val">$450M</div>
+                </div>
+                <div class="stat-box">
+                    <small>RWA CUSTODY</small>
+                    <div class="val">$720M</div>
                 </div>
             </div>
-        </section>
+        </main>
+    </div>
 
-        <section id="dashboard" class="view">
-            <div class="terminal-layout">
-                <nav class="side-menu">
-                    <div class="nav-brand">TERMINAL</div>
-                    <div class="nav-links">
-                        <div class="link active" onclick="switchTab('summary')">SUMMARY</div>
-                        <div class="link" onclick="switchTab('crowdfunding')">CROWDFUNDING</div>
-                        <div class="link" onclick="switchTab('vc')">VENTURE_CAPITAL</div>
-                        <div class="link" onclick="switchTab('rwa')">RWA_INSTITUTIONAL</div>
-                    </div>
-                    <div class="veritas-label">PROOF OF PROGRESS: ACTIVE</div>
-                </nav>
-                <main class="terminal-screen">
-                    <div id="tab-summary" class="tab-content active">
-                        <div class="grid-stats">
-                            <div class="stat-item"><h4>GLOBAL_VC</h4><h2>$450,000,000</h2></div>
-                            <div class="stat-item"><h4>GLOBAL_RWA</h4><h2>$720,000,000</h2></div>
+    <div id="view-terminal" class="view">
+        <div class="terminal-container">
+            <aside class="terminal-nav">
+                <div class="nav-brand">DEAL_CORE</div>
+                <div class="nav-links">
+                    <div class="link active" onclick="showSection('overview')">OVERVIEW</div>
+                    <div class="link" onclick="showSection('crowdfunding')">CROWDFUNDING</div>
+                    <div class="link" onclick="showSection('vc')">VENTURE_CAPITAL</div>
+                    <div class="link" onclick="showSection('rwa')">RWA_INSTITUTIONAL</div>
+                </div>
+            </aside>
+
+            <main class="terminal-content">
+                <section id="section-overview" class="tab-pane active">
+                    <h2>MIA-X REAL-TIME ANALYTICS</h2>
+                    <div class="analytics-row">
+                        <div class="chart-box">
+                            <div class="radar-scan"></div>
+                            <p>SATELLITE_LINK: ATACAMA_01</p>
                         </div>
-                        <div class="radar-box">
-                            <div class="radar-sweep"></div>
-                            <p>ATACAMA_NODE_SCANNING...</p>
+                        <div class="log-box" id="transaction-log">
+                            <div class="log-entry"> > MIA-X: ANALYZING LIQUIDITY...</div>
                         </div>
                     </div>
-                    <div id="tab-crowdfunding" class="tab-content">
-                        <h2>DEAL_CROWDFUNDING</h2>
-                        <div class="project-row"><span>DALabs Infra</span><button>ALLOCATE</button></div>
-                        <div class="project-row"><span>Omnichain V2</span><button>ALLOCATE</button></div>
+                </section>
+
+                <section id="section-crowdfunding" class="tab-pane">
+                    <h2>CROWDFUNDING OPPORTUNITIES</h2>
+                    <div id="crowd-lock" class="lock-overlay">
+                        <button class="btn-primary" onclick="triggerAuth()">CONECTAR WALLET PARA INVERTIR</button>
                     </div>
-                </main>
-            </div>
-        </section>
+                    <div class="project-grid blur-effect">
+                        <div class="card"><h3>LAB WEB3 DALABS</h3><p>Infraestructura IA.</p></div>
+                        <div class="card"><h3>OMNICHAIN V2</h3><p>Protocolo de interoperabilidad.</p></div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <div id="auth-modal" class="modal">
+        <div class="modal-content">
+            <h3>BIOMETRIC_VERIFICATION</h3>
+            <div class="fingerprint-btn" onclick="verifySignature()"></div>
+            <p id="auth-status">AWAITING SCAN...</p>
+        </div>
     </div>
 
     <script src="script.js"></script>
