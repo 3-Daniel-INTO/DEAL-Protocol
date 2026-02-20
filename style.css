@@ -26,3 +26,24 @@ body, html { margin: 0; padding: 0; background: var(--bg); color: #fff; font-fam
 
 /* Glitch para el botón */
 .glitch-btn { position: relative; font-weight: 900; letter-spacing: 2px; }
+.whale-bg { background: #020202; display: flex; height: 100vh; }
+.sidebar { width: 250px; background: #050505; border-right: 1px solid rgba(212,175,55,0.2); display: flex; flex-direction: column; padding: 30px; }
+.logo-small { color: var(--gold); font-weight: 900; font-size: 1.5rem; margin-bottom: 50px; letter-spacing: 5px; }
+.nav-btn { padding: 15px 0; color: #666; cursor: pointer; font-size: 0.8rem; letter-spacing: 2px; transition: 0.3s; }
+.nav-btn:hover, .nav-btn.active { color: var(--gold); }
+
+.dashboard-core { flex-grow: 1; padding: 40px; overflow-y: auto; }
+.top-bar { display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 20px; }
+
+.whale-tools { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin-top: 40px; }
+.tool-box { background: rgba(255,255,255,0.02); padding: 30px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.05); }
+.gold-border { border-color: var(--gold); }
+.tool-box h3 { color: var(--gold); font-size: 0.9rem; letter-spacing: 2px; }
+.tool-box h2 { font-size: 2rem; margin: 20px 0; font-weight: 900; }
+
+.btn-action { width: 100%; padding: 15px; background: var(--gold); border: none; font-weight: 900; cursor: pointer; margin-top: 10px; }
+.pay-btn { background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 10px; margin-right: 5px; cursor: pointer; font-size: 0.7rem; }
+
+.heatmap-viz { height: 300px; background: rgba(255,255,255,0.01); border: 1px solid rgba(255,255,255,0.05); margin-top: 20px; position: relative; border-radius: 10px; }
+.pulse-node { position: absolute; width: 10px; height: 10px; background: var(--gold); border-radius: 50%; box-shadow: 0 0 20px var(--gold); animation: pulse 2s infinite; }
+@keyframes pulse { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(4); opacity: 0; } }

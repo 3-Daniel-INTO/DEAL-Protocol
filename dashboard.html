@@ -2,38 +2,59 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>DEAL | Whale Terminal</title>
+    <title>DEAL | Whale Command Center</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="dashboard-body">
-    <nav class="side-nav">
-        <div class="nav-item">VENTURE CAPITAL</div>
-        <div class="nav-item">CROWDFUNDING</div>
-        <div class="nav-item">FILANTROPÍA</div>
-        <div class="nav-item active">RWA INVEST</div>
-    </nav>
-    <main class="content">
-        <header class="dash-header">
-            <h2>CENTRO OPERATIVO DE INVERSIÓN MUNDIAL</h2>
-            <div class="wallet-info">0x777...DEAL</div>
+<body class="whale-bg">
+    <div class="sidebar">
+        <div class="logo-small">DEAL</div>
+        <nav>
+            <div class="nav-btn active">RESUMEN GLOBAL</div>
+            <div class="nav-btn">VENTURE CAPITAL</div>
+            <div class="nav-btn">CROWDFUNDING</div>
+            <div class="nav-btn">FILANTROPÍA</div>
+        </nav>
+        <div class="veritas-tag">VERIFIED BY MIA-X</div>
+    </div>
+
+    <main class="dashboard-core">
+        <header class="top-bar">
+            <h2>TERMINAL DE INVERSIÓN SOBERANA</h2>
+            <div class="network-status">BTC / ETH / SOL ACTIVE</div>
         </header>
-        <div class="whale-grid">
-            <div class="tool-card">
-                <h3>ASIGNACIÓN DE CAPITAL</h3>
-                <p>Crowdfunding institucional para proyectos de impacto masivo.</p>
-                <button class="btn-tool">INVERTIR AHORA</button>
+
+        <section class="whale-tools">
+            <div class="tool-box">
+                <h3>FILANTROPÍA & DONACIONES</h3>
+                <p>Inyectar capital directo a la Fundación Harmony.</p>
+                <div class="payment-options">
+                    <button class="pay-btn" onclick="alert('BTC Address: bc1q...')">DONAR BTC</button>
+                    <button class="pay-btn" onclick="alert('ETH Address: 0x777...')">DONAR ETH</button>
+                </div>
             </div>
-            <div class="tool-card">
-                <h3>MAPA TÉRMICO RWA</h3>
-                <div class="mini-map"></div>
-                <button class="btn-tool">REVISAR LIQUIDEZ</button>
+
+            <div class="tool-box gold-border">
+                <h3>CROWDFUNDING RWA</h3>
+                <p>Inversión en Commodities Tokenizados (Litio/Energía).</p>
+                <h2 id="rwa-val">$720,000,000</h2>
+                <button class="btn-action">GESTIONAR INVERSIÓN</button>
             </div>
-            <div class="tool-card">
-                <h3>DONACIONES & FILANTROPÍA</h3>
-                <p>Inyección directa a la Fundación Harmony.</p>
-                <button class="btn-tool">DONAR</button>
+
+            <div class="tool-box">
+                <h3>VENTURE CAPITAL</h3>
+                <p>Acceso a rondas privadas de innovación tecnológica.</p>
+                <h2 id="vc-val">$450,000,000</h2>
+                <button class="btn-action">SOLICITAR ACCESO WHALE</button>
             </div>
-        </div>
+        </section>
+
+        <section class="global-analytics">
+            <h3>MAPA DE CAPAS DE INVERSIÓN MUNDIAL (HEATMAP)</h3>
+            <div class="heatmap-viz">
+                <div class="pulse-node" style="top:60%; left:30%;"></div>
+                <div class="pulse-node" style="top:40%; left:70%;"></div>
+            </div>
+        </section>
     </main>
 </body>
 </html>

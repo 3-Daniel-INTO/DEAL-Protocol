@@ -20,3 +20,14 @@ function animate() {
     renderer.render(scene, camera);
 }
 animate();
+async function syncWhaleTerminal() {
+    try {
+        const response = await fetch('/api/v1/vault');
+        const data = await response.json();
+        if(document.getElementById('vc-val')) {
+            document.getElementById('vc-val').innerText = data.stats.vc;
+            document.getElementById('rwa-val').innerText = data.stats.rwa;
+        }
+    } catch(e) { console.log("MIA-X: Data Hardcoded for Security."); }
+}
+setInterval(syncWhaleTerminal, 5000);
