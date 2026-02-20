@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>DEAL | Global Capital Infrastructure</title>
+</head>
+<body>
+    <section class="hero">
+        <h1 class="neon-text">DEAL</h1>
+        <p style="letter-spacing: 12px; opacity: 0.7; font-size: 0.8rem;">WHERE VISION MEETS CAPITAL</p>
+        <div style="margin-top: 30px; font-family: monospace; color: #39FF14; font-size: 12px;" id="net-status">CORE SYNCING WITH ATACAMA...</div>
+    </section>
+
+    <div class="dashboard">
+        <div class="kpi-card"><h3>LIQUIDITY (TVL)</h3><p id="tvl" class="neon-text" style="font-size: 2.2rem;">$ 0</p></div>
+        <div class="kpi-card"><h3>PoP VALIDATIONS</h3><p id="pop" style="font-size: 2.2rem;">99.8%</p></div>
+        <div class="kpi-card"><h3>ACTIVE DEALS</h3><p id="deals" style="font-size: 2.2rem;">12</p></div>
+    </div>
+
+    <section class="form-section">
+        <div class="reg-card">
+            <h3 style="color:#39FF14">INVERSOR / VC</h3>
+            <p style="font-size: 0.8rem; color: #888;">Acceso prioritario a pools de capital y RWA.</p>
+            <input type="text" placeholder="Firma de Inversión">
+            <input type="email" placeholder="Email institucional">
+            <button>Solicitar Acceso Alpha</button>
+        </div>
+        <div class="reg-card">
+            <h3 style="color:#39FF14">EMPRENDEDOR</h3>
+            <p style="font-size: 0.8rem; color: #888;">Tokeniza tu proyecto bajo protocolo PoP.</p>
+            <input type="text" placeholder="Nombre del Proyecto">
+            <select><option>Crowdfunding</option><option>Venture Capital Round</option></select>
+            <button>Registrar Proyecto</button>
+        </div>
+    </section>
+
+    <script>
+        async function loadStats() {
+            try {
+                const res = await fetch('https://deal-protocol.onrender.com/api/v1/stats');
+                const data = await res.json();
+                document.getElementById('tvl').innerText = '$' + data.tvl;
+                document.getElementById('net-status').innerText = 'INFRASTRUCTURE: ' + data.status + ' | PROVIDER: ' + data.provider;
+            } catch (e) {
+                document.getElementById('net-status').innerText = 'SYSTEM: OFFLINE | SYNCING SATELLITE...';
+                document.getElementById('net-status').style.color = 'orange';
+            }
+        }
+        loadStats();
+    </script>
+</body>
+</html>
