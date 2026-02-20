@@ -25,3 +25,20 @@ body { margin: 0; background: var(--deep-bg); color: #fff; font-family: 'Inter',
 .status-tag { color: var(--neon-green); font-weight: bold; font-size: 0.6rem; border: 1px solid var(--neon-green); padding: 2px 5px; }
 .total-equity-display { margin-top: 20px; border-top: 2px solid var(--gold); padding-top: 15px; }
 .total-equity-display span { font-family: 'Syncopate'; color: var(--gold); font-size: 1.2rem; margin-left: 10px; }
+/* Crowdfunding vs Philanthropy */
+.crowdfunding-card { border-left: 4px solid var(--neon-green); }
+.philanthropy-card { border-left: 4px solid var(--gold); background: rgba(212, 175, 55, 0.05); }
+
+.card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; }
+.card-header .icon { font-size: 1.5rem; }
+
+.progress-bar { width: 100%; height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; margin-top: 10px; overflow: hidden; }
+.progress-bar .fill { height: 100%; transition: width 1s ease-in-out; }
+.progress-bar.mini .fill { background: var(--neon-green); }
+.progress-bar.gold .fill { background: var(--gold); box-shadow: 0 0 10px var(--gold); }
+
+.startup-stats, .donation-meter { margin: 20px 0; font-size: 0.8rem; }
+#donated-amount { display: block; font-weight: bold; color: var(--gold); margin-top: 5px; }
+
+.btn-primary { background: var(--neon-green); color: #000; border: none; width: 100%; padding: 12px; font-weight: 800; cursor: pointer; }
+.btn-gold { background: var(--gold); color: #000; border: none; width: 100%; padding: 12px; font-weight: 800; cursor: pointer; }

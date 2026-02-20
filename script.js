@@ -73,3 +73,32 @@ connectWallet = async () => {
     await originalConnect();
     setTimeout(loadPatentLedger, 3000);
 };
+function openStartupRegistration() {
+    console.log(">> [MIA-X]: Abriendo portal de registro para emprendedores...");
+    // Aquí se activaría la nueva ventana solicitada
+    window.open('', '_blank').document.write(`
+        <html>
+        <head>
+            <title>Registro Startup | DEAL Infrastructure</title>
+            <style>
+                body { background: #000; color: #39FF14; font-family: sans-serif; padding: 50px; text-align: center; }
+                input { background: #111; border: 1px solid #39FF14; color: #fff; padding: 15px; width: 80%; margin: 10px 0; }
+                button { background: #39FF14; color: #000; border: none; padding: 20px; font-weight: bold; cursor: pointer; }
+            </style>
+        </head>
+        <body>
+            <h1>REGISTRA TU VISIÓN</h1>
+            <p>Sube tu proyecto al ecosistema DEAL para recibir fondeo institucional.</p>
+            <input type="text" placeholder="Nombre de la Startup">
+            <input type="text" placeholder="Sector (AI, RWA, Energy)">
+            <input type="file" id="pitch-deck">
+            <br><br>
+            <button onclick="alert('Proyecto enviado a revisión G-AGI')">VINCULAR A LA RED DEAL</button>
+        </body>
+        </html>
+    `);
+}
+
+function openDonationPortal() {
+    alert("Redirigiendo a la Bóveda de Filantropía DALabs. Cada contribución fortalece los nodos de Atacama.");
+}

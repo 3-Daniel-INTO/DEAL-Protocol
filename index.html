@@ -46,14 +46,34 @@
                 <div class="chart-mockup"></div>
             </div>
 
-            <div class="p-card investment-card">
-                <h3>PROCESAR CAPITAL</h3>
-                <div class="action-buttons">
-                    <button class="act-btn">RWA (LITIO)</button>
-                    <button class="act-btn">VC POOL</button>
-                    <button class="act-btn">CROWDFUNDING</button>
-                    <button class="act-btn gold">DONAR A DALABS</button>
-                </div>
+            
+            <div class="p-card crowdfunding-card"> 
+                <div class="card-header"> 
+                    <span class="icon">🚀</span> 
+                    <h3>STARTUP CROWDFUNDING</h3> 
+                </div> 
+                <p>Registra tu startup en la infraestructura DEAL y accede a capital institucional.</p> 
+                <div class="startup-stats"> 
+                    <label>Proyectos Activos: 24</label> 
+                    <div class="progress-bar mini"><div class="fill" style="width: 65%"></div></div> 
+                </div> 
+                <button class="btn-primary" onclick="openStartupRegistration()">REGISTRAR MI EMPRENDIMIENTO</button> 
+            </div> 
+
+            
+            <div class="p-card philanthropy-card"> 
+                <div class="card-header"> 
+                    <span class="icon">🏛️</span> 
+                    <h3>FILANTROPÍA DALABS</h3> 
+                </div> 
+                <p>Sostiene la infraestructura global: Blindaje satelital y Nodos Atacama.</p> 
+                <div class="donation-meter"> 
+                    <label>Meta de Infraestructura 2026</label> 
+                    <span id="donated-amount">$4.2M / $10M</span> 
+                    <div class="progress-bar gold"><div class="fill" style="width: 42%"></div></div> 
+                </div> 
+                <button class="btn-gold" onclick="openDonationPortal()">DONAR A LA INFRAESTRUCTURA</button> 
+            </div>
             </div>
 
             
