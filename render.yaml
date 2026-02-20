@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: deal-core-engine
+    env: node
+    plan: pro
+    region: ohio
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MIA_X_PERSISTENCE
+        value: ENABLED
+      - key: G_AGI_CORE
+        value: INDEPENDENT
