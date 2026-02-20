@@ -3,83 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DEAL | Sovereign Investment Ecosystem</title>
+    <title>DEAL | TERMINAL</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
 </head>
 <body>
-    <canvas id="scene-3d"></canvas>
+    <div id="scanline"></div>
+    <canvas id="main-canvas"></canvas>
 
-    <section id="screen-welcome" class="screen active">
-        <div class="overlay">
-            <header>
-                <div class="logo">DEAL</div>
-                <div class="status-pill">MIA-X ENCRYPTED</div>
-            </header>
-            <main>
-                <h1 class="glitch-text" data-text="DEAL MASTER PLAN">DEAL MASTER PLAN</h1>
-                <p class="subtitle">INFRAESTRUCTURA FINANCIERA MUNDIAL Y RWA</p>
-                <div class="kpi-mini">
-                    <span>VC: $450,000,000</span>
-                    <span class="gold-dot">•</span>
-                    <span>RWA: $720,000,000</span>
+    <div id="app-container">
+        
+        <section id="portal" class="view active">
+            <div class="center-content">
+                <h1 class="reveal-text">DEAL</h1>
+                <div class="militar-divider"></div>
+                <div class="kpi-stream">
+                    <span class="stream-item">VC_ALLOCATION: $450M</span>
+                    <span class="stream-item">RWA_CUSTODY: $720M</span>
+                    <span class="stream-item">STATUS: SECURE</span>
                 </div>
-                <button class="btn-primary" onclick="navTo('screen-auth')">INGRESAR AL PORTAL WHALE</button>
-            </main>
-            <footer>FUNDACIÓN HARMONY // ATACAMA COMMAND</footer>
-        </div>
-    </section>
-
-    <section id="screen-auth" class="screen">
-        <div class="auth-box">
-            <h3>AUTENTICACIÓN WHALE</h3>
-            <div class="divider"></div>
-            <div id="wallet-step">
-                <button class="btn-outline" onclick="connectWallet()">WALLET CONNECT</button>
+                <button class="btn-terminal" onclick="transitionTo('auth')">ACCEDER AL TERMINAL</button>
             </div>
-            <div id="bio-step" style="display:none;">
-                <p>REQUERIDA FIRMA BIOMÉTRICA</p>
-                <div class="fingerprint" onclick="navTo('screen-tools')"></div>
-                <small>TOUCH SENSOR TO SIGN PROTOCOL</small>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="screen-tools" class="screen">
-        <div class="dashboard-layout">
-            <aside>
-                <div class="logo-small">DEAL</div>
-                <nav>
-                    <div class="active">RESUMEN</div>
-                    <div onclick="alert('Abriendo VC...')">VENTURE CAPITAL</div>
-                    <div onclick="alert('Abriendo RWA...')">RWAs LITIO</div>
-                    <div onclick="alert('Abriendo Filantropía...')">FILANTROPÍA</div>
+        <section id="auth" class="view">
+            <div class="auth-card">
+                <h3 class="gold-text">AUTHENTICATION_PROTOCOL</h3>
+                <div class="auth-steps">
+                    <button class="btn-outline" id="btn-wallet" onclick="fakeConnect()">CONNECT_WALLET</button>
+                    <div id="biometric-trigger" class="hidden">
+                        <div class="fingerprint-scanner" onclick="transitionTo('dashboard')">
+                            <div class="scan-bar"></div>
+                        </div>
+                        <p class="blink">AWAITING BIOMETRIC SIGNATURE</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="dashboard" class="view">
+            <div class="terminal-layout">
+                <nav class="side-menu">
+                    <div class="nav-brand">TERMINAL</div>
+                    <div class="nav-links">
+                        <div class="link active" onclick="switchTab('summary')">SUMMARY</div>
+                        <div class="link" onclick="switchTab('crowdfunding')">CROWDFUNDING</div>
+                        <div class="link" onclick="switchTab('vc')">VENTURE_CAPITAL</div>
+                        <div class="link" onclick="switchTab('rwa')">RWA_INSTITUTIONAL</div>
+                    </div>
+                    <div class="veritas-label">PROOF OF PROGRESS: ACTIVE</div>
                 </nav>
-            </aside>
-            <main class="tools-grid">
-                <div class="tool-card">
-                    <h3>CROWDFUNDING</h3>
-                    <p>Inversión colectiva en proyectos tecnológicos supervisados por MIA-X.</p>
-                    <button class="btn-card">PARTICIPAR</button>
-                </div>
-                <div class="tool-card gold-border">
-                    <h3>INSTITUTIONAL VC</h3>
-                    <p>Rondas privadas para ballenas y fondos soberanos.</p>
-                    <button class="btn-card gold-bg">VER ALLOCATION</button>
-                </div>
-                <div class="tool-card">
-                    <h3>DONACIONES BTC/SOL</h3>
-                    <p>Apoyo directo a la infraestructura de DALabs.</p>
-                    <button class="btn-card">DONAR</button>
-                </div>
-                <div class="tool-card">
-                    <h3>ANALÍTICA GLOBAL</h3>
-                    <div class="radar"></div>
-                </div>
-            </main>
-        </div>
-    </section>
+                <main class="terminal-screen">
+                    <div id="tab-summary" class="tab-content active">
+                        <div class="grid-stats">
+                            <div class="stat-item"><h4>GLOBAL_VC</h4><h2>$450,000,000</h2></div>
+                            <div class="stat-item"><h4>GLOBAL_RWA</h4><h2>$720,000,000</h2></div>
+                        </div>
+                        <div class="radar-box">
+                            <div class="radar-sweep"></div>
+                            <p>ATACAMA_NODE_SCANNING...</p>
+                        </div>
+                    </div>
+                    <div id="tab-crowdfunding" class="tab-content">
+                        <h2>DEAL_CROWDFUNDING</h2>
+                        <div class="project-row"><span>DALabs Infra</span><button>ALLOCATE</button></div>
+                        <div class="project-row"><span>Omnichain V2</span><button>ALLOCATE</button></div>
+                    </div>
+                </main>
+            </div>
+        </section>
+    </div>
 
     <script src="script.js"></script>
 </body>
