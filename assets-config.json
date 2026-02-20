@@ -1,6 +1,6 @@
 {
   "project": "DEAL",
-  "logos": ["DEAL_GOLD", "2_TOUCH_BLACK_CIRCLE"],
+  "logos": ["DEAL_GOLD", "_BLACK_CIRCLE"],
   "infrastructure": "MIA-X_PERSISTENCE",
   "intelligence_layer": "G-AGI_INDEPENDENT",
   "security_protocol": "BIOMETRIC_WALLET_GLOBAL_SYNC"

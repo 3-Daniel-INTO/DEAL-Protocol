@@ -2,32 +2,40 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>DEAL | GENESIS CORE</title>
+    <title>DEAL | SOVEREIGN COMMAND</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 </head>
 <body>
-    <div id="noise"></div>
-    <canvas id="canvas-3d"></canvas>
+    <div id="noise-layer"></div>
+    <canvas id="render-core"></canvas>
 
-    <main class="terminal">
-        <header>
-            <div class="logo">DEAL</div>
-            <div class="status">G-AGI: LEARNING | MIA-X: PERSISTENT</div>
-        </header>
+    <header class="deal-header">
+        <div class="logo">DEAL</div>
+        <div class="system-status">
+            <span class="status-dot"></span> MIA-X & G-AGI: SYNCHRONIZED
+        </div>
+    </header>
 
-        <section id="auth-zone">
-            <h2>SISTEMA FINANCIERO SOBERANO</h2>
-            <div class="biometric-trigger" onclick="initiateSovereignAuth()">
-                <div class="fingerprint"></div>
-                <span>FIRMA BIOMÉTRICA REQUERIDA</span>
+    <main id="command-center">
+        <section class="hero-sovereign">
+            <h1 class="glitch">DEAL</h1>
+            <p>SISTEMA FINANCIERO MUNDIAL INDEPENDIENTE</p>
+            
+            <div class="auth-container">
+                <div class="biometric-scanner" onclick="startSovereignAuth()">
+                    <div class="scan-bar"></div>
+                </div>
+                <small>IDENTITY_VERIFICATION_REQUIRED</small>
             </div>
         </section>
 
-        <div id="secret-monitor" class="hidden">
-            <h3>DASHBOARD DE SALUD DEAL</h3>
-            <div id="admin-logs"></div>
+        <div id="admin-panel" class="hidden">
+            <div class="terminal-view">
+                <h3>DEAL INFRASTRUCTURE HEALTH</h3>
+                <div id="live-logs"></div>
+            </div>
         </div>
     </main>
 

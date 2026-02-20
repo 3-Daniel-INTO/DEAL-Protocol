@@ -1,16 +1,14 @@
 {
   "version": 2,
-  "name": "deal-sovereign-platform",
+  "name": "deal-sovereign",
   "framework": "nextjs",
-  "regions": ["sjc1"],
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Frame-Options", "value": "DENY" },
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "Content-Security-Policy", "value": "default-src 'self' https: 'unsafe-inline' 'unsafe-eval'; img-src 'self' data: https:;" }
+        { "key": "X-Sovereign-Engine", "value": "MIA-X" },
+        { "key": "X-Intelligence-Layer", "value": "G-AGI" },
+        { "key": "Content-Security-Policy", "value": "default-src 'self' https: 'unsafe-inline' 'unsafe-eval';" }
       ]
     }
   ]
