@@ -3,106 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DEAL | Neural Sovereign Portal</title>
+    <title>DEAL | Sovereign Investment Terminal</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script>
-        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-    </script>
-    <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
-    <canvas id="ar-mockup-bg"></canvas>
-    <div id="neural-noise"></div>
+    <div class="visual-engine">
+        <div class="vortex-360" id="vortex"></div>
+        <div class="astronaut-z" id="astro"></div>
+    </div>
 
-    <nav class="deal-nav">
-        <div class="logo">DEAL</div>
-        <button class="btn-auth" onclick="scrollToSection('body-1')">INGRESAR SOBERANO</button>
+    <nav class="nav-elite">
+        <div class="logo">DE<span class="neon">↗</span>L</div>
+        <div class="sys-info">DALabs | MIA-X: SECURE</div>
     </nav>
 
-    <div id="scroll-container">
-        <section class="panel" id="body-1">
-            <div class="content-box">
-                <span class="tag">BY DALABS</span>
-                <h1 class="glitch">INVERSIÓN <br> SIN LÍMITES</h1>
-                <p>Bienvenido al futuro de la institucionalidad financiera. Genera tu huella digital.</p>
-                <div class="fingerprint-trigger" onclick="runBiometricScan()">
-                    <div class="scan-bar"></div>
-                    <span>REGISTRAR HUELLA MIA-X</span>
-                </div>
+    <main class="terminal-ui">
+        <section class="investment-hub">
+            <h1 class="glow-text">THE FUTURE IS SOVEREIGN</h1>
+            <div class="kpi-grid">
+                <div class="kpi-card"><h3>RWA ASSETS</h3><p>Li & Commodities</p></div>
+                <div class="kpi-card"><h3>G-AGI ANALYTICS</h3><p>Predictive Capital</p></div>
+                <div class="kpi-card"><h3>CROWDFUNDING</h3><p>Real Innovation</p></div>
             </div>
+            <button class="btn-invest" onclick="startApp()">ACCEDER A LA APP</button>
         </section>
-
-        <section class="panel" id="body-2">
-            <div class="grid-tools">
-                <div class="tool-card" id="inst">
-                    <h3>INSTITUCIONAL</h3>
-                    <div class="kpi-mini">APY: 8.4%</div>
-                    <div class="btn-group">
-                        <button class="buy">INVERTIR</button>
-                        <button class="sell">VENTA</button>
-                    </div>
-                </div>
-                <div class="tool-card gold" id="rwa">
-                    <h3>RWA (LITIO)</h3>
-                    <div class="kpi-mini">BACKED BY VERITAS</div>
-                    <div class="btn-group">
-                        <button class="buy">COMPRAR</button>
-                        <button class="sell">LIQUIDAR</button>
-                    </div>
-                </div>
-                <div class="tool-card" id="vc">
-                    <h3>VENTURE CAPITAL</h3>
-                    <div class="kpi-mini">G-AGI TECH</div>
-                    <button class="buy full">SOLICITAR ALLOCATION</button>
-                </div>
-                <div class="tool-card" id="phil">
-                    <h3>FILANTROPÍA</h3>
-                    <div class="kpi-mini">IMPACTO DALABS</div>
-                    <button class="buy full">DONACIÓN DIRECTA</button>
-                </div>
-            </div>
-        </section>
-
-        <section class="panel" id="body-3">
-            <div class="kpi-dashboard">
-                <h2>NUESTRA TRACCIÓN</h2>
-                <div class="kpi-grid">
-                    <div class="kpi-item">
-                        <span class="val">$1.17B</span>
-                        <span class="desc">AUM TOTAL</span>
-                    </div>
-                    <div class="kpi-item">
-                        <span class="val">124</span>
-                        <span class="desc">NODOS SATELITALES</span>
-                    </div>
-                    <div class="kpi-item">
-                        <span class="val">99.9%</span>
-                        <span class="desc">SEGURIDAD MIA-X</span>
-                    </div>
-                </div>
-                <canvas id="kpi-chart"></canvas>
-            </div>
-        </section>
-
-        <footer class="panel" id="body-4">
-            <div class="footer-content">
-                <div class="social-icons">
-                    <a href="https://github.com/3-Daniel-INTO/DEAL-Protocol">GITHUB</a>
-                    <a href="https://x.com/dalabs">X (TWITTER)</a>
-                    <a href="https://instagram.com/dalabs">INSTAGRAM</a>
-                </div>
-                <div class="links-direct">
-                    <a href="#">VISIÓN SOBERANA</a>
-                    <a href="#">MIA REHACE</a>
-                    <a href="#">DONACIÓN DALABS</a>
-                </div>
-                <p class="copyright">© 2025-2026 DALabs | Realizado por MIA Rehace <br> Derechos Reservados Harmony Fundación</p>
-            </div>
-        </footer>
-    </div>
+    </main>
 
     <script src="script.js"></script>
 </body>
