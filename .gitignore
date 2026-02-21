@@ -1,5 +1,6 @@
 node_modules/
 .next/
 .vercel/
+brain_storage/
 *.log
 .env
