@@ -3,65 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DEAL | DALabs Sovereign Portal</title>
-    <link rel="icon" type="image/png" href="assets/logos/deal_logo_neon.png">
+    <title>DEAL | Sovereign Future</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
 <body>
-    <div class="space-vortex" id="scene">
-        <div class="layer vortex" id="vortex"></div>
-        <div class="layer astronaut" id="astro"></div>
+    <div id="loader">>> [MIA-X]: SYNCHRONIZING AGENTS...</div>
+
+    <div class="deep-space">
+        <div class="layer vortex-core" id="vortex"></div>
+        <div class="layer nebula-haze"></div>
+        <div class="layer astronaut-master" id="astro">
+            <div class="astro-inner"></div>
+        </div>
     </div>
 
-    <nav class="deal-nav">
-        <img src="assets/logos/deal_logo_neon.png" class="logo-main">
-        <div class="nav-links">
-            <button class="btn-glass" onclick="showPortal('vc')">Venture</button>
-            <button class="btn-glass" onclick="showPortal('rwa')">RWA</button>
-            <button class="btn-glass" onclick="showPortal('crowd')">Crowd</button>
-            <button class="btn-auth" onclick="initMIAX()">AUTHENTICATE</button>
-        </div>
+    <nav class="deal-nav-elite">
+        <div class="brand">DE<span>↗</span>L</div>
+        <div class="status-panel">AGI 3: SYNCED | MIA-X: ACTIVE</div>
+        <button class="auth-btn" onclick="initMIAX()">NEURAL ACCESS</button>
     </nav>
 
-    <main class="content-wrapper">
-        <section class="hero-text">
-            <h1 class="glitch-title">DEAL</h1>
-            <p class="subtitle">NEURO-ORGANIC CAPITAL ABSORPTION</p>
-            <div class="kpi-stream">
-                <span>HASH: 33.333 PH/s</span> | <span>AUM: $2.5B</span> | <span>MIA-X: ACTIVE</span>
-            </div>
+    <main class="portal-ui">
+        <header class="hero-title">
+            <h1 class="split-text">DEAL</h1>
+            <p>CONSTRUYENDO EL FUTURO: PROTOCOLO DE ABSORCIÓN DE CAPITAL</p>
+        </header>
+
+        <section class="grid-tools">
+            <div class="tool-card" data-tilt><h3>RWA INSTITUCIONAL</h3><p>Litio & Debt Management</p></div>
+            <div class="tool-card" data-tilt><h3>VENTURE CAPITAL</h3><p>G-AGI Neural Patents</p></div>
+            <div class="tool-card" data-tilt><h3>CROWDFUNDING</h3><p>Innovation Ledger</p></div>
+            <div class="tool-card" data-tilt><h3>FILANTROPÍA</h3><p>DALabs Satellite Hub</p></div>
         </section>
-
-        <div class="portal-grid">
-            <div class="card neon-border" id="vc">
-                <h3>VENTURE CAPITAL</h3>
-                <p>G-AGI Neural Tech & QBT Equity</p>
-                <div class="mini-chart"></div>
-                <button class="action-btn">ANALIZAR</button>
-            </div>
-            <div class="card gold-border" id="rwa">
-                <h3>RWA INSTITUCIONAL</h3>
-                <p>Debt & Lithium Assets</p>
-                <button class="action-btn">OPERAR</button>
-            </div>
-            <div class="card" id="crowd">
-                <h3>CROWDFUNDING</h3>
-                <p>Startup Global Ledger</p>
-                <button class="action-btn">REGISTRAR</button>
-            </div>
-            <div class="card" id="phil">
-                <h3>FILANTROPÍA</h3>
-                <p>Satellite Shielding</p>
-                <button class="action-btn">DONAR</button>
-            </div>
-        </div>
     </main>
-
-    <footer class="sovereign-footer">
-        <p>© 2025-2026 DALabs | MIA-X Persistence Engine | AGI 3 Normative</p>
-    </footer>
 
     <script src="script.js"></script>
 </body>

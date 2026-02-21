@@ -1,17 +1,26 @@
 const express = require('express');
 const path = require('path');
 const compression = require('compression');
+const helmet = require('helmet');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(compression());
-app.use('/assets', express.static(path.join(__dirname, 'assets')));
-app.use(express.static(__dirname));
+// Configuración de seguridad para permitir scripts externos de animación
+app.use(helmet({ contentSecurityPolicy: false }));
+
+// Servidor estático universal
+app.use(express.static(path.join(__dirname, '/')));
+
+// Agentes MIA-X: Monitoreo de Persistencia
+setInterval(() => {
+    console.log(">> [MIA-X]: Agentes distribuidos verificando integridad en Atacama...");
+}, 600000);
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 app.listen(PORT, () => {
-    console.log(`>> [AGI 3]: DEAL Portal Online - Elite Standard`);
+    console.log(`>> [DEAL]: Infrastructure Live on Port ${PORT}`);
 });

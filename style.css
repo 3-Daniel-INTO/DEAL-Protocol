@@ -1,39 +1,42 @@
 :root { --neon: #39FF14; --gold: #D4AF37; --bg: #000; }
-body { margin: 0; background: var(--bg); color: #fff; font-family: 'Syncopate', sans-serif; overflow-x: hidden; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #000; color: #fff; font-family: 'Syncopate', sans-serif; overflow-x: hidden; }
 
-/* Engine 3D Eje Z */
-.space-vortex { position: fixed; inset: 0; perspective: 1500px; z-index: -1; background: radial-gradient(circle, #111 0%, #000 100%); }
+#loader { position: fixed; inset: 0; background: #000; display: flex; justify-content: center; align-items: center; z-index: 9999; color: var(--neon); letter-spacing: 5px; font-size: 0.8rem; }
+
+/* DEEP SPACE ENGINE */
+.deep-space { position: fixed; inset: 0; perspective: 1800px; z-index: -1; overflow: hidden; }
 .layer { position: absolute; inset: 0; background-position: center; background-repeat: no-repeat; }
 
-.vortex {
-    background-image: url('assets/logos/deal_astronaut_full.png'); /* Usando el activo consolidado */
+.vortex-core {
+    background-image: url('assets/logos/deal_astronaut_full.png');
     background-size: cover;
-    transform: translateZ(-500px) scale(2);
-    animation: rotateVortex 120s linear infinite;
-    opacity: 0.5;
-    filter: hue-rotate(90deg) brightness(0.5);
+    transform: translateZ(-800px) scale(2);
+    filter: hue-rotate(120deg) brightness(0.4) blur(4px);
+    opacity: 0.6;
 }
 
-.astronaut {
+.astronaut-master {
+    transform-style: preserve-3d;
+    display: flex; justify-content: center; align-items: center;
+}
+
+.astro-inner {
+    width: 60%; height: 60%;
     background-image: url('assets/logos/deal_astronaut_full.png');
     background-size: contain;
-    transform: translateZ(300px);
-    animation: floatZ 6s ease-in-out infinite;
+    background-repeat: no-repeat;
+    background-position: center;
+    transform: translateZ(500px); /* Zoom inicial Eje Z */
+    filter: drop-shadow(0 0 30px rgba(57, 255, 20, 0.4));
 }
 
-@keyframes rotateVortex { from { transform: translateZ(-500px) rotate(0deg) scale(2); } to { transform: translateZ(-500px) rotate(360deg) scale(2); } }
-@keyframes floatZ { 0%, 100% { transform: translateZ(300px) translateY(0); } 50% { transform: translateZ(500px) translateY(-30px); } }
+/* UI ELEMENTS */
+.deal-nav-elite { position: fixed; top: 0; width: 100%; padding: 40px 60px; display: flex; justify-content: space-between; align-items: center; z-index: 100; backdrop-filter: blur(15px); }
+.brand { font-size: 2.5rem; font-weight: 900; color: var(--neon); letter-spacing: 10px; }
+.auth-btn { background: var(--neon); color: #000; border: none; padding: 15px 40px; font-weight: 800; cursor: pointer; transition: 0.3s; clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%); }
+.auth-btn:hover { transform: scale(1.1); box-shadow: 0 0 30px var(--neon); }
 
-/* UI Refinement */
-.deal-nav { position: fixed; top: 0; width: 100%; padding: 40px; display: flex; justify-content: space-between; z-index: 1000; }
-.logo-main { height: 60px; filter: drop-shadow(0 0 15px var(--neon)); }
-.btn-auth { background: var(--neon); color: #000; border: none; padding: 12px 30px; font-weight: 900; cursor: pointer; box-shadow: 0 0 20px var(--neon); clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%); }
-
-.portal-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; padding: 100px 10%; margin-top: 150px; }
-.card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.1); padding: 40px; border-radius: 15px; backdrop-filter: blur(20px); transition: 0.4s; }
-.card:hover { transform: translateY(-10px) scale(1.05); border-color: var(--neon); box-shadow: 0 0 30px rgba(57, 255, 20, 0.1); }
-.neon-border { border-left: 4px solid var(--neon); }
-.gold-border { border-left: 4px solid var(--gold); }
-
-.action-btn { width: 100%; padding: 15px; background: transparent; border: 1px solid var(--neon); color: var(--neon); font-weight: bold; cursor: pointer; margin-top: 20px; }
-.action-btn:hover { background: var(--neon); color: #000; }
+.grid-tools { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; padding: 100px 10%; margin-top: 110vh; }
+.tool-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 50px; border-radius: 20px; transition: 0.5s; backdrop-filter: blur(10px); }
+.tool-card:hover { border-color: var(--neon); transform: translateZ(50px); }
