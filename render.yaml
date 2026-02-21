@@ -1,13 +1,11 @@
 services:
   - type: web
-    name: deal-neural-engine
+    name: deal-protocol-brain
     env: node
-    plan: pro
-    region: frankfurt
-    buildCommand: npm install
-    startCommand: node server.js
+    region: oregon
+    plan: free
+    buildCommand: "cd core_brain && npm install"
+    startCommand: "cd core_brain && node server.js"
     envVars:
-      - key: PROJECT_ROOT
-        value: DALABS_HARMONY
-      - key: AI_CORE
-        value: G_AGI_INDEPENDENT
+      - key: NODE_ENV
+        value: production

@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "name": "deal-protocol-hybrid",
+  "name": "deal-protocol",
   "cleanUrls": true,
   "public": true,
-  "installCommand": "echo 'Edge Setup'",
-  "buildCommand": "echo 'Static Reflect Prepared'",
+  "buildCommand": "echo 'Build Visual: Success'",
+  "installCommand": "echo 'Install Visual: Success'",
   "outputDirectory": "public",
   "rewrites": [
     { "source": "/api/brain/(.*)", "dest": "https://deal-protocol.onrender.com/api/$1" },

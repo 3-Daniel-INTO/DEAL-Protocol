@@ -1,6 +1,6 @@
 node_modules/
 .next/
 .vercel/
-core_brain/node_modules/
 *.log
 .env
+.DS_Store
