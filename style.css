@@ -1,36 +1,28 @@
-@import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Inter:wght@300;600&display=swap');
+:root { --neon: #39FF14; --gold: #D4AF37; --bg: #000; }
+body, html { margin: 0; padding: 0; background: var(--bg); overflow-x: hidden; height: 100%; }
 
-:root { --gold: #D4AF37; --bg: #000; --text: #fff; }
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; overflow: hidden; }
+/* Motor de Profundidad DEAL (Z-Axis) */
+.visual-core {
+    position: fixed; inset: 0; z-index: -1;
+    perspective: 2000px;
+    background: radial-gradient(circle at center, #111 0%, #000 100%);
+}
 
-#ar-mockup-bg { position: fixed; inset: 0; z-index: -1; }
-#neural-noise { position: fixed; inset: 0; background: url('https://grainy-gradients.vercel.app/noise.svg'); opacity: 0.05; pointer-events: none; z-index: 10; }
+.vortex-360 {
+    position: absolute; inset: -100%;
+    background: url('assets/brand/vortice_neon.png') center/cover;
+    transform: translateZ(-500px);
+    animation: rotateLoop 120s linear infinite;
+    will-change: transform; /* Optimizador de GPU */
+}
 
-.deal-nav { position: fixed; top: 0; width: 100%; padding: 40px; display: flex; justify-content: space-between; z-index: 100; font-family: 'Syncopate'; }
-.logo { color: var(--gold); letter-spacing: 10px; font-size: 1.5rem; }
+.astronaut-z {
+    position: absolute; inset: 0;
+    background: url('assets/brand/astronauta_vortice.png') center/contain no-repeat;
+    transform: translateZ(400px);
+    animation: floatZ 10s ease-in-out infinite;
+    will-change: transform;
+}
 
-.panel { height: 100vh; display: flex; align-items: center; justify-content: center; padding: 0 10%; position: relative; border-bottom: 1px solid rgba(212, 175, 55, 0.1); }
-
-/* Grid de Herramientas */
-.grid-tools { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; width: 100%; }
-.tool-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 30px; backdrop-filter: blur(10px); }
-.tool-card.gold { border-color: var(--gold); }
-.btn-group { display: flex; gap: 10px; margin-top: 15px; }
-button { padding: 10px; border: none; cursor: pointer; font-weight: bold; text-transform: uppercase; }
-.buy { background: var(--gold); color: #000; flex: 1; }
-.sell { background: transparent; border: 1px solid var(--gold); color: var(--gold); flex: 1; }
-.buy.full { width: 100%; margin-top: 15px; }
-
-/* KPI Section */
-.kpi-grid { display: flex; gap: 50px; margin: 40px 0; }
-.kpi-item { text-align: center; }
-.kpi-item .val { display: block; font-size: 3rem; font-family: 'Syncopate'; color: var(--gold); }
-.kpi-item .desc { font-size: 0.8rem; opacity: 0.6; letter-spacing: 2px; }
-
-/* Footer */
-footer { text-align: center; flex-direction: column; }
-.footer-content { opacity: 0.7; font-size: 0.9rem; }
-.social-icons, .links-direct { margin: 20px 0; display: flex; gap: 30px; justify-content: center; }
-.social-icons a, .links-direct a { color: var(--gold); text-decoration: none; font-size: 0.7rem; letter-spacing: 2px; }
-.copyright { margin-top: 40px; font-size: 0.6rem; color: #fff; }
+@keyframes rotateLoop { from { transform: translateZ(-500px) rotate(0deg); } to { transform: translateZ(-500px) rotate(360deg); } }
+@keyframes floatZ { 0%, 100% { transform: translateZ(400px) translateY(0); } 50% { transform: translateZ(600px) translateY(-30px); } }
