@@ -10,81 +10,65 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
 <body>
-    <div id="vortex-bg"></div>
-    <div class="scanline"></div>
+    <div id="experience-vortex"></div>
+    <div class="satellite-scan-line"></div>
 
-    <nav class="deal-nav">
-        <img src="logo_deal_verde.png" alt="DEAL" class="main-logo">
-        <div class="nav-links">
+    <nav class="deal-navbar">
+        <img src="logo_deal_verde.png" alt="DEAL" class="deal-logo-v">
+        <div class="menu-swarm">
             <a href="#vc">VENTURE</a>
             <a href="#rwa">RWA</a>
             <a href="#crowd">CROWDFUNDING</a>
-            <button class="btn-wallet" onclick="connectSovereign()">CONNECT WALLET</button>
+            <a href="#phila">FILANTROPÍA</a>
         </div>
+        <button class="wallet-btn" onclick="triggerMIAXAuth()">CONNECT WALLET</button>
     </nav>
 
-    <div id="content">
-        <section class="hero">
-            <div class="hero-wrap">
-                <h1 class="logo-title">DEAL</h1>
-                <p class="reveal-text">SISTEMA FINANCIERO MUNDIAL SOBERANO</p>
-                <div class="biometric-box" onclick="startBiometric()">
-                    <span>FIRMA MIA-X BIOMÉTRICA REQUERIDA</span>
+    <main class="smooth-scroll">
+        <section class="panel hero">
+            <div class="hero-content">
+                <h1>DEAL</h1>
+                <p class="cinematic-text">INFRAESTRUCTURA MUNDIAL SOBERANA</p>
+                <div id="biometric-trigger" class="bio-scanner" onclick="startBiometricScan()">
+                    INICIAR FIRMA BIOMÉTRICA MIA-X
                 </div>
             </div>
         </section>
 
-        <section class="grid-container">
+        <section class="panel grid-portals">
             <div class="portal-card" id="vc">
-                <div class="glass-inner">
-                    <h3>VENTURE CAPITAL</h3>
-                    <p>Auditoría G-AGI para Startups. Registra tu visión.</p>
-                    <button class="btn-action">SUBIR PROYECTO</button>
-                </div>
+                <h3>VENTURE CAPITAL</h3>
+                <p>Sube tu proyecto para auditoría G-AGI.</p>
+                <button class="action-trigger">REGISTRAR STARTUP</button>
             </div>
-            <div class="portal-card gold-node" id="rwa">
-                <div class="glass-inner">
-                    <h3>INSTITUCIONAL RWA</h3>
-                    <p>Litio, Oro y Commodities en Atacama. Protocolo Veritas.</p>
-                    <button class="btn-action">INGRESAR FONDOS</button>
-                </div>
+            <div class="portal-card gold" id="rwa">
+                <h3>INSTITUCIONAL RWA</h3>
+                <p>Litio y Commodities. Liquidación SOL/BTC.</p>
+                <button class="action-trigger">INVERTIR FONDOS</button>
             </div>
             <div class="portal-card" id="crowd">
-                <div class="glass-inner">
-                    <h3>CROWDFUNDING</h3>
-                    <p>Financiamiento colectivo para infraestructura global.</p>
-                    <button class="btn-action">PARTICIPAR</button>
-                </div>
+                <h3>CROWDFUNDING</h3>
+                <p>Fondeo colectivo para infraestructura IA.</p>
+                <button class="action-trigger">PARTICIPAR</button>
             </div>
-            <div class="portal-card" id="philanthropy">
-                <div class="glass-inner">
-                    <h3>FILANTROPÍA DALabs</h3>
-                    <p>Protección de datos vitales y desarrollo humano.</p>
-                    <button class="btn-action">DONAR</button>
-                </div>
+            <div class="portal-card" id="phila">
+                <h3>FILANTROPÍA</h3>
+                <p>Donaciones DALabs & Harmony Fundación.</p>
+                <button class="action-trigger">CONTRIBUIR</button>
             </div>
         </section>
 
-        <section class="analysis-panel">
-            <div class="glass-wide">
-                <h2>TERMINAL DE ANÁLISIS G-AGI</h2>
-                <div class="stats">
-                    <div class="stat-node">LIQUIDEZ: <span>$2.5B</span></div>
-                    <div class="stat-node">NODOS: <span>ACTIVOS (SAT)</span></div>
-                    <div class="stat-node">CIFRADO: <span>CUÁNTICO</span></div>
-                </div>
+        <section class="panel vision">
+            <div class="vision-quote">
+                <blockquote>"DEAL es el puente hacia la civilización cuántica, donde cada humano es dueño de su progreso."</blockquote>
+                <span>— DALabs Infrastructure Core</span>
             </div>
         </section>
 
-        <section class="vision-box">
-            <p>"DEAL es la persistencia de la civilización a través del capital inteligente."</p>
-            <span>— DALabs Infrastructure 2026</span>
-        </section>
-
-        <footer>
-            <p>© 2026 DALabs | MIA-X Neural Network | Harmony Foundation</p>
+        <footer class="deal-footer">
+            <p>© 2026 DALabs | MIA-X Neural System | Harmony Foundation</p>
         </footer>
-    </div>
+    </main>
 
     <script src="script.js"></script>
 </body>
