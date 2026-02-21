@@ -1,3 +1,4 @@
+const sentinel = require('./sentinel');
 const express = require('express');
 const path = require('path');
 const compression = require('compression');
@@ -11,6 +12,7 @@ app.use(helmet({ contentSecurityPolicy: false }));
 
 // Servidor estático universal
 app.use(express.static(path.join(__dirname, '/')));
+app.use((req, res, next) => {     const appPartner = req.headers['x-application-origin'] || 'unknown';     sentinel.analyzeActivity(appPartner, req.method, req.url);     next(); });
 
 // Agentes MIA-X: Monitoreo de Persistencia
 setInterval(() => {
