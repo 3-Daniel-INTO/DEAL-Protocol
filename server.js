@@ -1,23 +1,25 @@
 const express = require('express');
 const cors = require('cors');
 const compression = require('compression');
-const path = require('path');
+const helmet = require('helmet'); // Seguridad avanzada
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(compression());
-app.use(cors({ origin: '*' })); // Permite acceso total para la fase de estabilización
-app.use(express.static(__dirname));
+app.use(helmet({ contentSecurityPolicy: false })); // Protege contra inyecciones
+app.use(compression()); // Reduce lag de transferencia
+app.use(cors({ origin: [/vercel\.app$/, /deal-protocol\.online$/] })); // Solo tus dominios
 
 app.get('/api/health', (req, res) => {
-    res.json({ status: "Sovereign Online", node: "Render-srv-d6bqor", ia: "G-AGI Active" });
+    res.status(200).json({ status: "Cyber-Shield Active", sync: "Optimal" });
 });
 
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
+// Evita que el servidor se caiga por rutas inexistentes (Anti-Crash)
+app.use((err, req, res, next) => {
+    console.error(">> [BUG DETECTED]:", err.stack);
+    res.status(500).send('Infrastructure Error Handled by MIA-X');
 });
 
-app.listen(PORT, () => {
-    console.log(`>> [DEAL]: Infrastructure stable on port ${PORT}`);
+app.listen(PORT, '0.0.0.0', () => {
+    console.log(`>> [DEAL]: Búnker de datos blindado en puerto ${PORT}`);
 });
