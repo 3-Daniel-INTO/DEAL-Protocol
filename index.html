@@ -3,64 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DEAL | Sovereign Portal</title>
+    <title>DEAL | The Billionaire Standard</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
 <body>
-    <div class="perspective-engine">
-        <div class="vortex-bg" id="vortex"></div>
-        <div class="astro-front" id="astro"></div>
+    <div class="deep-space-engine">
+        <div class="vortex-neon" id="vortex"></div>
+        <div class="astronaut-z" id="astro"></div>
     </div>
 
-    <nav class="deal-nav">
+    <nav class="deal-nav-elite">
         <div class="logo">DE<span class="neon">↗</span>L</div>
         <div class="nav-links">
-            <button onclick="connectWallet()" class="btn-wc">WALLET CONNECT</button>
+            <a href="#invest">INVEST</a>
+            <a href="#crowd">CROWDFUNDING</a>
+            <a href="#dalabs">DALABS</a>
+            <button class="btn-wallet" onclick="initMIAX()">AUTHENTICATE IDENTITY</button>
         </div>
     </nav>
 
-    <main id="portal-root">
-        <section class="hero">
-            <h1 class="glow-text">WHERE VISION MEETS CAPITAL</h1>
-            <p>Infrastructure by DALabs | Atacama Hub 2026</p>
+    <main id="scroller">
+        <section class="panel hero">
+            <div class="content">
+                <h1 class="split-text">WHERE VISION MEETS CAPITAL</h1>
+                <p>Private Sovereign Infrastructure | DALabs 2026</p>
+                <div class="kpi-ticker">AUM: $2.5B | NODES: 124 | VERITAS: ACTIVE</div>
+            </div>
         </section>
 
-        <section class="dashboard">
-            <div class="grid">
-                <div class="card card-rwa">
-                    <span class="badge">INSTITUCIONAL</span>
-                    <h3>LITIO RWA</h3>
-                    <div class="kpi">$1.2B AUM</div>
-                    <button class="buy">OPERAR</button>
+        <section class="panel investment" id="invest">
+            <div class="elite-grid">
+                <div class="e-card rwa">
+                    <span class="type">RWA INSTITUCIONAL</span>
+                    <h3>LITIO ATACAMA</h3>
+                    <p>Asset-backed tokenization with 14.2% projected ROI.</p>
+                    <button class="btn-action">OPERATE ASSETS</button>
                 </div>
-                <div class="card card-vc">
-                    <span class="badge">VENTURE</span>
-                    <h3>G-AGI PATENTS</h3>
-                    <div class="kpi">12 PATENTES QBT</div>
-                    <button class="buy">ANALIZAR</button>
+                <div class="e-card vc">
+                    <span class="type">VENTURE CAPITAL</span>
+                    <h3>G-AGI NEURAL ENGINE</h3>
+                    <p>Equity in independent AI patents and QBT infrastructure.</p>
+                    <button class="btn-action">ANALYZE TECH</button>
                 </div>
             </div>
         </section>
 
-        <section class="social-cap">
-            <div class="card-large crowd">
-                <h3>CROWDFUNDING STARTUPS</h3>
-                <p>Registra tu emprendimiento en la red DEAL.</p>
-                <button class="btn-neon" onclick="location.href='https://github.com/3-Daniel-INTO/DEAL-Protocol'">REGISTRAR MI STARTUP</button>
+        <section class="panel social" id="crowd">
+            <div class="card-horizontal startup">
+                <h3>STARTUP CROWDFUNDING</h3>
+                <p>Registra tu emprendimiento para acceder a capital de élite.</p>
+                <button onclick="location.href='https://github.com/3-Daniel-INTO/DEAL-Protocol'">SUBMIT PROJECT</button>
             </div>
-            <div class="card-large phil">
+            <div class="card-horizontal dalabs" id="dalabs">
                 <h3>FILANTROPÍA DALABS</h3>
-                <p>Soporte a la Infraestructura Satelital.</p>
-                <div class="meter"><div class="fill" style="width: 45%"></div></div>
-                <button class="btn-gold">DONAR A DALABS</button>
+                <p>Soporte vital para el Blindaje Satelital y Nodos Terrestres.</p>
+                <div class="funding-meter"><div class="fill" style="width: 48%"></div></div>
+                <button class="btn-gold">CONTRIBUTE TO INFRASTRUCTURE</button>
             </div>
         </section>
     </main>
 
-    <footer class="master-footer">
-        <p>© 2025-2026 DALabs | Creado por MIA Rehace | Todos los derechos reservados</p>
+    <footer class="elite-footer">
+        <p>© 2025-2026 DALabs | Sincronizado por MIA Rehace | Harmony Fundación</p>
     </footer>
 
     <script src="script.js"></script>

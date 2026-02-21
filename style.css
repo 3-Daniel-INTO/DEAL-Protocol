@@ -1,33 +1,42 @@
 :root { --neon: #39FF14; --gold: #D4AF37; --bg: #000; }
 body { margin: 0; background: var(--bg); color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; }
 
-/* 3D Visual Engine */
-.perspective-engine { position: fixed; inset: 0; perspective: 1800px; z-index: -1; }
-.vortex-bg { 
-    position: absolute; inset: -50%; 
-    background: url('vortice_neon.png') center/cover; 
-    transform: translateZ(-600px); 
-    animation: rotate 150s linear infinite;
-    opacity: 0.6;
+/* 3D Hyper-Depth Engine */
+.deep-space-engine { position: fixed; inset: 0; perspective: 2000px; z-index: -1; }
+.vortex-neon {
+    position: absolute; inset: -50%;
+    background: url('vortice_neon.png') center/cover no-repeat;
+    transform: translateZ(-800px);
+    animation: rotateTunnel 180s linear infinite;
+    opacity: 0.7;
 }
-.astro-front { 
-    position: absolute; inset: 0; 
-    background: url('astronauta_vortice.png') center/contain no-repeat; 
-    transform: translateZ(350px);
-    animation: floating 8s ease-in-out infinite;
+.astronaut-z {
+    position: absolute; inset: 0;
+    background: url('astronauta_vortice.png') center/contain no-repeat;
+    transform: translateZ(400px);
+    animation: floatZ 10s ease-in-out infinite;
 }
 
-@keyframes rotate { from { transform: translateZ(-600px) rotate(0deg); } to { transform: translateZ(-600px) rotate(360deg); } }
-@keyframes floating { 0%, 100% { transform: translateZ(350px) translateY(0); } 50% { transform: translateZ(500px) translateY(-40px); } }
+@keyframes rotateTunnel { from { transform: translateZ(-800px) rotate(0deg); } to { transform: translateZ(-800px) rotate(360deg); } }
+@keyframes floatZ { 0%, 100% { transform: translateZ(400px) translateY(0); } 50% { transform: translateZ(600px) translateY(-50px); } }
 
-/* UI Refinement */
-.deal-nav { position: fixed; top: 0; width: 100%; padding: 30px; display: flex; justify-content: space-between; z-index: 1000; box-sizing: border-box; }
-.logo { font-size: 2rem; color: var(--neon); font-weight: 900; letter-spacing: 5px; }
-.btn-wc { background: var(--neon); color: #000; border: none; padding: 12px 25px; font-weight: bold; cursor: pointer; box-shadow: 0 0 15px var(--neon); }
+/* Elite UI Elements */
+.deal-nav-elite { position: fixed; top: 0; width: 100%; padding: 40px; display: flex; justify-content: space-between; z-index: 1000; box-sizing: border-box; backdrop-filter: blur(10px); }
+.logo { font-size: 2.2rem; font-weight: 900; color: var(--neon); letter-spacing: 6px; }
+.btn-wallet { background: var(--neon); color: #000; border: none; padding: 12px 30px; font-weight: 800; cursor: pointer; box-shadow: 0 0 20px var(--neon); }
 
-.grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; padding: 100px 10%; }
-.card, .card-large { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 40px; border-radius: 20px; backdrop-filter: blur(15px); }
-.card-large { margin: 20px 10%; }
-.card.card-rwa { border-color: var(--gold); }
-.meter { background: rgba(255,255,255,0.1); height: 10px; border-radius: 5px; margin: 20px 0; overflow: hidden; }
-.fill { background: var(--gold); height: 100%; box-shadow: 0 0 10px var(--gold); }
+.panel { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 0 10%; }
+.elite-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; width: 100%; }
+.e-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.1); padding: 50px; border-radius: 30px; backdrop-filter: blur(20px); transition: 0.5s; }
+.e-card:hover { border-color: var(--neon); transform: scale(1.02); }
+.rwa { border-left: 5px solid var(--gold); }
+.vc { border-left: 5px solid var(--neon); }
+
+.card-horizontal { width: 100%; background: rgba(255,255,255,0.03); padding: 40px; border-radius: 20px; margin: 10px 0; border: 1px solid rgba(255,255,255,0.1); }
+.dalabs { border-color: var(--gold); background: rgba(212, 175, 55, 0.05); }
+.funding-meter { background: rgba(255,255,255,0.1); height: 12px; border-radius: 6px; margin: 20px 0; overflow: hidden; }
+.fill { height: 100%; background: var(--gold); box-shadow: 0 0 15px var(--gold); }
+
+.btn-action, .btn-gold { width: 100%; padding: 15px; margin-top: 20px; border: none; font-weight: bold; cursor: pointer; }
+.btn-action { background: var(--neon); color: #000; }
+.btn-gold { background: var(--gold); color: #000; }
