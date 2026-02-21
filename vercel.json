@@ -1,7 +1,7 @@
 {
   "version": 2,
+  "name": "deal-protocol",
   "cleanUrls": true,
-  "framework": null,
   "headers": [
     {
       "source": "/assets/(.*)",
@@ -12,7 +12,7 @@
     }
   ],
   "rewrites": [
-    { "source": "/api/(.*)", "dest": "/api/$1" },
+    { "source": "/api/(.*)", "dest": "https://deal-protocol.onrender.com/api/$1" },
     { "source": "/(.*)", "dest": "/index.html" }
   ]
 }
