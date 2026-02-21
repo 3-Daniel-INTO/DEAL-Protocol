@@ -1,31 +1,37 @@
-:root { --neon: #39FF14; --gold: #D4AF37; --dark: #050505; }
-body { margin: 0; background: var(--dark); color: #fff; font-family: 'Inter', sans-serif; overflow: hidden; }
+:root { --neon: #39FF14; --gold: #D4AF37; --bg: #000; }
+body { margin: 0; background: var(--bg); color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; }
 
-/* Profundidad Z */
-.canvas-3d { position: fixed; inset: 0; perspective: 1200px; z-index: -1; }
-.vortex-bg { 
-    position: absolute; inset: -50%; 
+/* 3D PERSPECTIVE ENGINE */
+.vortex-container { position: fixed; inset: 0; perspective: 1500px; z-index: -1; }
+.neon-vortex {
+    position: absolute; inset: -50%;
     background: url('vortice_neon.png') center/cover;
-    transform: translateZ(-300px);
-    animation: rotateVortex 100s linear infinite;
+    transform: translateZ(-400px);
+    animation: rotateVortex 120s linear infinite;
+    opacity: 0.6;
 }
 .astronaut-z {
     position: absolute; inset: 0;
     background: url('astronauta_vortice.png') center/contain no-repeat;
-    transform: translateZ(100px);
-    animation: floatZ 8s ease-in-out infinite;
+    transform: translateZ(200px);
+    animation: floatingZ 6s ease-in-out infinite;
 }
 
-@keyframes rotateVortex { from { transform: translateZ(-300px) rotate(0deg); } to { transform: translateZ(-300px) rotate(360deg); } }
-@keyframes floatZ { 0%, 100% { transform: translateZ(100px) translateY(0); } 50% { transform: translateZ(250px) translateY(-30px); } }
+@keyframes rotateVortex { from { transform: translateZ(-400px) rotate(0deg); } to { transform: translateZ(-400px) rotate(360deg); } }
+@keyframes floatingZ { 0%, 100% { transform: translateZ(200px) translateY(0); } 50% { transform: translateZ(350px) translateY(-30px); } }
 
-/* UI Refinada */
-.deal-nav { position: fixed; top: 0; width: 100%; padding: 30px; display: flex; justify-content: space-between; box-sizing: border-box; }
-.logo { font-size: 2rem; font-weight: 900; color: var(--neon); letter-spacing: 4px; }
-.auth-btn { background: transparent; border: 1px solid var(--neon); color: var(--neon); padding: 10px 25px; cursor: pointer; transition: 0.3s; }
-.auth-btn:hover { background: var(--neon); color: #000; box-shadow: 0 0 20px var(--neon); }
+/* UI ELEMENTS */
+.deal-nav { position: fixed; top: 0; width: 100%; padding: 30px; display: flex; justify-content: space-between; z-index: 1000; background: rgba(0,0,0,0.5); backdrop-filter: blur(10px); }
+.logo { font-size: 2.2rem; font-weight: 900; color: var(--neon); letter-spacing: 5px; }
+.wallet-btn { background: var(--neon); color: #000; border: none; padding: 12px 25px; font-weight: bold; cursor: pointer; border-radius: 5px; box-shadow: 0 0 15px var(--neon); }
 
-.portal-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; padding: 50px; margin-top: 100px; }
-.card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 30px; backdrop-filter: blur(10px); }
-.card.card-phil { border-color: var(--gold); }
-.hidden { display: none; }
+.section { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 100px 5%; position: relative; }
+.card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.1); padding: 40px; border-radius: 20px; backdrop-filter: blur(15px); }
+.card.card-neon { border-color: var(--neon); }
+.card.card-gold { border-color: var(--gold); }
+
+.btn-op, .btn-neon, .btn-gold { width: 100%; padding: 15px; margin-top: 20px; border: none; font-weight: bold; cursor: pointer; transition: 0.3s; }
+.btn-neon { background: var(--neon); color: #000; }
+.btn-gold { background: var(--gold); color: #000; }
+
+.footer { height: auto; border-top: 1px solid rgba(255,255,255,0.1); flex-direction: column; text-align: center; }

@@ -4,12 +4,6 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(express.static(path.join(__dirname, '/')));
+app.get('*', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
 
-// Redirección maestra para Single Page Application
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
-});
-
-app.listen(PORT, () => {
-  console.log(`>> [LOG]: DEAL ENGINE ONLINE PORT ${PORT}`);
-});
+app.listen(PORT, () => console.log(`>> [G-AGI]: DEAL Engine Online | Ready for Inbound Capital`));
