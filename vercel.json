@@ -2,7 +2,7 @@
   "version": 2,
   "cleanUrls": true,
   "headers": [
-    { "source": "/assets/(.*)", "headers": [ { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" } ] }
+    { "source": "/(.*)", "headers": [ { "key": "X-Frame-Options", "value": "DENY" } ] }
   ],
   "rewrites": [ { "source": "/(.*)", "dest": "/index.html" } ]
 }
