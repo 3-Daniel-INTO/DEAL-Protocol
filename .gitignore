@@ -1,8 +1,1 @@
-node_modules/
-.next/
-.vercel/
-out/
-build/
-dist/
-*.log
-.env
+node_modules/\n.next/\n.vercel/\nserver.js\n*.log

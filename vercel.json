@@ -1,23 +1,13 @@
 {
   "version": 2,
   "name": "deal-protocol",
-  "framework": null,
-  "installCommand": "npm install --only=production",
-  "buildCommand": "echo 'Sovereign Build Approved'",
+  "cleanUrls": true,
+  "buildCommand": null,
+  "installCommand": "echo 'MIA-X: Bypass Installation'",
   "outputDirectory": ".",
   "public": true,
   "rewrites": [
     { "source": "/api/(.*)", "dest": "https://deal-protocol.onrender.com/api/$1" },
     { "source": "/(.*)", "dest": "/index.html" }
-  ],
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        { "key": "X-Frame-Options", "value": "DENY" },
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "Permissions-Policy", "value": "interest-cohort=()" }
-      ]
-    }
   ]
 }
