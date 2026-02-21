@@ -1,30 +1,12 @@
-:root { --neon-green: #39FF14; --gold: #D4AF37; --deep-bg: #030303; }
-body { margin: 0; background: var(--deep-bg); color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+:root { --neon: #39FF14; --gold: #D4AF37; }
+body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow-x: hidden; background: #000; font-family: 'Inter', sans-serif; color: white; }
+#vortex-bg { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; }
 
-/* Escudo Satelital (Láser de Escaneo) */
-.satellite-scanner {
-    position: fixed; top: -100%; left: 0; width: 100%; height: 5px;
-    background: var(--neon-green); box-shadow: 0 0 20px var(--neon-green);
-    z-index: 9999; opacity: 0.3; pointer-events: none;
-}
+.deal-nav { position: fixed; top: 0; width: 100%; display: flex; justify-content: space-between; padding: 20px 5% ; z-index: 100; background: rgba(0,0,0,0.5); backdrop-filter: blur(10px); }
+.nav-logo { height: 40px; }
 
-/* Header Soberano */
-.sovereign-nav {
-    position: fixed; width: 100%; padding: 20px 50px; display: flex; 
-    justify-content: space-between; align-items: center; z-index: 1000;
-}
-.deal-brand { height: 50px; filter: drop-shadow(0 0 10px var(--neon-green)); }
-
-/* Portal Cards */
-.glass-morph {
-    background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px);
-    border: 1px solid rgba(57, 255, 20, 0.2); padding: 40px; border-radius: 20px;
-    transition: 0.4s; margin: 20px;
-}
-.glass-morph:hover { border-color: var(--neon-green); box-shadow: 0 0 30px rgba(57, 255, 20, 0.1); }
-.gold { border-color: var(--gold); }
-
-.action-btn {
-    background: var(--neon-green); color: #000; border: none; padding: 15px 30px;
-    font-weight: 800; cursor: pointer; text-transform: uppercase;
-}
+section { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 50px; }
+.portal-card { background: rgba(255,255,255,0.05); border: 1px solid var(--neon); padding: 30px; border-radius: 15px; max-width: 400px; backdrop-filter: blur(10px); margin: 20px; transition: 0.3s; }
+.portal-card:hover { transform: scale(1.05); box-shadow: 0 0 20px var(--neon); }
+.gold-node { border-color: var(--gold); }
+button { background: var(--neon); color: black; border: none; padding: 12px 25px; font-weight: bold; cursor: pointer; border-radius: 5px; text-transform: uppercase; }
