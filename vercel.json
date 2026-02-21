@@ -1,9 +1,16 @@
 {
   "version": 2,
-  "name": "deal-protocol-2026",
-  "builds": [{ "src": "server.js", "use": "@vercel/node" }],
+  "name": "deal-protocol",
+  "cleanUrls": true,
+  "framework": null,
+  "builds": [
+    { "src": "server.js", "use": "@vercel/node" },
+    { "src": "public/**/*", "use": "@vercel/static" },
+    { "src": "index.html", "use": "@vercel/static" }
+  ],
   "routes": [
     { "src": "/api/(.*)", "dest": "/server.js" },
+    { "src": "/assets/(.*)", "headers": { "cache-control": "s-maxage=31536000, immutable" }, "dest": "/public/assets/$1" },
     { "src": "/(.*)", "dest": "/index.html" }
   ]
 }

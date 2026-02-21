@@ -1,14 +1,20 @@
 const express = require('express');
-const compression = require('compression');
 const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 10000;
 
-app.use(compression());
-app.use(express.static(__dirname + '/'));
+// Configuración de Headers para Alta Disponibilidad
+app.use((req, res, next) => {
+    res.setHeader('X-Protocol', 'Proof of Progress');
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    next();
+});
 
-app.get('/api/health', (req, res) => {
-    res.json({ status: "SOVEREIGN", nodes: "ATACAMA_ACTIVE", engine: "G-AGI" });
+app.use(express.static(path.join(__dirname, '/')));
+app.use('/public', express.static(path.join(__dirname, 'public')));
+
+app.get('/api/status', (req, res) => {
+    res.json({ system: "DEAL", identity: "MIA-X", status: "QUANTUM_READY" });
 });
 
 app.get('*', (req, res) => {
@@ -16,5 +22,5 @@ app.get('*', (req, res) => {
 });
 
 app.listen(PORT, '0.0.0.0', () => {
-    console.log(`>> [DEAL]: Swarm Online on Port ${PORT}`);
+    console.log(`>> [DEAL]: Nodo operativo en puerto ${PORT}`);
 });
