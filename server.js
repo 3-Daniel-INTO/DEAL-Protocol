@@ -4,29 +4,24 @@ const compression = require('compression');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Optimización para carga de logos de alta calidad
 app.use(compression());
+app.use('/assets', express.static(path.join(__dirname, 'assets')));
 app.use(express.static(__dirname));
 
-// --- PROTOCOLO AGI 3: GESTIÓN DE LLAVES Y DATOS ---
-const DEAL_PROTOCOL = {
-    engine: "G-AGI x AGI 3",
-    persistence: "MIA-X",
-    sectors: ["Institutional RWA", "Venture Capital", "Crowdfunding", "Philanthropy"],
-    
-    absorbCapital: (source) => {
-        console.log(`>> [AGI 3]: Absorbiendo capital de ${source} hacia infraestructura DALabs...`);
-    }
+// Lógica de Persistencia MIA-X / AGI 3
+const MIA_X_Admin = {
+    heartbeat: () => console.log(">> [MIA-X]: Syncing with Atacama Command Center..."),
+    activeNodes: 124,
+    status: "Neuro-Organic Standard Active"
 };
 
-// Keep-Alive & Sync Neuronal (DALabs Infrastructure)
-setInterval(() => {
-    console.log(">> [DALabs]: Sincronización de Nodos Atacama - MIA-X Persistence Active.");
-}, 300000);
+setInterval(MIA_X_Admin.heartbeat, 300000); // 5 min Keep-Alive para Render
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 app.listen(PORT, () => {
-    console.log(`>> [DEAL]: Neuro-Organic Portal Online | Standard Elite Billionaire`);
+    console.log(`>> [DEAL]: Elite Infrastructure Online | Port ${PORT}`);
 });

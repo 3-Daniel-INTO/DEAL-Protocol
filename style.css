@@ -29,3 +29,6 @@ body { margin: 0; background: var(--bg); color: #fff; font-family: 'Inter', sans
 .bento-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; padding: 100px 10%; margin-top: 40px; }
 .b-card { background: rgba(255,255,255,0.01); border: 1px solid rgba(255,255,255,0.08); padding: 45px; border-radius: 24px; backdrop-filter: blur(20px); transition: 0.4s; }
 .b-card:hover { border-color: var(--neon); transform: translateY(-5px); background: rgba(57, 255, 20, 0.02); }
+.main-logo { height: 50px; width: auto; filter: drop-shadow(0 0 10px var(--neon)); }
+.roadmap-asset { width: 80%; max-width: 900px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); margin-top: 100px; box-shadow: 0 0 40px rgba(0,0,0,1); }
+.hero-image-container { display: flex; justify-content: center; align-items: center; width: 100%; }
