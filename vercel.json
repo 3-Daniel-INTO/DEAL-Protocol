@@ -1,10 +1,14 @@
 {
   "version": 2,
-  "public": true,
+  "name": "deal-protocol-sovereign",
+  "cleanUrls": true,
   "framework": null,
-  "installCommand": "echo 'Skip Install'",
-  "buildCommand": "echo 'Skip Build'",
+  "installCommand": "echo 'Sovereign Install Skip'",
+  "buildCommand": "echo 'Sovereign Build Skip'",
   "outputDirectory": ".",
+  "github": {
+    "silent": true 
+  },
   "rewrites": [
     { "source": "/api/(.*)", "dest": "https://deal-protocol.onrender.com/api/$1" },
     { "source": "/(.*)", "dest": "/index.html" }
