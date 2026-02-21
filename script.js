@@ -9,8 +9,8 @@ renderer.setPixelRatio(window.devicePixelRatio);
 document.getElementById('experience-vortex').appendChild(renderer.domElement);
 
 const loader = new THREE.TextureLoader();
-const vortexTex = loader.load('vortice_neon.png');
-const astroTex = loader.load('astronauta_solo.png');
+const vortexTex = loader.load('/public/vortice_neon.png');
+const astroTex = loader.load('/public/astronauta_solo.png');
 
 // Vórtice de Datos
 const vGeo = new THREE.PlaneGeometry(150, 150);
