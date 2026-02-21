@@ -3,12 +3,11 @@
   "name": "deal-protocol",
   "cleanUrls": true,
   "public": true,
-  "buildCommand": "echo 'Build Visual: Success'",
-  "installCommand": "echo 'Install Visual: Success'",
-  "outputDirectory": "public",
+  "buildCommand": "echo 'Reflect Active'",
+  "installCommand": "echo 'Static Logic Only'",
+  "outputDirectory": ".",
   "rewrites": [
-    { "source": "/api/brain/(.*)", "dest": "https://deal-protocol.onrender.com/api/$1" },
-    { "source": "/api/edge", "dest": "/api/mia-x-edge.js" },
+    { "source": "/api/(.*)", "dest": "https://deal-protocol.onrender.com/api/$1" },
     { "source": "/(.*)", "dest": "/index.html" }
   ]
 }
