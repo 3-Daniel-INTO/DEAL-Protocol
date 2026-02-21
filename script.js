@@ -1,67 +1,67 @@
 gsap.registerPlugin(ScrollTrigger);
 
-// --- MOTOR 3D OPTIMIZADO PARA PC/MOBILE ---
+// --- 3D ENGINE ---
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 renderer.setSize(window.innerWidth, window.innerHeight);
-document.getElementById('canvas-container').appendChild(renderer.domElement);
+renderer.setPixelRatio(window.devicePixelRatio);
+document.getElementById('vortex-bg').appendChild(renderer.domElement);
 
 const loader = new THREE.TextureLoader();
-const vortexTex = loader.load('vortice_animado.png');
+const vortexTex = loader.load('vortice_neon.png'); 
 const astroTex = loader.load('astronauta_vortice.png');
 
-// Vórtice
-const vGeo = new THREE.PlaneGeometry(window.innerWidth > 768 ? 120 : 80, window.innerWidth > 768 ? 120 : 80);
-const vMat = new THREE.MeshBasicMaterial({ map: vortexTex, transparent: true, opacity: 0.7 });
+// Background Vortex
+const vGeo = new THREE.PlaneGeometry(120, 120);
+const vMat = new THREE.MeshBasicMaterial({ map: vortexTex, transparent: true, opacity: 0.6 });
 const vortex = new THREE.Mesh(vGeo, vMat);
-vortex.position.z = -50;
+vortex.position.z = -60;
 scene.add(vortex);
 
-// Astronauta
-const aGeo = new THREE.PlaneGeometry(15, 15);
+// Astronauta (Movimiento en Eje Z)
+const aGeo = new THREE.PlaneGeometry(20, 20);
 const aMat = new THREE.MeshBasicMaterial({ map: astroTex, transparent: true });
 const astronaut = new THREE.Mesh(aGeo, aMat);
-astronaut.position.set(5, -2, 10);
+astronaut.position.set(0, 0, 10);
 scene.add(astronaut);
 
-camera.position.z = 30;
+camera.position.z = 40;
 
-// Scroll Animation: El astronauta entra al vórtice
+// Scroll Animation: Cinematic Depth
 gsap.to(astronaut.position, {
-    z: -40, x: -5, y: 5,
+    z: -50,
+    x: -5,
     scrollTrigger: {
         trigger: "body",
         start: "top top",
         end: "bottom bottom",
-        scrub: 1.5
+        scrub: 2
     }
 });
 
-// Firma Biométrica MIA-X
-function triggerMIAAuth() {
-    const status = document.getElementById('auth-box');
-    status.innerHTML = "ESCANEANDO BIOMETRÍA...";
-    setTimeout(() => {
-        status.innerHTML = "VINCULANDO WALLET SOL/BTC...";
-        setTimeout(() => {
-            status.innerHTML = "SISTEMA MIA-X VALIDADO";
-            status.style.background = "#39FF14";
-            status.style.color = "#000";
-        }, 2000);
-    }, 2000);
-}
+gsap.to(vortex.rotation, {
+    z: Math.PI * 10,
+    scrollTrigger: {
+        trigger: "body",
+        scrub: 1
+    }
+});
 
 function animate() {
     requestAnimationFrame(animate);
-    vortex.rotation.z += 0.002;
+    vortex.rotation.z += 0.001;
     renderer.render(scene, camera);
 }
 animate();
 
-window.addEventListener('resize', () => {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-});
+// --- FUNCIONES DEAL ---
+function connectSovereign() {
+    alert("VINCULANDO WALLET CONNECT... ESPERANDO FIRMA MIA-X");
+}
+
+function startBiometric() {
+    const box = document.querySelector('.biometric-box');
+    box.innerHTML = "ESCANEANDO... ACCESO CONCEDIDO";
+    box.style.borderColor = "#39FF14";
+}

@@ -1,5 +1,9 @@
 {
   "version": 2,
+  "name": "deal-protocol-2026",
   "builds": [{ "src": "server.js", "use": "@vercel/node" }],
-  "routes": [{ "src": "/(.*)", "dest": "/index.html" }]
+  "routes": [
+    { "src": "/api/(.*)", "dest": "/server.js" },
+    { "src": "/(.*)", "dest": "/index.html" }
+  ]
 }
