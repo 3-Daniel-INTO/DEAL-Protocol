@@ -1,16 +1,15 @@
 {
-  "name": "deal-protocol-sovereign",
-  "version": "3.1.0",
-  "description": "Portal Neuronal DEAL - DALabs & Harmony Fundación",
+  "name": "deal-active-infrastructure",
+  "version": "17.0.0",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "node server.js"
+    "start": "node server.js"
   },
   "dependencies": {
-    "express": "^4.18.2"
-  },
-  "engines": {
-    "node": "18.x"
+    "express": "^4.18.2",
+    "compression": "^1.7.4",
+    "aws-sdk": "^2.1500.0",
+    "node-cron": "^3.0.3",
+    "pdfkit": "^0.13.0"
   }
 }
