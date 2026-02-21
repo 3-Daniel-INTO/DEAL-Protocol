@@ -32,3 +32,6 @@ body { margin: 0; background: var(--bg); color: #fff; font-family: 'Inter', sans
 .main-logo { height: 50px; width: auto; filter: drop-shadow(0 0 10px var(--neon)); }
 .roadmap-asset { width: 80%; max-width: 900px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); margin-top: 100px; box-shadow: 0 0 40px rgba(0,0,0,1); }
 .hero-image-container { display: flex; justify-content: center; align-items: center; width: 100%; }
+.main-logo { height: 50px; width: auto; filter: drop-shadow(0 0 10px var(--neon)); }
+.roadmap-asset { width: 80%; max-width: 900px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); margin-top: 100px; box-shadow: 0 0 40px rgba(0,0,0,1); }
+.hero-image-container { display: flex; justify-content: center; align-items: center; width: 100%; }
