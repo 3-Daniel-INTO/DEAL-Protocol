@@ -29,3 +29,12 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`>> [DEAL]: Búnker de datos activo en puerto ${PORT}`);
 });
+const negotiator = require('./app/core/negotiator');
+
+app.post('/api/negotiate', express.json(), (req, res) => {
+    const { amount, source } = req.body;
+    const decision = negotiator.evaluateProposal(amount, source);
+    res.json(decision);
+});
+
+console.log(">> [MIA-X]: Endpoint de Negociación Soberana Activado.");
