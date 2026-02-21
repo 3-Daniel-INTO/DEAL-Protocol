@@ -1,1 +1,1 @@
-node_modules\n.next\n.vercel\n*.log
+node_modules\n.next\n.vercel\nbuild\ndist
