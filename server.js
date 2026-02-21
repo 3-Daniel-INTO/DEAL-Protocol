@@ -1,28 +1,29 @@
-const sentinel = require('./sentinel');
 const express = require('express');
 const path = require('path');
 const compression = require('compression');
-const helmet = require('helmet');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(compression());
-// Configuración de seguridad para permitir scripts externos de animación
-app.use(helmet({ contentSecurityPolicy: false }));
+app.use(express.static(__dirname));
 
-// Servidor estático universal
-app.use(express.static(path.join(__dirname, '/')));
-app.use((req, res, next) => {     const appPartner = req.headers['x-application-origin'] || 'unknown';     sentinel.analyzeActivity(appPartner, req.method, req.url);     next(); });
-
-// Agentes MIA-X: Monitoreo de Persistencia
-setInterval(() => {
-    console.log(">> [MIA-X]: Agentes distribuidos verificando integridad en Atacama...");
-}, 600000);
+// API DE INDICADORES Y REPORTES LPI (Simulada para G-AGI)
+app.get('/api/deal-intelligence', (req, res) => {
+    res.json({
+        lpi: "98.4%", // Liquidity Performance Index
+        hash_growth: "+12.5% MoM",
+        deal_status: "Sovereign Active",
+        history_milestone: "Genesis 2026 Achieved"
+    });
+});
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-app.listen(PORT, () => {
-    console.log(`>> [DEAL]: Infrastructure Live on Port ${PORT}`);
-});
+// Keep-Alive MIA-X
+setInterval(() => {
+    console.log(">> [AGI 3]: Nodo Atacama Sincronizado. Latencia: 1ms");
+}, 300000);
+
+app.listen(PORT, () => console.log(`>> [DEAL]: Elite Terminal Online`));

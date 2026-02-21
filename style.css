@@ -1,42 +1,33 @@
 :root { --neon: #39FF14; --gold: #D4AF37; --bg: #000; }
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { background: #000; color: #fff; font-family: 'Syncopate', sans-serif; overflow-x: hidden; }
+body { margin: 0; background: var(--bg); color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; }
 
-#loader { position: fixed; inset: 0; background: #000; display: flex; justify-content: center; align-items: center; z-index: 9999; color: var(--neon); letter-spacing: 5px; font-size: 0.8rem; }
+/* 3D ENGINE FIX */
+.space-vortex { position: fixed; inset: 0; z-index: -2; perspective: 1800px; overflow: hidden; }
 
-/* DEEP SPACE ENGINE */
-.deep-space { position: fixed; inset: 0; perspective: 1800px; z-index: -1; overflow: hidden; }
-.layer { position: absolute; inset: 0; background-position: center; background-repeat: no-repeat; }
-
-.vortex-core {
-    background-image: url('assets/logos/deal_astronaut_full.png');
-    background-size: cover;
-    transform: translateZ(-800px) scale(2);
-    filter: hue-rotate(120deg) brightness(0.4) blur(4px);
+.vortex-360 {
+    position: absolute; inset: -100%;
+    background: url('assets/brand/vortice_neon.png') center/cover;
+    transform: translateZ(-800px);
+    animation: rotate360 120s linear infinite;
     opacity: 0.6;
 }
 
-.astronaut-master {
-    transform-style: preserve-3d;
-    display: flex; justify-content: center; align-items: center;
+.astronaut-z {
+    position: absolute; inset: 0;
+    background: url('assets/brand/astronauta_vortice.png') center/contain no-repeat;
+    transform: translateZ(300px);
+    animation: moveZ 8s ease-in-out infinite;
+    filter: drop-shadow(0 0 20px var(--neon));
 }
 
-.astro-inner {
-    width: 60%; height: 60%;
-    background-image: url('assets/logos/deal_astronaut_full.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    transform: translateZ(500px); /* Zoom inicial Eje Z */
-    filter: drop-shadow(0 0 30px rgba(57, 255, 20, 0.4));
-}
+@keyframes rotate360 { from { transform: translateZ(-800px) rotate(0deg); } to { transform: translateZ(-800px) rotate(360deg); } }
+@keyframes moveZ { 0%, 100% { transform: translateZ(300px) scale(1); } 50% { transform: translateZ(550px) scale(1.1); } }
 
-/* UI ELEMENTS */
-.deal-nav-elite { position: fixed; top: 0; width: 100%; padding: 40px 60px; display: flex; justify-content: space-between; align-items: center; z-index: 100; backdrop-filter: blur(15px); }
-.brand { font-size: 2.5rem; font-weight: 900; color: var(--neon); letter-spacing: 10px; }
-.auth-btn { background: var(--neon); color: #000; border: none; padding: 15px 40px; font-weight: 800; cursor: pointer; transition: 0.3s; clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%); }
-.auth-btn:hover { transform: scale(1.1); box-shadow: 0 0 30px var(--neon); }
-
-.grid-tools { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; padding: 100px 10%; margin-top: 110vh; }
-.tool-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 50px; border-radius: 20px; transition: 0.5s; backdrop-filter: blur(10px); }
-.tool-card:hover { border-color: var(--neon); transform: translateZ(50px); }
+/* PORTAL UI */
+.deal-nav { padding: 40px 6%; display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.5); backdrop-filter: blur(20px); z-index: 1000; position: sticky; top: 0; }
+.logo { font-size: 2.2rem; font-weight: 900; color: var(--neon); letter-spacing: 5px; }
+.tools-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; padding: 50px 6%; }
+.tool-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 40px; border-radius: 24px; transition: 0.3s; }
+.tool-card:hover { border-color: var(--neon); transform: translateY(-10px); }
+.tool-card.main { grid-column: span 2; border-left: 5px solid var(--neon); }
+.lpi-val { font-size: 3.5rem; color: var(--neon); font-weight: 900; }

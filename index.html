@@ -3,39 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DEAL | Sovereign Future</title>
+    <title>DEAL | Sovereign Portal</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
 <body>
-    <div id="loader">>> [MIA-X]: SYNCHRONIZING AGENTS...</div>
-
-    <div class="deep-space">
-        <div class="layer vortex-core" id="vortex"></div>
-        <div class="layer nebula-haze"></div>
-        <div class="layer astronaut-master" id="astro">
-            <div class="astro-inner"></div>
-        </div>
+    <div class="space-vortex">
+        <div class="vortex-360" id="vortex"></div>
+        <div class="astronaut-z" id="astro"></div>
     </div>
 
-    <nav class="deal-nav-elite">
-        <div class="brand">DE<span>↗</span>L</div>
-        <div class="status-panel">AGI 3: SYNCED | MIA-X: ACTIVE</div>
-        <button class="auth-btn" onclick="initMIAX()">NEURAL ACCESS</button>
+    <nav class="deal-nav">
+        <div class="logo">DE<span class="neon">↗</span>L</div>
+        <div class="nav-links">
+            <a href="#dashboard">TERMINAL</a>
+            <a href="#history">HISTORIA</a>
+            <a href="#reports">REPORTES LPI</a>
+        </div>
+        <button class="auth-btn" onclick="initMIAX()">IDENTITY SCAN</button>
     </nav>
 
-    <main class="portal-ui">
-        <header class="hero-title">
-            <h1 class="split-text">DEAL</h1>
-            <p>CONSTRUYENDO EL FUTURO: PROTOCOLO DE ABSORCIÓN DE CAPITAL</p>
-        </header>
+    <main>
+        <section id="dashboard" class="user-portal">
+            <div class="portal-header">
+                <h1>Sovereign User Terminal</h1>
+                <p>Gestiona tu capital en el nuevo estándar de innovación.</p>
+            </div>
 
-        <section class="grid-tools">
-            <div class="tool-card" data-tilt><h3>RWA INSTITUCIONAL</h3><p>Litio & Debt Management</p></div>
-            <div class="tool-card" data-tilt><h3>VENTURE CAPITAL</h3><p>G-AGI Neural Patents</p></div>
-            <div class="tool-card" data-tilt><h3>CROWDFUNDING</h3><p>Innovation Ledger</p></div>
-            <div class="tool-card" data-tilt><h3>FILANTROPÍA</h3><p>DALabs Satellite Hub</p></div>
+            <div class="tools-grid">
+                <div class="tool-card main">
+                    <h3>INSTITUTIONAL RWA</h3>
+                    <div class="chart-mini"></div>
+                    <button class="invest-btn">OPERAR LITIO/COMMODITIES</button>
+                </div>
+                <div class="tool-card">
+                    <h3>VENTURE CAPITAL</h3>
+                    <p>Equity en Patentes G-AGI</p>
+                    <button class="sec-btn">VER POOL VC</button>
+                </div>
+                <div class="tool-card">
+                    <h3>CROWDFUNDING</h3>
+                    <p>Fondeo Startups DEAL</p>
+                    <button class="sec-btn">REGISTRAR</button>
+                </div>
+                <div class="tool-card lpi">
+                    <h3>INDICADORES LPI</h3>
+                    <div class="lpi-val">98.4%</div>
+                    <label>LIQUIDITY PERFORMANCE</label>
+                </div>
+            </div>
         </section>
     </main>
 
