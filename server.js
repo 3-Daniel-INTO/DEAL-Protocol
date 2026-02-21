@@ -1,21 +1,16 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 const app = express();
 
-// Blindaje de comunicación entre portales
-app.use(cors({ origin: '*' })); 
-app.use(express.static(__dirname));
+app.use(cors());
+app.use(express.static(path.join(__dirname, '.')));
 
-app.get('/api/v1/health', (req, res) => {
-    res.json({ 
-        status: "Online", 
-        integrity: "100%", 
-        nodes: "Global + Space",
-        ia: "MIA-X Active" 
-    });
+app.get('/api/status', (req, res) => {
+    res.json({ system: "DEAL", status: "100% Operational", essence: "HTML Pure" });
 });
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, '0.0.0.0', () => {
-    console.log(`>> [DEAL CORE]: Búnker de datos operativo en puerto ${PORT}`);
+    console.log(`>> [DEAL]: Infraestructura operativa en puerto ${PORT}`);
 });

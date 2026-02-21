@@ -1,1 +1,5 @@
-node_modules/\n.next/\n.vercel/\n*.log\npackage-lock.json
+node_modules/
+.next/
+.vercel/
+*.log
+.env

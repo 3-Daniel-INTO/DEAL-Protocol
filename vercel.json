@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "name": "deal-protocol-sovereign",
+  "name": "deal-protocol",
   "cleanUrls": true,
   "framework": null,
-  "installCommand": "echo 'Bypass Install'",
-  "buildCommand": "echo 'Bypass Build'",
+  "installCommand": "echo 'MIA-X: Essence Protected'",
+  "buildCommand": "echo 'MIA-X: Logic Integral'",
   "outputDirectory": ".",
+  "public": true,
   "rewrites": [
     { "source": "/api/(.*)", "dest": "https://deal-protocol.onrender.com/api/$1" },
     { "source": "/(.*)", "dest": "/index.html" }
