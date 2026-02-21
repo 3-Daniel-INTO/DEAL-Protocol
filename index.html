@@ -3,54 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DEAL | Sovereign Investment Platform</title>
+    <title>DEAL | Sovereign Portal</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
 <body>
-    <div class="space-engine">
-        <div class="vortex-layer" id="vortex"></div>
-        <div class="astronaut-layer" id="astro"></div>
+    <div class="perspective-engine">
+        <div class="vortex-bg" id="vortex"></div>
+        <div class="astro-front" id="astro"></div>
     </div>
 
     <nav class="deal-nav">
-        <div class="logo">DE<span class="neon-glow">↗</span>L</div>
-        <button class="wallet-trigger" onclick="initWallet()">WALLET CONNECT</button>
+        <div class="logo">DE<span class="neon">↗</span>L</div>
+        <div class="nav-links">
+            <button onclick="connectWallet()" class="btn-wc">WALLET CONNECT</button>
+        </div>
     </nav>
 
-    <main class="neural-portal">
-        <div class="hero-block">
-            <h1>WHERE VISION MEETS CAPITAL</h1>
-            <p>Infrastructure by DALabs | Harmony Fundación</p>
-        </div>
+    <main id="portal-root">
+        <section class="hero">
+            <h1 class="glow-text">WHERE VISION MEETS CAPITAL</h1>
+            <p>Infrastructure by DALabs | Atacama Hub 2026</p>
+        </section>
 
-        <div class="tools-grid">
-            <div class="tool-card crowd">
-                <h3>CROWDFUNDING</h3>
-                <p>Register your Startup/Emprendimiento</p>
-                <button onclick="window.location.href='#register'">REGISTRAR PROYECTO</button>
+        <section class="dashboard">
+            <div class="grid">
+                <div class="card card-rwa">
+                    <span class="badge">INSTITUCIONAL</span>
+                    <h3>LITIO RWA</h3>
+                    <div class="kpi">$1.2B AUM</div>
+                    <button class="buy">OPERAR</button>
+                </div>
+                <div class="card card-vc">
+                    <span class="badge">VENTURE</span>
+                    <h3>G-AGI PATENTS</h3>
+                    <div class="kpi">12 PATENTES QBT</div>
+                    <button class="buy">ANALIZAR</button>
+                </div>
             </div>
-            <div class="tool-card vc">
-                <h3>VENTURE CAPITAL</h3>
-                <p>Institutional RWA & QBT Patents</p>
-                <button>INVERTIR</button>
-            </div>
-            <div class="tool-card phil gold">
-                <h3>DALABS PHILANTHROPY</h3>
-                <p>Sovereign Data & Satellite Shield</p>
-                <button>DONACIÓN DIRECTA</button>
-            </div>
-        </div>
+        </section>
 
-        <div class="kpi-panel">
-            <div class="kpi-box"><span>$2.5B</span><label>AUM SYSTEM</label></div>
-            <div class="kpi-box"><span>124</span><label>ACTIVE NODOS</label></div>
-            <div class="kpi-box"><span>MIA-X</span><label>PERSISTENCE</label></div>
-        </div>
+        <section class="social-cap">
+            <div class="card-large crowd">
+                <h3>CROWDFUNDING STARTUPS</h3>
+                <p>Registra tu emprendimiento en la red DEAL.</p>
+                <button class="btn-neon" onclick="location.href='https://github.com/3-Daniel-INTO/DEAL-Protocol'">REGISTRAR MI STARTUP</button>
+            </div>
+            <div class="card-large phil">
+                <h3>FILANTROPÍA DALABS</h3>
+                <p>Soporte a la Infraestructura Satelital.</p>
+                <div class="meter"><div class="fill" style="width: 45%"></div></div>
+                <button class="btn-gold">DONAR A DALABS</button>
+            </div>
+        </section>
     </main>
 
-    <footer class="sovereign-footer">
-        <p>© 2025-2026 DALabs | Realizado por MIA Rehace | Todos los derechos reservados</p>
+    <footer class="master-footer">
+        <p>© 2025-2026 DALabs | Creado por MIA Rehace | Todos los derechos reservados</p>
     </footer>
 
     <script src="script.js"></script>

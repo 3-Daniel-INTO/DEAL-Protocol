@@ -1,16 +1,17 @@
 const express = require('express');
 const path = require('path');
+const compression = require('compression');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Servir archivos estáticos directamente desde la raíz
+app.use(compression());
 app.use(express.static(__dirname));
 
-// Punto de entrada único para evitar fallos en Vercel/Render
+// Routing inteligente para secciones DEAL
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 app.listen(PORT, () => {
-  console.log(`>> [G-AGI]: DEAL Portal Operational | Accessing DALabs Infrastructure`);
+  console.log(`>> [G-AGI]: DEAL Portal 100% Operational on Port ${PORT}`);
 });
