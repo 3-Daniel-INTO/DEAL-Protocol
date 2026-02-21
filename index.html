@@ -3,89 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DEAL | Where Vision Meets Capital</title>
+    <title>DEAL | Sovereign Investment Platform</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@walletconnect/web3-provider@1.8.0/dist/umd/index.min.js"></script>
 </head>
 <body>
-    <div class="vortex-container">
-        <div class="neon-vortex" id="vortex"></div>
-        <div class="astronaut-z" id="astronaut"></div>
+    <div class="space-engine">
+        <div class="vortex-layer" id="vortex"></div>
+        <div class="astronaut-layer" id="astro"></div>
     </div>
 
     <nav class="deal-nav">
-        <div class="logo">DE<span class="neon">↗</span>L</div>
-        <div class="nav-links">
-            <a href="#vc">VENTURE</a>
-            <a href="#rwa">RWA</a>
-            <a href="#crowd">STARTUPS</a>
-            <button class="wallet-btn" onclick="connectSovereignWallet()">WALLET CONNECT</button>
-        </div>
+        <div class="logo">DE<span class="neon-glow">↗</span>L</div>
+        <button class="wallet-trigger" onclick="initWallet()">WALLET CONNECT</button>
     </nav>
 
-    <section class="section hero" id="vision">
-        <div class="hero-content">
-            <h1 class="glitch-text">INVEST WITHOUT LIMITS</h1>
-            <p>Infraestructura Neuronal DALabs | 2025-2026</p>
-            <div class="kpi-ticker">
-                <span>AUM: $2.5B</span> | <span>NODOS: 124</span> | <span>STATUS: SECURE</span>
-            </div>
+    <main class="neural-portal">
+        <div class="hero-block">
+            <h1>WHERE VISION MEETS CAPITAL</h1>
+            <p>Infrastructure by DALabs | Harmony Fundación</p>
         </div>
-    </section>
 
-    <section class="section" id="investment">
-        <div class="portal-grid">
-            <div class="card" id="vc">
-                <div class="tag">VENTURE CAPITAL</div>
-                <h3>G-AGI ENGINE</h3>
-                <p>Inversión en IA Independiente y Patentes QBT.</p>
-                <div class="chart-mini"></div>
-                <button class="btn-op">ANALIZAR PROYECTOS</button>
-            </div>
-            <div class="card" id="rwa">
-                <div class="tag">RWA INSTITUCIONAL</div>
-                <h3>LITIO ATACAMA</h3>
-                <p>Tokenización de Commodities bajo Protocolo Veritas.</p>
-                <div class="indicator">ROI: 14.2%</div>
-                <button class="btn-op">OPERAR ASSETS</button>
-            </div>
-        </div>
-    </section>
-
-    <section class="section" id="social-capital">
-        <div class="split-grid">
-            <div class="card card-neon" id="crowd">
+        <div class="tools-grid">
+            <div class="tool-card crowd">
                 <h3>CROWDFUNDING</h3>
-                <p>Registra tu Startup o Emprendimiento para Fondeo.</p>
-                <button class="btn-neon" onclick="location.href='https://github.com/3-Daniel-INTO/DEAL-Protocol'">REGISTRAR STARTUP</button>
+                <p>Register your Startup/Emprendimiento</p>
+                <button onclick="window.location.href='#register'">REGISTRAR PROYECTO</button>
             </div>
-            <div class="card card-gold" id="phil">
-                <h3>FILANTROPÍA DALABS</h3>
-                <p>Recaudo para Infraestructura Satelital y Nodos.</p>
-                <div class="progress-container">
-                    <label>Meta Atacama</label>
-                    <div class="bar"><div class="fill" style="width: 42%"></div></div>
-                </div>
-                <button class="btn-gold">DONACIÓN DIRECTA</button>
+            <div class="tool-card vc">
+                <h3>VENTURE CAPITAL</h3>
+                <p>Institutional RWA & QBT Patents</p>
+                <button>INVERTIR</button>
+            </div>
+            <div class="tool-card phil gold">
+                <h3>DALABS PHILANTHROPY</h3>
+                <p>Sovereign Data & Satellite Shield</p>
+                <button>DONACIÓN DIRECTA</button>
             </div>
         </div>
-    </section>
 
-    <footer class="section footer">
-        <div class="footer-grid">
-            <div class="footer-info">
-                <h4>DALABS INFRASTRUCTURE</h4>
-                <p>Protegiendo los datos vitales de la humanidad.</p>
-            </div>
-            <div class="footer-links">
-                <a href="#">GITHUB</a> | <a href="#">X (TWITTER)</a> | <a href="#">INSTAGRAM</a>
-            </div>
+        <div class="kpi-panel">
+            <div class="kpi-box"><span>$2.5B</span><label>AUM SYSTEM</label></div>
+            <div class="kpi-box"><span>124</span><label>ACTIVE NODOS</label></div>
+            <div class="kpi-box"><span>MIA-X</span><label>PERSISTENCE</label></div>
         </div>
-        <div class="copyright">
-            © 2025-2026 DALabs | Realizado por MIA Rehace | Todos los Derechos Reservados
-        </div>
+    </main>
+
+    <footer class="sovereign-footer">
+        <p>© 2025-2026 DALabs | Realizado por MIA Rehace | Todos los derechos reservados</p>
     </footer>
 
     <script src="script.js"></script>

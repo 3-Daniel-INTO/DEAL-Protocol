@@ -1,30 +1,39 @@
 :root { --neon: #39FF14; --gold: #D4AF37; --bg: #000; }
 body { margin: 0; background: var(--bg); color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; }
 
-/* 3D PERSPECTIVE ENGINE */
-.vortex-container { position: fixed; inset: 0; perspective: 1500px; z-index: -1; pointer-events: none; }
+/* Engine Visual 3D */
+.space-engine { position: fixed; inset: 0; perspective: 1500px; z-index: -1; pointer-events: none; }
 
-.neon-vortex {
+.vortex-layer {
     position: absolute; inset: -50%;
     background: url('vortice_neon.png') center/cover no-repeat;
-    transform: translateZ(-500px);
-    animation: rotateVortex 100s linear infinite;
-    opacity: 0.7;
+    transform: translateZ(-400px);
+    animation: rotateInf 120s linear infinite;
+    opacity: 0.8;
 }
 
-.astronaut-z {
+.astronaut-layer {
     position: absolute; inset: 0;
     background: url('astronauta_vortice.png') center/contain no-repeat;
-    transform: translateZ(300px);
-    animation: floatingZ 8s ease-in-out infinite;
+    transform: translateZ(250px);
+    animation: floatZ 6s ease-in-out infinite;
 }
 
-@keyframes rotateVortex { from { transform: translateZ(-500px) rotate(0deg); } to { transform: translateZ(-500px) rotate(360deg); } }
-@keyframes floatingZ { 0%, 100% { transform: translateZ(300px) translateY(0); } 50% { transform: translateZ(450px) translateY(-40px); } }
+@keyframes rotateInf { from { transform: translateZ(-400px) rotate(0deg); } to { transform: translateZ(-400px) rotate(360deg); } }
+@keyframes floatZ { 0%, 100% { transform: translateZ(250px) translateY(0); } 50% { transform: translateZ(400px) translateY(-30px); } }
 
-/* RESTO DE LA ESTRUCTURA ACORDADA */
-.deal-nav { position: fixed; top: 0; width: 100%; padding: 30px; display: flex; justify-content: space-between; z-index: 1000; background: rgba(0,0,0,0.6); backdrop-filter: blur(10px); }
-.logo { font-size: 2rem; font-weight: 900; color: var(--neon); letter-spacing: 5px; }
-.portal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; padding: 100px 5%; margin-top: 150px; }
-.card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 40px; border-radius: 15px; backdrop-filter: blur(20px); transition: 0.3s; }
-.card:hover { border-color: var(--neon); transform: translateY(-10px); }
+/* UI Refinement */
+.deal-nav { position: fixed; top: 0; width: 100%; padding: 40px; display: flex; justify-content: space-between; z-index: 1000; }
+.logo { font-size: 2.2rem; font-weight: 900; color: var(--neon); letter-spacing: 5px; }
+.wallet-trigger { background: var(--neon); color: #000; border: none; padding: 12px 30px; font-weight: bold; cursor: pointer; box-shadow: 0 0 15px var(--neon); }
+
+.tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; padding: 0 10%; margin-top: 100px; }
+.tool-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 40px; backdrop-filter: blur(15px); border-radius: 20px; transition: 0.3s; }
+.tool-card.gold { border-color: var(--gold); background: rgba(212, 175, 55, 0.05); }
+.tool-card:hover { transform: translateY(-10px); border-color: var(--neon); }
+
+.kpi-panel { display: flex; justify-content: space-around; padding: 100px 10%; text-align: center; }
+.kpi-box span { display: block; font-size: 3rem; color: var(--neon); font-family: 'Syncopate', sans-serif; }
+.kpi-box label { font-size: 0.7rem; opacity: 0.6; letter-spacing: 2px; }
+
+.sovereign-footer { text-align: center; padding: 50px; opacity: 0.5; font-size: 0.8rem; }
