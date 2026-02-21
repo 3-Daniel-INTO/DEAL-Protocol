@@ -2,8 +2,8 @@
   "version": 2,
   "public": true,
   "framework": null,
-  "installCommand": "echo 'Instalación omitida'",
-  "buildCommand": "echo 'Build omitido'",
+  "installCommand": "echo 'Skip Install'",
+  "buildCommand": "echo 'Skip Build'",
   "outputDirectory": ".",
   "rewrites": [
     { "source": "/api/(.*)", "dest": "https://deal-protocol.onrender.com/api/$1" },
