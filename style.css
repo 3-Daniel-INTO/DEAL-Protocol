@@ -2,36 +2,29 @@
 body { margin: 0; background: var(--bg); color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; }
 
 /* 3D PERSPECTIVE ENGINE */
-.vortex-container { position: fixed; inset: 0; perspective: 1500px; z-index: -1; }
+.vortex-container { position: fixed; inset: 0; perspective: 1500px; z-index: -1; pointer-events: none; }
+
 .neon-vortex {
     position: absolute; inset: -50%;
-    background: url('vortice_neon.png') center/cover;
-    transform: translateZ(-400px);
-    animation: rotateVortex 120s linear infinite;
-    opacity: 0.6;
+    background: url('vortice_neon.png') center/cover no-repeat;
+    transform: translateZ(-500px);
+    animation: rotateVortex 100s linear infinite;
+    opacity: 0.7;
 }
+
 .astronaut-z {
     position: absolute; inset: 0;
     background: url('astronauta_vortice.png') center/contain no-repeat;
-    transform: translateZ(200px);
-    animation: floatingZ 6s ease-in-out infinite;
+    transform: translateZ(300px);
+    animation: floatingZ 8s ease-in-out infinite;
 }
 
-@keyframes rotateVortex { from { transform: translateZ(-400px) rotate(0deg); } to { transform: translateZ(-400px) rotate(360deg); } }
-@keyframes floatingZ { 0%, 100% { transform: translateZ(200px) translateY(0); } 50% { transform: translateZ(350px) translateY(-30px); } }
+@keyframes rotateVortex { from { transform: translateZ(-500px) rotate(0deg); } to { transform: translateZ(-500px) rotate(360deg); } }
+@keyframes floatingZ { 0%, 100% { transform: translateZ(300px) translateY(0); } 50% { transform: translateZ(450px) translateY(-40px); } }
 
-/* UI ELEMENTS */
-.deal-nav { position: fixed; top: 0; width: 100%; padding: 30px; display: flex; justify-content: space-between; z-index: 1000; background: rgba(0,0,0,0.5); backdrop-filter: blur(10px); }
-.logo { font-size: 2.2rem; font-weight: 900; color: var(--neon); letter-spacing: 5px; }
-.wallet-btn { background: var(--neon); color: #000; border: none; padding: 12px 25px; font-weight: bold; cursor: pointer; border-radius: 5px; box-shadow: 0 0 15px var(--neon); }
-
-.section { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 100px 5%; position: relative; }
-.card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.1); padding: 40px; border-radius: 20px; backdrop-filter: blur(15px); }
-.card.card-neon { border-color: var(--neon); }
-.card.card-gold { border-color: var(--gold); }
-
-.btn-op, .btn-neon, .btn-gold { width: 100%; padding: 15px; margin-top: 20px; border: none; font-weight: bold; cursor: pointer; transition: 0.3s; }
-.btn-neon { background: var(--neon); color: #000; }
-.btn-gold { background: var(--gold); color: #000; }
-
-.footer { height: auto; border-top: 1px solid rgba(255,255,255,0.1); flex-direction: column; text-align: center; }
+/* RESTO DE LA ESTRUCTURA ACORDADA */
+.deal-nav { position: fixed; top: 0; width: 100%; padding: 30px; display: flex; justify-content: space-between; z-index: 1000; background: rgba(0,0,0,0.6); backdrop-filter: blur(10px); }
+.logo { font-size: 2rem; font-weight: 900; color: var(--neon); letter-spacing: 5px; }
+.portal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; padding: 100px 5%; margin-top: 150px; }
+.card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 40px; border-radius: 15px; backdrop-filter: blur(20px); transition: 0.3s; }
+.card:hover { border-color: var(--neon); transform: translateY(-10px); }

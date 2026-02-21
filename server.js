@@ -3,7 +3,13 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(express.static(path.join(__dirname, '/')));
-app.get('*', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
+// Forzar la lectura de archivos estáticos
+app.use(express.static(__dirname));
 
-app.listen(PORT, () => console.log(`>> [G-AGI]: DEAL Engine Online | Ready for Inbound Capital`));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+app.listen(PORT, () => {
+  console.log(`>> [LOG]: DEAL Engine Active on Port ${PORT}`);
+});
