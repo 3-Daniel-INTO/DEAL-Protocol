@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "name": "deal-protocol",
+  "cleanUrls": true,
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "rewrites": [
+    { "source": "/api/(.*)", "dest": "https://deal-protocol.onrender.com/api/$1" },
+    { "source": "/(.*)", "dest": "/index.html" }
+  ]
+}

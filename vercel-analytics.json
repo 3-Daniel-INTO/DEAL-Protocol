@@ -1,0 +1,7 @@
+{
+  "monitoring": {
+    "speed_insights": true,
+    "web_vitals": true,
+    "custom_logs": ["MIA-X-Biometric", "G-AGI-Investment-Flow"]
+  }
+}
