@@ -1,17 +1,14 @@
 {
-  "name": "deal-elite-standard",
-  "version": "8.0.0",
-  "description": "DEAL - Sovereign Investment Infrastructure",
+  "name": "deal-neuro-organic-core",
+  "version": "10.0.0",
+  "description": "DEAL - Sovereign Future Construction Protocol",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "build": "echo 'Build optimized for high-density traffic'"
+    "build": "echo 'Sincronizando Red Neuronal G-AGI...'"
   },
   "dependencies": {
     "express": "^4.18.2",
     "compression": "^1.7.4"
-  },
-  "engines": {
-    "node": "18.x"
   }
 }
