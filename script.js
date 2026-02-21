@@ -1,23 +1,22 @@
 gsap.registerPlugin(ScrollTrigger);
 
-// Autenticación MIA-X
-function initMIAX() {
-    alert(">> [MIA-X]: Sincronizando Perfil Billionaire... Identidad Soberana Validada.");
-}
-
-// Parallax Progresivo
+// Interacción Parallax
 document.addEventListener('mousemove', (e) => {
     const x = (e.clientX - window.innerWidth / 2) / 30;
     const y = (e.clientY - window.innerHeight / 2) / 30;
-    gsap.to("#astro", { x: x * 2.5, y: y * 2.5, duration: 1 });
-    gsap.to("#vortex", { x: -x, y: -y, duration: 2 });
+    gsap.to("#astro", { x: x * 2, y: y * 2, duration: 1.2 });
+    gsap.to("#vortex", { x: -x, y: -y, rotation: x * 0.1, duration: 2 });
 });
 
-// Animación de Paneles al hacer Scroll
-gsap.from(".e-card", {
-    scrollTrigger: ".elite-grid",
+// Animación de entrada de elementos
+gsap.from(".card", {
     opacity: 0,
     y: 100,
-    stagger: 0.3,
-    duration: 1.2
+    stagger: 0.2,
+    duration: 1.5,
+    ease: "power4.out"
 });
+
+function initMIAX() {
+    alert(">> [MIA-X]: Identity Authenticated. Welcome to Workspace 33.333.");
+}
