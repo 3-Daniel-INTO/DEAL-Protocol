@@ -1,8 +1,18 @@
 {
   "version": 2,
   "public": true,
+  "name": "deal-protocol",
   "rewrites": [
     { "source": "/api/(.*)", "dest": "https://deal-protocol.onrender.com/api/$1" },
     { "source": "/(.*)", "dest": "/index.html" }
+  ],
+  "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    }
   ]
 }
