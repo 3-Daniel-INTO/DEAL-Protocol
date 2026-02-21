@@ -1,4 +1,1 @@
-node_modules/
-.env
-.DS_Store
-dist/
+node_modules\n.next\n.vercel\n*.log
