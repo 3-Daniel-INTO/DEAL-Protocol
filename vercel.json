@@ -5,7 +5,8 @@
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Sovereign-Protection", "value": "MIA-X-ARK" }
+        { "key": "X-Sovereign-Protection", "value": "ARK-Quantum" },
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
       ]
     }
   ],
