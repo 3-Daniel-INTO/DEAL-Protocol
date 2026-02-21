@@ -1,38 +1,34 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8"><title>DEAL | Whale Institutional Portal</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DEAL | Global Investment Standard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 </head>
 <body>
-    <div id="whale-app">
-        <header class="glass-morphism">
-            <h1>DEAL <span class="gold">PROTOCOL</span></h1>
-            <div class="status-badge">SATELLITE SYNC: ACTIVE</div>
-        </header>
-
-        <main class="grid-container">
-            <section class="card impact-data">
-                <h2>Impacto en Economía Real</h2>
-                <p>La construcción de centros de datos subió un 53% YoY. DEAL captura este flujo. </p>
-                <div class="stat-box">
-                    <span>CAPEX AI 2026:</span>
-                    <strong id="capex-value">$1.2T+</strong>
-                </div>
-            </section>
-
-            <section class="card asset-management">
-                <h2>Gestión de Activos MIA-X</h2>
-                <ul id="asset-list">
-                    <li>RWA Energía: <strong>1.2GW Operativos</strong></li>
-                    <li>Venture Capital: <strong>Rondas Cerradas v41.0</strong></li>
-                </ul>
-            </section>
-        </main>
-
-        <footer>
-            <p>Protocolo: Proof of Progress | Powered by G-AGI Engine</p>
-        </footer>
+    <div class="space-engine">
+        <div class="vortex-360" id="vortex"></div>
+        <div class="astronaut-z" id="astro"></div>
     </div>
+
+    <nav class="deal-nav">
+        <div class="brand">DE<span class="neon">↗</span>L</div>
+        <div class="global-status">ACTIVE: 195 COUNTRIES | SPACE NODES: OK</div>
+        <button class="auth-btn" onclick="initMIAX()">MIA-X IDENTITY</button>
+    </nav>
+
+    <main class="hub-container">
+        <h1 class="main-title">NEURO-HUB DE INVERSIÓN MUNDIAL</h1>
+        <div class="grid-tools">
+            <div class="tool-card"><h3>VC & STARTUPS</h3><button>OPERAR</button></div>
+            <div class="tool-card"><h3>RWA COMMODITIES</h3><button>ABSORBER</button></div>
+            <div class="tool-card"><h3>INSTITUTIONAL DEBT</h3><button>GESTIONAR</button></div>
+            <div class="tool-card"><h3>CROWDFUNDING</h3><button>INVERTIR</button></div>
+            <div class="tool-card"><h3>DONACIONES & FILANTROPÍA</h3><button>CONTRIBUIR</button></div>
+        </div>
+    </main>
+    <script src="script.js"></script>
 </body>
 </html>

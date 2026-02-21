@@ -1,14 +1,14 @@
 {
   "version": 2,
-  "name": "deal-protocol-sovereign",
+  "name": "deal-protocol-hybrid",
   "cleanUrls": true,
-  "framework": null,
-  "installCommand": "echo 'Bypass'",
-  "buildCommand": "echo 'Bypass'",
-  "outputDirectory": ".",
   "public": true,
+  "installCommand": "echo 'Edge Setup'",
+  "buildCommand": "echo 'Static Reflect Prepared'",
+  "outputDirectory": "public",
   "rewrites": [
-    { "source": "/api/(.*)", "dest": "https://deal-protocol.onrender.com/api/$1" },
+    { "source": "/api/brain/(.*)", "dest": "https://deal-protocol.onrender.com/api/$1" },
+    { "source": "/api/edge", "dest": "/api/mia-x-edge.js" },
     { "source": "/(.*)", "dest": "/index.html" }
   ]
 }
