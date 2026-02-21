@@ -5,14 +5,14 @@ body { margin: 0; background: var(--bg); color: #fff; font-family: 'Inter', sans
 .neuro-engine { position: fixed; inset: 0; perspective: 2200px; z-index: -1; }
 .vortex-layer {
     position: absolute; inset: -50%;
-    background: url('vortice_neon.png') center/cover;
+    background: url('assets/logos/deal_astronaut_full.png') center/cover;
     transform: translateZ(-700px);
     animation: rotateNeuro 140s linear infinite;
     opacity: 0.75;
 }
 .astronaut-z {
     position: absolute; inset: 0;
-    background: url('astronauta_vortice.png') center/contain no-repeat;
+    background: url('assets/logos/deal_astronaut_full.png') center/contain no-repeat;
     transform: translateZ(450px);
     animation: floatNeuro 9s ease-in-out infinite;
 }

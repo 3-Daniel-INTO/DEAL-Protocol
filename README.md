@@ -15,3 +15,9 @@ Los emprendedores pueden registrar sus startups directamente en la red MIA-X a t
 
 ## 🏛️ Filantropía DALabs
 Recaudo destinado exclusivamente a la expansión de los nodos Atacama y blindaje de datos vitales.
+
+## 💎 DEAL Visual Identity
+Los activos visuales de DEAL están normalizados bajo el estándar Elite Billionaire:
+- **Logo Principal:** `assets/logos/deal_logo_neon.png`
+- **Hero Image:** `assets/logos/deal_astronaut_full.png`
+- **Dashboard Reference:** `assets/logos/deal_dashboard_kpi.png`
