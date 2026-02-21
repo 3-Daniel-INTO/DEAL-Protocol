@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "name": "deal-protocol",
+  "name": "deal-protocol-sovereign",
   "cleanUrls": true,
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist",
+  "framework": null,
+  "installCommand": "echo 'Bypass Install'",
+  "buildCommand": "echo 'Bypass Build'",
+  "outputDirectory": ".",
   "rewrites": [
     { "source": "/api/(.*)", "dest": "https://deal-protocol.onrender.com/api/$1" },
     { "source": "/(.*)", "dest": "/index.html" }
