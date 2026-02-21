@@ -1,31 +1,29 @@
 :root { --neon: #39FF14; --bg: #000; }
-body { margin: 0; background: var(--bg); overflow: hidden; }
+body { margin: 0; background: var(--bg); color: #fff; font-family: 'Inter', sans-serif; overflow: hidden; }
 
-/* Contenedor de Vértice DEAL */
-.vortex-container {
-    position: fixed; inset: 0; z-index: -1;
-    perspective: 1500px;
-}
-
+/* Capa de Vértice Optimizada */
 .vortex-360 {
-    position: absolute; inset: -50%;
+    position: fixed; inset: -100%;
     background: url('assets/vortice_neon.png') center/cover;
-    animation: rotate360 90s linear infinite;
-    will-change: transform; /* Forzar uso de GPU */
+    transform: translateZ(-300px);
+    animation: rotateLoop 150s linear infinite;
+    will-change: transform;
+    z-index: -1;
 }
 
-/* Animación del Astronauta en Eje Z */
+/* Astronauta en Eje Z con Movimiento Orgánico */
 .astronaut-z {
     position: absolute; top: 50%; left: 50%;
-    width: 300px; height: 300px;
+    width: 350px; height: 350px;
     background: url('assets/astronauta.png') center/contain no-repeat;
     transform: translate(-50%, -50%) translateZ(200px);
-    animation: floatZ 12s ease-in-out infinite;
-    filter: drop-shadow(0 0 15px var(--neon));
+    animation: floatDeep 15s ease-in-out infinite;
+    will-change: transform;
+    filter: drop-shadow(0 0 30px rgba(57, 255, 20, 0.4));
 }
 
-@keyframes rotate360 { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-@keyframes floatZ { 
-    0%, 100% { transform: translate(-50%, -50%) translateZ(200px) scale(1); } 
-    50% { transform: translate(-50%, -50%) translateZ(450px) scale(1.15); } 
+@keyframes rotateLoop { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes floatDeep { 
+    0%, 100% { transform: translate(-50%, -50%) translateZ(200px); } 
+    50% { transform: translate(-50%, -50%) translateZ(400px) scale(1.05); } 
 }
