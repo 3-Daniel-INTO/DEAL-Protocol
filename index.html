@@ -3,43 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DEAL | Sovereign Neural Portal</title>
+    <title>DEAL | Neural Sovereign Portal</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 </head>
 <body>
-    <div class="viewport-3d">
-        <div class="vortex-layer" id="vortex"></div>
-        <div class="astronaut-layer" id="astronaut"></div>
-        <div class="ui-scanline"></div>
+    <div class="canvas-3d">
+        <div class="vortex-bg" id="vortex"></div>
+        <div class="astronaut-z" id="astro"></div>
     </div>
 
     <nav class="deal-nav">
         <div class="logo">DE<span class="neon-arrow">↗</span>L</div>
-        <button class="btn-connect" onclick="authMIAX()">IDENTITY SCAN</button>
+        <button class="auth-btn" onclick="activateMIAX()">IDENTITY SCAN</button>
     </nav>
 
-    <main class="hero">
-        <div class="floating-data">
-            <h1 class="glitch">WHERE VISION MEETS CAPITAL</h1>
-            <p>Infraestructura Independiente | DALabs 2026</p>
+    <main class="content-vanguard">
+        <div class="hero-text">
+            <h1>WHERE VISION MEETS CAPITAL</h1>
+            <p>Infraestructura DALabs | Sincronización 2026</p>
         </div>
-        <div class="scroll-call">DESCENDER AL SISTEMA</div>
-    </main>
-
-    <section id="portal" class="portal-overlay hidden">
-        <div class="portal-container">
-            <header>
-                <div class="status">● MIA-X PERSISTENCE ACTIVE</div>
-                <button onclick="closePortal()">×</button>
-            </header>
-            <div class="grid-portal">
-                <div class="card"><h3>RWA LITIO</h3><p>Atacama Nodes: Online</p><button class="buy">OPERAR</button></div>
-                <div class="card"><h3>CROWDFUNDING</h3><p>Startups: 24 Activas</p><button class="buy">REGISTRAR</button></div>
-                <div class="card gold"><h3>FILANTROPÍA</h3><p>Support DALabs</p><button class="donate">DONAR</button></div>
+        
+        <div class="portal-grid hidden" id="main-portal">
+            <div class="card card-crowd">
+                <h3>CROWDFUNDING</h3>
+                <p>Startups & Emprendimiento</p>
+                <button onclick="window.open('https://github.com/3-Daniel-INTO/DEAL-Protocol', '_blank')">REGISTRAR</button>
+            </div>
+            <div class="card card-phil">
+                <h3>FILANTROPÍA</h3>
+                <p>Donaciones DALabs</p>
+                <button class="gold">CONTRIBUIR</button>
+            </div>
+            <div class="card card-rwa">
+                <h3>RWA INSTITUCIONAL</h3>
+                <p>Atacama Lithium Assets</p>
+                <button>INVERTIR</button>
             </div>
         </div>
-    </section>
+    </main>
+
+    <footer class="legal-footer">
+        <p>© 2025-2026 DALabs | Creado por MIA Rehace | Harmony Fundación</p>
+    </footer>
 
     <script src="script.js"></script>
 </body>
